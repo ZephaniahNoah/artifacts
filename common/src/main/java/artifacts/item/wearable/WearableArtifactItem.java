@@ -92,7 +92,7 @@ public abstract class WearableArtifactItem extends ArtifactItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         for (ArtifactAttributeModifier modifier : attributeModifiers) {
             if (modifier.getAmount() != 0) {
                 return false;

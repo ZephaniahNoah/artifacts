@@ -33,29 +33,32 @@ public abstract class WearableArtifactItemMixin extends ArtifactItem {
         super.appendHoverText(stack, world, tooltipList, flags);
         Set<String> curioTags = CuriosApi.getCuriosHelper().getCurioTags(stack.getItem());
         List<String> slots = new ArrayList<>(curioTags);
-        if (Artifacts.CONFIG.client.showTooltips && !isCosmetic() && !slots.isEmpty() && !getAttributeModifiers().isEmpty()) {
-            tooltipList.add(Component.empty());
 
-            String identifier = slots.contains("curio") ? "curio" : slots.get(0);
-            tooltipList.add(Component.translatable("curios.modifiers." + identifier));
+        if (!Artifacts.CONFIG.client.showTooltips || isCosmetic() || slots.isEmpty() || getAttributeModifiers().isEmpty()) {
+            return;
+        }
 
-            for (ArtifactAttributeModifier modifier : getAttributeModifiers()) {
-                double amount = modifier.getAmount();
+        tooltipList.add(Component.empty());
 
-                if (modifier.getOperation() == AttributeModifier.Operation.ADDITION) {
-                    if (modifier.getAttribute().equals(Attributes.KNOCKBACK_RESISTANCE)) {
-                        amount *= 10;
-                    }
-                } else {
-                    amount *= 100;
+        String identifier = slots.contains("curio") ? "curio" : slots.get(0);
+        tooltipList.add(Component.translatable("curios.modifiers." + identifier));
+
+        for (ArtifactAttributeModifier modifier : getAttributeModifiers()) {
+            double amount = modifier.getAmount();
+
+            if (modifier.getOperation() == AttributeModifier.Operation.ADDITION) {
+                if (modifier.getAttribute().equals(Attributes.KNOCKBACK_RESISTANCE)) {
+                    amount *= 10;
                 }
-
-                tooltipList.add((Component.translatable(
-                        "attribute.modifier.plus." + modifier.getOperation().toValue(),
-                        ATTRIBUTE_MODIFIER_FORMAT.format(amount),
-                        Component.translatable(modifier.getAttribute().getDescriptionId())))
-                        .withStyle(ChatFormatting.BLUE));
+            } else {
+                amount *= 100;
             }
+
+            tooltipList.add((Component.translatable(
+                    "attribute.modifier.plus." + modifier.getOperation().toValue(),
+                    ATTRIBUTE_MODIFIER_FORMAT.format(amount),
+                    Component.translatable(modifier.getAttribute().getDescriptionId())))
+                    .withStyle(ChatFormatting.BLUE));
         }
     }
 }

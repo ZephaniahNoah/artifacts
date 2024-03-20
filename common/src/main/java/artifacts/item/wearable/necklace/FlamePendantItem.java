@@ -16,7 +16,7 @@ public class FlamePendantItem extends PendantItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return ModGameRules.FLAME_PENDANT_FIRE_DURATION.get() <= 0 || ModGameRules.FLAME_PENDANT_STRIKE_CHANCE.get() <= 0;
     }
 

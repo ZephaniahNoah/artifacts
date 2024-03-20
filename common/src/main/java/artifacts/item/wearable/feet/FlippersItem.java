@@ -10,7 +10,7 @@ public class FlippersItem extends WearableArtifactItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return ModGameRules.FLIPPERS_SWIM_SPEED_BONUS.get() <= 0;
     }
 }

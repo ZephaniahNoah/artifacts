@@ -1,5 +1,6 @@
 package artifacts.fabric.mixin.item.wearable;
 
+import artifacts.Artifacts;
 import artifacts.item.wearable.ArtifactAttributeModifier;
 import artifacts.item.wearable.WearableArtifactItem;
 import net.minecraft.ChatFormatting;
@@ -34,7 +35,7 @@ public class ItemStackMixin {
         }
 
         List<ArtifactAttributeModifier> attributeModifiers = item.getAttributeModifiers();
-        if (attributeModifiers.isEmpty()) {
+        if (attributeModifiers.isEmpty() || item.isCosmetic() || !Artifacts.CONFIG.client.showTooltips) {
             return;
         }
 

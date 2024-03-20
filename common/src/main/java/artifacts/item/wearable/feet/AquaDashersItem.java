@@ -13,7 +13,7 @@ import net.minecraft.world.level.material.FluidState;
 public class AquaDashersItem extends WearableArtifactItem {
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return !ModGameRules.AQUA_DASHERS_ENABLED.get();
     }
 

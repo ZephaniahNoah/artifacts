@@ -10,7 +10,7 @@ public class ThornPendantItem extends PendantItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return ModGameRules.THORN_PENDANT_MAX_DAMAGE.get() <= 0 || ModGameRules.THORN_PENDANT_STRIKE_CHANCE.get() <= 0;
     }
 

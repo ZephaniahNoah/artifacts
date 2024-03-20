@@ -10,7 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class VampiricGloveItem extends WearableArtifactItem {
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_RATIO.get() <= 0
                 || ModGameRules.VAMPIRIC_GLOVE_MAX_HEALING_PER_HIT.get() <= 0
                 || ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_CHANCE.get() <= 0;

@@ -22,7 +22,7 @@ public class KittySlippersItem extends WearableArtifactItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return !ModGameRules.KITTY_SLIPPERS_ENABLED.get();
     }
 

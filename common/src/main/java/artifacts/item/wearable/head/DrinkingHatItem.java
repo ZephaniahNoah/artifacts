@@ -26,7 +26,7 @@ public class DrinkingHatItem extends WearableArtifactItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return drinkingDurationMultiplier.get() >= 100 && eatingDurationMultiplier.get() >= 100;
     }
 

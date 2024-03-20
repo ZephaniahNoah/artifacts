@@ -17,7 +17,7 @@ public class FireGauntletItem extends WearableArtifactItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return ModGameRules.FIRE_GAUNTLET_FIRE_DURATION.get() <= 0;
     }
 

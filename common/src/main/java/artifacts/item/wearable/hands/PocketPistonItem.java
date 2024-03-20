@@ -18,7 +18,7 @@ public class PocketPistonItem extends WearableArtifactItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return ModGameRules.POCKET_PISTON_KNOCKBACK_STRENGTH.get() <= 0;
     }
 
