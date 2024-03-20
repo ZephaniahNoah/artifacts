@@ -39,7 +39,7 @@ public class ModGameRules {
             SCARF_OF_INVISIBILITY_ENABLED = booleanValue(createName(ModItems.SCARF_OF_INVISIBILITY, "enabled")),
             SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE = booleanValue(createName(ModItems.SHOCK_PENDANT, "doCancelLightningDamage")),
             SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")),
-            STEADFAST_SPIKES_ENABLED = booleanValue(createName(ModItems.STEADFAST_SPIKES, "enabled")),
+            STEADFAST_SPIKES_ENABLED = booleanValue(createName(ModItems.STEADFAST_SPIKES, "enabled")), // TODO remove 1.20.2
             UMBRELLA_IS_SHIELD = booleanValue(createName(ModItems.UMBRELLA, "isShield")),
             UMBRELLA_IS_GLIDER = booleanValue(createName(ModItems.UMBRELLA, "isGlider")),
             UNIVERSAL_ATTRACTOR_ENABLED = booleanValue(createName(ModItems.UNIVERSAL_ATTRACTOR, "enabled"));
@@ -81,6 +81,7 @@ public class ModGameRules {
             SHOCK_PENDANT_COOLDOWN = integerValue(createName(ModItems.SHOCK_PENDANT, "cooldown"), 0),
             SHOCK_PENDANT_STRIKE_CHANCE = integerValue(createName(ModItems.SHOCK_PENDANT, "strikeChance"), 25),
             SNORKEL_WATER_BREATHING_DURATION = integerValue(createName(ModItems.SNORKEL, "waterBreathingDuration"), 15),
+            STEADFAST_SPIKES_KNOCKBACK_RESISTANCE = integerValue(createName(ModItems.STEADFAST_SPIKES, "knockbackResistance"), 10),
             SUPERSTITIOUS_HAT_LOOTING_LEVEL_BONUS = integerValue(createName(ModItems.SUPERSTITIOUS_HAT, "lootingLevelBonus"), 1),
             THORN_PENDANT_COOLDOWN = integerValue(createName(ModItems.THORN_PENDANT, "cooldown"), 0),
             THORN_PENDANT_MAX_DAMAGE = integerValue(createName(ModItems.THORN_PENDANT, "maxDamage"), 6),

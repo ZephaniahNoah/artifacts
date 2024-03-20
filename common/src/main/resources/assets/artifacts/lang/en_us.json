@@ -121,6 +121,7 @@
   "gamerule.artifacts.snorkel.enabled": "Artifacts: Snorkel enabled",
   "gamerule.artifacts.snorkel.waterBreathingDuration": "Artifacts: Snorkel water breathing duration",
   "gamerule.artifacts.steadfastSpikes.enabled": "Artifacts: Steadfast Spikes enabled",
+  "gamerule.artifacts.steadfastSpikes.knockbackResistance": "Artifacts: Steadfast Spikes knockback resistance",
   "gamerule.artifacts.superstitiousHat.lootingLevelBonus": "Artifacts: Superstitious Hat looting level bonus",
   "gamerule.artifacts.thornPendant.cooldown": "Artifacts: Thorn Pendant cooldown",
   "gamerule.artifacts.thornPendant.maxDamage": "Artifacts: Thorn Pendant maximum damage",
