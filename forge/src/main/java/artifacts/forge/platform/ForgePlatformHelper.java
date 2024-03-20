@@ -47,16 +47,6 @@ public class ForgePlatformHelper implements PlatformHelper {
     }
 
     @Override
-    public Attribute getSwimSpeedAttribute() {
-        return ForgeMod.SWIM_SPEED.get();
-    }
-
-    @Override
-    public Attribute getEntityGravityAttribute() {
-        return ForgeMod.ENTITY_GRAVITY.get();
-    }
-
-    @Override
     public boolean isCorrectTierForDrops(Tier tier, BlockState state) {
         return TierSortingRegistry.isCorrectTierForDrops(tier, state);
     }

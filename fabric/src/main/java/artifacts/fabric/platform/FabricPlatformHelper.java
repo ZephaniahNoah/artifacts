@@ -13,7 +13,6 @@ import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketsApi;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import dev.emi.trinkets.api.client.TrinketRendererRegistry;
-import io.github.fabricators_of_create.porting_lib.attributes.PortingLibAttributes;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.tags.BlockTags;
@@ -47,17 +46,7 @@ public class FabricPlatformHelper implements PlatformHelper {
 
     @Override
     public Attribute getStepHeightAttribute() {
-        return StepHeightEntityAttributeMain.STEP_HEIGHT;
-    }
-
-    @Override
-    public Attribute getSwimSpeedAttribute() {
-        return PortingLibAttributes.SWIM_SPEED;
-    }
-
-    @Override
-    public Attribute getEntityGravityAttribute() {
-        return PortingLibAttributes.ENTITY_GRAVITY;
+        return StepHeightEntityAttributeMain.STEP_HEIGHT; // TODO 1.20.5
     }
 
     @Override

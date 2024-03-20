@@ -10,11 +10,6 @@ import java.util.List;
 public class LuckyScarfItem extends WearableArtifactItem {
 
     @Override
-    protected boolean isCosmetic() {
-        return ModGameRules.LUCKY_SCARF_FORTUNE_BONUS.get() <= 0;
-    }
-
-    @Override
     protected void addEffectsTooltip(ItemStack stack, List<MutableComponent> tooltip) {
         if (ModGameRules.LUCKY_SCARF_FORTUNE_BONUS.get() == 1) {
             tooltip.add(tooltipLine("single_level"));

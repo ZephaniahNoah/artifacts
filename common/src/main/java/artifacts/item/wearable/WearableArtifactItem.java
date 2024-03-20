@@ -11,14 +11,27 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 public abstract class WearableArtifactItem extends ArtifactItem {
+
+    private final List<ArtifactAttributeModifier> attributeModifiers = new ArrayList<>();
+
+    public void addAttributeModifier(ArtifactAttributeModifier attributeModifier) {
+        attributeModifiers.add(attributeModifier);
+    }
+
+    public List<ArtifactAttributeModifier> getAttributeModifiers() {
+        return attributeModifiers;
+    }
 
     public boolean isEquippedBy(@Nullable LivingEntity entity) {
         return PlatformServices.platformHelper.isEquippedBy(entity, this);
@@ -34,15 +47,58 @@ public abstract class WearableArtifactItem extends ArtifactItem {
     }
 
     public void onEquip(LivingEntity entity, ItemStack stack) {
-
+        if (entity.level().isClientSide()) {
+            return;
+        }
+        for (ArtifactAttributeModifier modifier : attributeModifiers) {
+            AttributeInstance attributeInstance = entity.getAttribute(modifier.getAttribute());
+            if (attributeInstance != null) {
+                attributeInstance.removeModifier(modifier.getModifierId());
+                AttributeModifier attributeModifier = modifier.createModifier();
+                attributeInstance.addPermanentModifier(attributeModifier);
+                modifier.onAttributeUpdated(entity);
+            }
+        }
     }
 
     public void onUnequip(LivingEntity entity, ItemStack stack) {
-
+        if (entity.level().isClientSide()) {
+            return;
+        }
+        for (ArtifactAttributeModifier modifier : attributeModifiers) {
+            AttributeInstance attributeInstance = entity.getAttribute(modifier.getAttribute());
+            if (attributeInstance != null) {
+                attributeInstance.removeModifier(modifier.getModifierId());
+                modifier.onAttributeUpdated(entity);
+            }
+        }
     }
 
     public void wornTick(LivingEntity entity, ItemStack stack) {
+        if (entity.level().isClientSide()) {
+            return;
+        }
+        for (ArtifactAttributeModifier modifier : attributeModifiers) {
+            AttributeInstance attributeInstance = entity.getAttribute(modifier.getAttribute());
+            if (attributeInstance != null) {
+                AttributeModifier existingModifier = attributeInstance.getModifier(modifier.getModifierId());
+                if (existingModifier == null || existingModifier.getAmount() != modifier.getAmount()) {
+                    attributeInstance.removeModifier(modifier.getModifierId());
+                    attributeInstance.addPermanentModifier(modifier.createModifier());
+                    modifier.onAttributeUpdated(entity);
+                }
+            }
+        }
+    }
 
+    @Override
+    protected boolean isCosmetic() {
+        for (ArtifactAttributeModifier modifier : attributeModifiers) {
+            if (modifier.getAmount() != 0) {
+                return false;
+            }
+        }
+        return getFortuneLevel() == 0 && getLootingLevel() == 0;
     }
 
     public SoundEvent getEquipSound() {

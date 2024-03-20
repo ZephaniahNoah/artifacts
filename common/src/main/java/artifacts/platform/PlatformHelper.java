@@ -23,10 +23,6 @@ public interface PlatformHelper {
 
     Attribute getStepHeightAttribute();
 
-    Attribute getSwimSpeedAttribute();
-
-    Attribute getEntityGravityAttribute();
-
     boolean isCorrectTierForDrops(Tier tier, BlockState state);
 
     @Nullable

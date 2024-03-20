@@ -1,6 +1,7 @@
 package artifacts.fabric.mixin.item.wearable;
 
-import artifacts.item.wearable.AttributeModifyingItem;
+import artifacts.item.wearable.ArtifactAttributeModifier;
+import artifacts.item.wearable.WearableArtifactItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -28,25 +29,32 @@ public class ItemStackMixin {
     private void getTooltipLines(Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir, List<Component> tooltip) {
         //noinspection ConstantConditions
         ItemStack stack = (ItemStack) (Object) this;
-        if (!(stack.getItem() instanceof AttributeModifyingItem item)) {
+        if (!(stack.getItem() instanceof WearableArtifactItem item)) {
+            return;
+        }
+
+        List<ArtifactAttributeModifier> attributeModifiers = item.getAttributeModifiers();
+        if (attributeModifiers.isEmpty()) {
             return;
         }
 
         tooltip.add(Component.translatable("trinkets.tooltip.attributes.all").withStyle(ChatFormatting.GRAY));
-        double amount = item.getAmount();
+        for (ArtifactAttributeModifier modifier : item.getAttributeModifiers()) {
+            double amount = modifier.getAmount();
 
-        if (item.getOperation() == AttributeModifier.Operation.ADDITION) {
-            if (item.getAttribute().equals(Attributes.KNOCKBACK_RESISTANCE)) {
-                amount *= 10;
+            if (modifier.getOperation() == AttributeModifier.Operation.ADDITION) {
+                if (modifier.getAttribute().equals(Attributes.KNOCKBACK_RESISTANCE)) {
+                    amount *= 10;
+                }
+            } else {
+                amount *= 100;
             }
-        } else {
-            amount *= 100;
-        }
 
-        Component text = Component.translatable(item.getAttribute().getDescriptionId());
-        if (amount > 0) {
-            tooltip.add(Component.translatable("attribute.modifier.plus." + item.getOperation().toValue(),
-                    ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), text).withStyle(ChatFormatting.BLUE));
+            Component text = Component.translatable(modifier.getAttribute().getDescriptionId());
+            if (amount > 0) {
+                tooltip.add(Component.translatable("attribute.modifier.plus." + modifier.getOperation().toValue(),
+                        ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), text).withStyle(ChatFormatting.BLUE));
+            }
         }
     }
 }

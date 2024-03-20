@@ -10,11 +10,6 @@ import java.util.List;
 public class SuperstitiousHatItem extends WearableArtifactItem {
 
     @Override
-    protected boolean isCosmetic() {
-        return ModGameRules.SUPERSTITIOUS_HAT_LOOTING_LEVEL_BONUS.get() <= 0;
-    }
-
-    @Override
     protected void addEffectsTooltip(ItemStack stack, List<MutableComponent> tooltip) {
         if (ModGameRules.SUPERSTITIOUS_HAT_LOOTING_LEVEL_BONUS.get() == 1) {
             tooltip.add(tooltipLine("single_level"));

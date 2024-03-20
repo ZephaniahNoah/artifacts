@@ -7,6 +7,7 @@ import artifacts.forge.capability.SwimDataCapability;
 import artifacts.forge.curio.WearableArtifactCurio;
 import artifacts.forge.event.ArtifactEventsForge;
 import artifacts.forge.event.SwimEventsForge;
+import artifacts.forge.registry.ModItemsForge;
 import artifacts.forge.registry.ModLootModifiers;
 import artifacts.item.wearable.WearableArtifactItem;
 import dev.architectury.platform.forge.EventBuses;
@@ -20,6 +21,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.common.capability.CurioItemCapability;
@@ -41,6 +43,7 @@ public class ArtifactsForge {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModLootModifiers.LOOT_MODIFIERS.register(modBus);
+        modBus.addListener(this::onCommonSetup);
 
         ArtifactEventsForge.register();
         SwimEventsForge.register();
@@ -61,5 +64,9 @@ public class ArtifactsForge {
         if (event.getObject().getItem() instanceof WearableArtifactItem item) {
             event.addCapability(CuriosCapability.ID_ITEM, CurioItemCapability.createProvider(new WearableArtifactCurio(item, event.getObject())));
         }
+    }
+
+    private void onCommonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(ModItemsForge::register);
     }
 }
