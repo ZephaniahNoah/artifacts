@@ -36,7 +36,7 @@
   "artifacts.tooltip.item.flippers": "Improves agility in water",
   "artifacts.tooltip.item.golden_hook": "Increases experience dropped by creatures",
   "artifacts.tooltip.item.helium_flamingo.keymapping": "Press %s while in the air to start swimming",
-  "artifacts.tooltip.item.helium_flamingo.swimming": "Allows the wearer to swim in the air for a limited period of time.",
+  "artifacts.tooltip.item.helium_flamingo.swimming": "Allows the wearer to swim in the air for a limited period of time",
   "artifacts.tooltip.item.kitty_slippers": "Creepers avoid the wearer",
   "artifacts.tooltip.item.lucky_scarf.multiple_levels": "Applies %s extra levels of fortune to mined blocks",
   "artifacts.tooltip.item.lucky_scarf.single_level": "Applies an extra level of fortune to mined blocks",
