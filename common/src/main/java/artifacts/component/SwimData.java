@@ -24,8 +24,8 @@ public class SwimData {
 
     public void setSwimming(boolean shouldSwim) {
         if (this.shouldSwim && !shouldSwim) {
-            int rechargeTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_RECHARGE_DURATION.get() * 20);
-            int maxFlightTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() * 20);
+            int rechargeTime = Math.max(20, ModGameRules.HELIUM_FLAMINGO_RECHARGE_DURATION.get());
+            int maxFlightTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get());
 
             setSwimTime((int) (-rechargeTime * getSwimTime() / (float) maxFlightTime));
         }

@@ -15,7 +15,7 @@ public class PowerGloveItem extends WearableArtifactItem {
                 Attributes.ATTACK_DAMAGE,
                 UUID.fromString("126a0b73-ae15-466c-a75b-28bbd61d1374"),
                 Artifacts.id("power_glove_attack_damage_bonus").toString(),
-                () -> Math.max(0D, ModGameRules.POWER_GLOVE_ATTACK_DAMAGE_BONUS.get()))
-        );
+                () -> (double) ModGameRules.POWER_GLOVE_ATTACK_DAMAGE_BONUS.get()
+        ));
     }
 }

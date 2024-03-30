@@ -5,12 +5,8 @@ import artifacts.registry.ModGameRules;
 
 public class FlippersItem extends WearableArtifactItem {
 
-    public FlippersItem() {
-
-    }
-
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.FLIPPERS_SWIM_SPEED_BONUS.get() <= 0;
+        return ModGameRules.FLIPPERS_SWIM_SPEED_BONUS.get() == 0;
     }
 }

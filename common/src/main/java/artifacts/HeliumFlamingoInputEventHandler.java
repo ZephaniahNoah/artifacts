@@ -29,7 +29,7 @@ public class HeliumFlamingoInputEventHandler {
     }
 
     private static void handleHeliumFlamingoInput(Player player) {
-        if (ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() <= 0) {
+        if (ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() == 0) {
             return;
         }
 

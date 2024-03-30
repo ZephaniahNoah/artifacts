@@ -20,6 +20,6 @@ public class LuckyScarfItem extends WearableArtifactItem {
 
     @Override
     public int getFortuneLevel() {
-        return Math.max(0, ModGameRules.LUCKY_SCARF_FORTUNE_BONUS.get());
+        return ModGameRules.LUCKY_SCARF_FORTUNE_BONUS.get();
     }
 }

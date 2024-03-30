@@ -11,24 +11,23 @@ public class VampiricGloveItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_RATIO.get() <= 0
-                || ModGameRules.VAMPIRIC_GLOVE_MAX_HEALING_PER_HIT.get() <= 0
-                || ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_CHANCE.get() <= 0;
+        return ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_RATIO.get() == 0
+                || ModGameRules.VAMPIRIC_GLOVE_MAX_HEALING_PER_HIT.get() == 0
+                || ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_CHANCE.get() == 0;
     }
 
     public static void onLivingDamage(LivingEntity entity, DamageSource damageSource, float amount) {
         LivingEntity attacker = DamageSourceHelper.getAttacker(damageSource);
-        if (
-                attacker != null
-                        && ModItems.VAMPIRIC_GLOVE.get().isEquippedBy(attacker)
-                        && DamageSourceHelper.isMeleeAttack(damageSource)
+        if (attacker != null
+                && ModItems.VAMPIRIC_GLOVE.get().isEquippedBy(attacker)
+                && DamageSourceHelper.isMeleeAttack(damageSource)
         ) {
             int maxHealthAbsorbed = ModGameRules.VAMPIRIC_GLOVE_MAX_HEALING_PER_HIT.get();
-            float absorptionRatio = ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_RATIO.get() / 100F;
-            float absorptionProbability = ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_CHANCE.get() / 100F;
+            double absorptionRatio = ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_RATIO.get();
+            double absorptionProbability = ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_CHANCE.get();
 
             float damageDealt = Math.min(amount, entity.getHealth());
-            float damageAbsorbed = Math.min(maxHealthAbsorbed, absorptionRatio * damageDealt);
+            float damageAbsorbed = Math.min(maxHealthAbsorbed, (float) absorptionRatio * damageDealt);
 
             if (damageAbsorbed > 0 && entity.getRandom().nextFloat() < absorptionProbability) {
                 attacker.heal(damageAbsorbed);

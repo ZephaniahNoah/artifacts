@@ -30,7 +30,7 @@ public class CrystalHeartItem extends WearableArtifactItem {
 
         @Override
         public double getAmount() {
-            return Math.max(0, ModGameRules.CRYSTAL_HEART_HEALTH_BONUS.get());
+            return ModGameRules.CRYSTAL_HEART_HEALTH_BONUS.get();
         }
 
         @Override

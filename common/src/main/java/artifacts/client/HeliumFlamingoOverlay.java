@@ -35,9 +35,9 @@ public class HeliumFlamingoOverlay {
         if (Math.abs(swimTime) == 0) {
             return false;
         } else if (swimTime > 0) {
-            maxProgressTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() * 20);
+            maxProgressTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get());
         } else {
-            maxProgressTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_RECHARGE_DURATION.get() * 20);
+            maxProgressTime = Math.max(20, ModGameRules.HELIUM_FLAMINGO_RECHARGE_DURATION.get());
         }
 
         float progress = 1 - Math.abs(swimTime) / (float) maxProgressTime;

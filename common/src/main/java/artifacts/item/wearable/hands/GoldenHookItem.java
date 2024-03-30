@@ -10,7 +10,7 @@ public class GoldenHookItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.GOLDEN_HOOK_EXPERIENCE_BONUS.get() <= 0;
+        return ModGameRules.GOLDEN_HOOK_EXPERIENCE_BONUS.get() == 0;
     }
 
     public static int getExperienceBonus(int originalXP, LivingEntity entity, Player attacker) {
@@ -18,7 +18,7 @@ public class GoldenHookItem extends WearableArtifactItem {
             return 0;
         }
 
-        int experienceBonus = (int) (originalXP * ModGameRules.GOLDEN_HOOK_EXPERIENCE_BONUS.get() / 100F);
+        int experienceBonus = (int) (originalXP * ModGameRules.GOLDEN_HOOK_EXPERIENCE_BONUS.get());
         return Math.max(0, experienceBonus);
     }
 }

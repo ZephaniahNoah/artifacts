@@ -19,13 +19,13 @@ public class PocketPistonItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.POCKET_PISTON_KNOCKBACK_STRENGTH.get() <= 0;
+        return ModGameRules.POCKET_PISTON_KNOCKBACK_STRENGTH.get() == 0;
     }
 
     private EventResult onLivingHurt(LivingEntity entity, DamageSource damageSource, float amount) {
         LivingEntity attacker = DamageSourceHelper.getAttacker(damageSource);
         if (attacker != null && isEquippedBy(attacker)) {
-            float knockbackBonus = Math.max(0, ModGameRules.POCKET_PISTON_KNOCKBACK_STRENGTH.get() / 10F);
+            double knockbackBonus = ModGameRules.POCKET_PISTON_KNOCKBACK_STRENGTH.get();
             entity.knockback(knockbackBonus, Mth.sin((float) (attacker.getYRot() * (Math.PI / 180))), -Mth.cos((float) (attacker.getYRot() * (Math.PI / 180))));
         }
         return EventResult.pass();

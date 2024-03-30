@@ -19,16 +19,16 @@ public class PanicNecklaceItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.PANIC_NECKLACE_SPEED_DURATION.get() <= 0 || ModGameRules.PANIC_NECKLACE_SPEED_LEVEL.get() <= 0;
+        return ModGameRules.PANIC_NECKLACE_SPEED_DURATION.get() == 0 || ModGameRules.PANIC_NECKLACE_SPEED_LEVEL.get() == 0;
     }
 
     private EventResult onLivingHurt(LivingEntity entity, DamageSource damageSource, float amount) {
         if (isEquippedBy(entity) && !entity.level().isClientSide() && amount >= 1 && !isOnCooldown(entity)) {
-            int duration = Math.max(0, ModGameRules.PANIC_NECKLACE_SPEED_DURATION.get() * 20);
-            int level = Math.min(127, ModGameRules.PANIC_NECKLACE_SPEED_LEVEL.get() - 1);
+            int duration = ModGameRules.PANIC_NECKLACE_SPEED_DURATION.get();
+            int level = ModGameRules.PANIC_NECKLACE_SPEED_LEVEL.get();
 
-            if (duration > 0 && level >= 0) {
-                entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, duration, level, false, false));
+            if (duration > 0 && level > 0) {
+                entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, duration, level - 1, false, false));
                 addCooldown(entity, ModGameRules.PANIC_NECKLACE_COOLDOWN.get());
             }
         }

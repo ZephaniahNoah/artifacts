@@ -66,9 +66,9 @@ public abstract class ArtifactItem extends Item {
         return false;
     }
 
-    public void addCooldown(LivingEntity entity, int seconds) {
-        if (seconds > 0 && !entity.level().isClientSide() && entity instanceof Player player) {
-            player.getCooldowns().addCooldown(this, seconds * 20);
+    public void addCooldown(LivingEntity entity, int ticks) {
+        if (ticks > 0 && !entity.level().isClientSide() && entity instanceof Player player) {
+            player.getCooldowns().addCooldown(this, ticks);
         }
     }
 }

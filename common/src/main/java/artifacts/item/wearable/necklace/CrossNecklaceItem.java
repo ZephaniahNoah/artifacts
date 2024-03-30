@@ -17,7 +17,7 @@ public class CrossNecklaceItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS.get() <= 0;
+        return ModGameRules.CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS.get() == 0;
     }
 
     private static void setCanApplyBonus(ItemStack stack, boolean canApplyBonus) {
@@ -34,7 +34,7 @@ public class CrossNecklaceItem extends WearableArtifactItem {
         if (entity.invulnerableTime <= 10) {
             setCanApplyBonus(stack, true);
         } else if (canApplyBonus(entity, stack)) {
-            entity.invulnerableTime += Math.min(60 * 20, Math.max(0, ModGameRules.CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS.get()));
+            entity.invulnerableTime += ModGameRules.CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS.get();
             setCanApplyBonus(stack, false);
             addCooldown(entity, ModGameRules.CROSS_NECKLACE_COOLDOWN.get());
         }

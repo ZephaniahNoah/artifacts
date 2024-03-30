@@ -18,45 +18,41 @@ import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DiggingClawsItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.DIGGING_CLAWS_TOOL_TIER.get() <= 0 && ModGameRules.DIGGING_CLAWS_DIG_SPEED_BONUS.get() <= 0;
+        return getToolTier().isEmpty() && ModGameRules.DIGGING_CLAWS_DIG_SPEED_BONUS.get() == 0;
     }
 
     @Override
     protected void addEffectsTooltip(ItemStack stack, List<MutableComponent> tooltip) {
-        int tierLevel = getToolTierLevel();
-        if (tierLevel > 0) {
-            tooltip.add(tooltipLine("mining_level", Component.translatable("%s.tooltip.tool_tier.%s".formatted(Artifacts.MOD_ID, tierLevel))));
-        }
+        getToolTier().ifPresent(tier -> tooltip.add(
+                tooltipLine("mining_level", Component.translatable("%s.tooltip.tool_tier.%s".formatted(Artifacts.MOD_ID, tier.getLevel() + 1)))
+        ));
         if (ModGameRules.DIGGING_CLAWS_DIG_SPEED_BONUS.get() > 0) {
             tooltip.add(tooltipLine("mining_speed"));
         }
     }
 
-    public static int getToolTierLevel() {
-        return Math.min(5, Math.max(0, ModGameRules.DIGGING_CLAWS_TOOL_TIER.get()));
-    }
-
-    public static Tier getToolTier() {
-        return switch (getToolTierLevel()) {
-            case 0 -> null;
-            case 1 -> Tiers.WOOD;
-            case 2 -> Tiers.STONE;
-            case 3 -> Tiers.IRON;
-            case 4 -> Tiers.DIAMOND;
-            default -> Tiers.NETHERITE;
+    public static Optional<Tier> getToolTier() {
+        return switch (ModGameRules.DIGGING_CLAWS_TOOL_TIER.get()) {
+            case 0 -> Optional.empty();
+            case 1 -> Optional.of(Tiers.WOOD);
+            case 2 -> Optional.of(Tiers.STONE);
+            case 3 -> Optional.of(Tiers.IRON);
+            case 4 -> Optional.of(Tiers.DIAMOND);
+            default -> Optional.of(Tiers.NETHERITE);
         };
     }
 
     public static boolean canDiggingClawsHarvest(LivingEntity entity, BlockState state) {
         if (ModItems.DIGGING_CLAWS.get().isEquippedBy(entity)) {
-            Tier tier = DiggingClawsItem.getToolTier();
-            return tier != null
-                    && PlatformServices.platformHelper.isCorrectTierForDrops(tier, state)
+            Optional<Tier> tier = DiggingClawsItem.getToolTier();
+            return tier.isPresent()
+                    && PlatformServices.platformHelper.isCorrectTierForDrops(tier.get(), state)
                     && state.is(ModTags.MINEABLE_WITH_DIGGING_CLAWS);
         }
         return false;
@@ -64,7 +60,7 @@ public class DiggingClawsItem extends WearableArtifactItem {
 
     public static float getSpeedBonus(Player player, BlockState state) {
         if (ModItems.DIGGING_CLAWS.get().isEquippedBy(player) && player.hasCorrectToolForDrops(state)) {
-            return Math.max(0, ModGameRules.DIGGING_CLAWS_DIG_SPEED_BONUS.get() / 10F);
+            return ModGameRules.DIGGING_CLAWS_DIG_SPEED_BONUS.get().floatValue();
         }
         return 0;
     }

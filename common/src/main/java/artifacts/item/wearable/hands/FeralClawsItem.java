@@ -17,8 +17,8 @@ public class FeralClawsItem extends WearableArtifactItem {
                 Attributes.ATTACK_SPEED,
                 UUID.fromString("9f08b24d-a700-4515-91d2-d32f6c8b4dfc"),
                 Artifacts.id("feral_claws_attack_speed_bonus").toString(),
-                () -> Math.max(0, ModGameRules.FERAL_CLAWS_ATTACK_SPEED_BONUS.get() / 100D))
-        );
+                ModGameRules.FERAL_CLAWS_ATTACK_SPEED_BONUS
+        ));
     }
 
     @Override

@@ -30,7 +30,7 @@ public class RunningShoesItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return !ModGameRules.RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT.get() && ModGameRules.RUNNING_SHOES_SPEED_BONUS.get() <= 0;
+        return !ModGameRules.RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT.get() && ModGameRules.RUNNING_SHOES_SPEED_BONUS.get() == 0;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class RunningShoesItem extends WearableArtifactItem {
     }
 
     private static AttributeModifier getSpeedBonus() {
-        double speedMultiplier = Math.max(0, ModGameRules.RUNNING_SHOES_SPEED_BONUS.get() / 100D);
+        double speedMultiplier = ModGameRules.RUNNING_SHOES_SPEED_BONUS.get();
         return new AttributeModifier(UUID.fromString("ac7ab816-2b08-46b6-879d-e5dea34ff305"), "artifacts:running_shoes_movement_speed", speedMultiplier, AttributeModifier.Operation.MULTIPLY_TOTAL);
     }
 

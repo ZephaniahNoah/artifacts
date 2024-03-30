@@ -13,13 +13,17 @@ import java.util.function.Supplier;
 
 public abstract class PendantItem extends WearableArtifactItem {
 
-    private final Supplier<Integer> strikeChance;
+    private final Supplier<Double> strikeChance;
     private final Supplier<Integer> cooldown;
 
-    public PendantItem(Supplier<Integer> strikeChance, Supplier<Integer> cooldown) {
+    public PendantItem(Supplier<Double> strikeChance, Supplier<Integer> cooldown) {
         EntityEvent.LIVING_HURT.register(this::onLivingHurt);
         this.strikeChance = strikeChance;
         this.cooldown = cooldown;
+    }
+
+    public double getStrikeChance() {
+        return strikeChance.get();
     }
 
     protected EventResult onLivingHurt(LivingEntity entity, DamageSource damageSource, float amount) {
@@ -30,7 +34,7 @@ public abstract class PendantItem extends WearableArtifactItem {
                 && amount >= 1
                 && attacker != null
                 && !isOnCooldown(entity)
-                && entity.getRandom().nextDouble() < strikeChance.get() / 100D
+                && entity.getRandom().nextDouble() < getStrikeChance()
         ) {
             applyEffect(entity, attacker);
             addCooldown(entity, cooldown.get());

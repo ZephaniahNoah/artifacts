@@ -1,6 +1,7 @@
 package artifacts.item.wearable.head;
 
 import artifacts.item.wearable.WearableArtifactItem;
+import artifacts.registry.ModGameRules;
 import artifacts.registry.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
@@ -11,15 +12,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public class DrinkingHatItem extends WearableArtifactItem {
 
-    private final Supplier<Integer> drinkingDurationMultiplier;
-    private final Supplier<Integer> eatingDurationMultiplier;
+    private final ModGameRules.DoubleValue drinkingDurationMultiplier;
+    private final ModGameRules.DoubleValue eatingDurationMultiplier;
     private final boolean hasSpecialTooltip;
 
-    public DrinkingHatItem(Supplier<Integer> drinkingDurationMultiplier, Supplier<Integer> eatingDurationMultiplier, boolean hasSpecialTooltip) {
+    public DrinkingHatItem(ModGameRules.DoubleValue drinkingDurationMultiplier, ModGameRules.DoubleValue eatingDurationMultiplier, boolean hasSpecialTooltip) {
         this.drinkingDurationMultiplier = drinkingDurationMultiplier;
         this.eatingDurationMultiplier = eatingDurationMultiplier;
         this.hasSpecialTooltip = hasSpecialTooltip;
@@ -27,7 +27,7 @@ public class DrinkingHatItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return drinkingDurationMultiplier.get() >= 100 && eatingDurationMultiplier.get() >= 100;
+        return drinkingDurationMultiplier.fuzzyEquals(1) && eatingDurationMultiplier.fuzzyEquals(1);
     }
 
     @Override
@@ -42,10 +42,10 @@ public class DrinkingHatItem extends WearableArtifactItem {
 
     @Override
     protected void addEffectsTooltip(ItemStack stack, List<MutableComponent> tooltip) {
-        if (drinkingDurationMultiplier.get() < 100) {
+        if (!drinkingDurationMultiplier.fuzzyEquals(1)) {
             tooltip.add(tooltipLine("drinking"));
         }
-        if (eatingDurationMultiplier.get() < 100) {
+        if (!eatingDurationMultiplier.fuzzyEquals(1)) {
             tooltip.add(tooltipLine("eating"));
         }
     }
@@ -56,13 +56,10 @@ public class DrinkingHatItem extends WearableArtifactItem {
     }
 
     public double getDurationMultiplier(UseAnim action) {
-        double multiplier;
         if (action == UseAnim.DRINK) {
-            multiplier = drinkingDurationMultiplier.get() / 100D;
-        } else {
-            multiplier = eatingDurationMultiplier.get() / 100D;
+            return drinkingDurationMultiplier.get();
         }
-        return Math.min(1, Math.max(0, multiplier));
+        return eatingDurationMultiplier.get();
     }
 
     @Override

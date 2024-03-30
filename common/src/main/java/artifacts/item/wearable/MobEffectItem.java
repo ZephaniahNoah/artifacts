@@ -36,18 +36,18 @@ public class MobEffectItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return !isEnabled.get() || amplifier.get() <= 0;
+        return !isEnabled.get() || amplifier.get() == 0;
     }
 
     public boolean isEffectActive(LivingEntity entity) {
-        if (!isEnabled.get() || amplifier.get() <= 0) {
+        if (!isEnabled.get() || amplifier.get() == 0) {
             return false;
         }
         return findAllEquippedBy(entity).anyMatch(WearableArtifactItem::isActivated);
     }
 
     private int getAmplifier() {
-        return Math.max(0, Math.min(127, this.amplifier.get() - 1));
+        return this.amplifier.get() - 1;
     }
 
     protected int getDuration(LivingEntity entity) {

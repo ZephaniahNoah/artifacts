@@ -28,10 +28,12 @@ public class CloudInABottleItem extends WearableArtifactItem {
             // noinspection ConstantConditions
             upwardsMotion += 0.1 * (player.getEffect(MobEffects.JUMP).getAmplifier() + 1);
         }
-        upwardsMotion *= player.isSprinting() ? 1 + Math.max(0, ModGameRules.CLOUD_IN_A_BOTTLE_SPRINT_JUMP_VERTICAL_VELOCITY.get() / 100D) : 1;
+        if (player.isSprinting()) {
+            upwardsMotion *= 1 + ModGameRules.CLOUD_IN_A_BOTTLE_SPRINT_JUMP_VERTICAL_VELOCITY.get();
+        }
 
         Vec3 motion = player.getDeltaMovement();
-        double motionMultiplier = player.isSprinting() ? Math.max(0, ModGameRules.CLOUD_IN_A_BOTTLE_SPRINT_JUMP_HORIZONTAL_VELOCITY.get() / 100D) : 0;
+        double motionMultiplier = player.isSprinting() ? ModGameRules.CLOUD_IN_A_BOTTLE_SPRINT_JUMP_HORIZONTAL_VELOCITY.get() : 0;
         float direction = (float) (player.getYRot() * Math.PI / 180);
         player.setDeltaMovement(player.getDeltaMovement().add(
                 -Mth.sin(direction) * motionMultiplier,

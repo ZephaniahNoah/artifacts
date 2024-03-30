@@ -12,11 +12,11 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.GameRules;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 public class ModGameRules {
@@ -27,71 +27,76 @@ public class ModGameRules {
     public static final BooleanValue
             ANTIDOTE_VESSEL_ENABLED = booleanValue(createName(ModItems.ANTIDOTE_VESSEL, "enabled")),
             AQUA_DASHERS_ENABLED = booleanValue(createName(ModItems.AQUA_DASHERS, "enabled")),
-            BUNNY_HOPPERS_DO_CANCEL_FALL_DAMAGE = booleanValue(createName(ModItems.BUNNY_HOPPERS, "doCancelFallDamage")),
             CHARM_OF_SINKING_ENABLED = booleanValue(createName(ModItems.CHARM_OF_SINKING, "enabled")),
             CLOUD_IN_A_BOTTLE_ENABLED = booleanValue(createName(ModItems.CLOUD_IN_A_BOTTLE, "enabled")),
             ETERNAL_STEAK_ENABLED = booleanValue(createName(ModItems.ETERNAL_STEAK, "enabled")),
             EVERLASTING_BEEF_ENABLED = booleanValue(createName(ModItems.EVERLASTING_BEEF, "enabled")),
-            FLAME_PENDANT_DO_GRANT_FIRE_RESISTANCE = booleanValue(createName(ModItems.FLAME_PENDANT, "doGrantFireResistance")),
             KITTY_SLIPPERS_ENABLED = booleanValue(createName(ModItems.KITTY_SLIPPERS, "enabled")),
             NIGHT_VISION_GOGGLES_ENABLED = booleanValue(createName(ModItems.NIGHT_VISION_GOGGLES, "enabled")),
-            RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT = booleanValue(createName(ModItems.RUNNING_SHOES, "doIncreaseStepHeight")),
             SCARF_OF_INVISIBILITY_ENABLED = booleanValue(createName(ModItems.SCARF_OF_INVISIBILITY, "enabled")),
-            SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE = booleanValue(createName(ModItems.SHOCK_PENDANT, "doCancelLightningDamage")),
             SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")),
             STEADFAST_SPIKES_ENABLED = booleanValue(createName(ModItems.STEADFAST_SPIKES, "enabled")), // TODO remove 1.20.2
+            UNIVERSAL_ATTRACTOR_ENABLED = booleanValue(createName(ModItems.UNIVERSAL_ATTRACTOR, "enabled")),
+
+            BUNNY_HOPPERS_DO_CANCEL_FALL_DAMAGE = booleanValue(createName(ModItems.BUNNY_HOPPERS, "doCancelFallDamage")),
+            FLAME_PENDANT_DO_GRANT_FIRE_RESISTANCE = booleanValue(createName(ModItems.FLAME_PENDANT, "doGrantFireResistance")),
+            RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT = booleanValue(createName(ModItems.RUNNING_SHOES, "doIncreaseStepHeight")),
+            SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE = booleanValue(createName(ModItems.SHOCK_PENDANT, "doCancelLightningDamage")),
             UMBRELLA_IS_SHIELD = booleanValue(createName(ModItems.UMBRELLA, "isShield")),
-            UMBRELLA_IS_GLIDER = booleanValue(createName(ModItems.UMBRELLA, "isGlider")),
-            UNIVERSAL_ATTRACTOR_ENABLED = booleanValue(createName(ModItems.UNIVERSAL_ATTRACTOR, "enabled"));
+            UMBRELLA_IS_GLIDER = booleanValue(createName(ModItems.UMBRELLA, "isGlider"));
 
     public static final IntegerValue
-            ANTIDOTE_VESSEL_MAX_EFFECT_DURATION = integerValue(createName(ModItems.ANTIDOTE_VESSEL, "maxEffectDuration"), 5),
-            BUNNY_HOPPERS_JUMP_BOOST_LEVEL = integerValue(createName(ModItems.BUNNY_HOPPERS, "jumpBoostLevel"), 2),
-            CLOUD_IN_A_BOTTLE_SPRINT_JUMP_VERTICAL_VELOCITY = integerValue(createName(ModItems.CLOUD_IN_A_BOTTLE, "sprintJumpVerticalVelocity"), 50),
-            CLOUD_IN_A_BOTTLE_SPRINT_JUMP_HORIZONTAL_VELOCITY = integerValue(createName(ModItems.CLOUD_IN_A_BOTTLE, "sprintJumpHorizontalVelocity"), 50),
-            CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS = integerValue(createName(ModItems.CROSS_NECKLACE, "bonusInvincibilityTicks"), 20),
-            CROSS_NECKLACE_COOLDOWN = integerValue(createName(ModItems.CROSS_NECKLACE, "cooldown"), 0),
-            CRYSTAL_HEART_HEALTH_BONUS = integerValue(createName(ModItems.CRYSTAL_HEART, "healthBonus"), 10),
-            DIGGING_CLAWS_DIG_SPEED_BONUS = integerValue(createName(ModItems.DIGGING_CLAWS, "digSpeedBonus"), 32),
-            DIGGING_CLAWS_TOOL_TIER = integerValue(createName(ModItems.DIGGING_CLAWS, "toolTier"), 2),
-            ETERNAL_STEAK_COOLDOWN = integerValue(createName(ModItems.ETERNAL_STEAK, "cooldown"), 15),
-            EVERLASTING_BEEF_COOLDOWN = integerValue(createName(ModItems.EVERLASTING_BEEF, "cooldown"), 15),
-            FERAL_CLAWS_ATTACK_SPEED_BONUS = integerValue(createName(ModItems.FERAL_CLAWS, "attackSpeedBonus"), 40),
-            FIRE_GAUNTLET_FIRE_DURATION = integerValue(createName(ModItems.FIRE_GAUNTLET, "fireDuration"), 8),
-            FLAME_PENDANT_COOLDOWN = integerValue(createName(ModItems.FLAME_PENDANT, "cooldown"), 0),
-            FLAME_PENDANT_FIRE_DURATION = integerValue(createName(ModItems.FLAME_PENDANT, "fireDuration"), 10),
-            FLAME_PENDANT_STRIKE_CHANCE = integerValue(createName(ModItems.FLAME_PENDANT, "strikeChance"), 40),
-            FLIPPERS_SWIM_SPEED_BONUS = integerValue(createName(ModItems.FLIPPERS, "swimSpeedBonus"), 100),
-            GOLDEN_HOOK_EXPERIENCE_BONUS = integerValue(createName(ModItems.GOLDEN_HOOK, "experienceBonus"), 75),
-            HELIUM_FLAMINGO_FLIGHT_DURATION = integerValue(createName(ModItems.HELIUM_FLAMINGO, "flightDuration"), 8),
-            HELIUM_FLAMINGO_RECHARGE_DURATION = integerValue(createName(ModItems.HELIUM_FLAMINGO, "rechargeDuration"), 15),
-            LUCKY_SCARF_FORTUNE_BONUS = integerValue(createName(ModItems.LUCKY_SCARF, "fortuneBonus"), 1),
-            NOVELTY_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = integerValue(createName(ModItems.NOVELTY_DRINKING_HAT, "drinkingDurationMultiplier"), 30),
-            NOVELTY_DRINKING_HAT_EATING_DURATION_MULTIPLIER = integerValue(createName(ModItems.NOVELTY_DRINKING_HAT, "eatingDurationMultiplier"), 60),
-            OBSIDIAN_SKULL_FIRE_RESISTANCE_COOLDOWN = integerValue(createName(ModItems.OBSIDIAN_SKULL, "fireResistanceCooldown"), 60),
-            OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION = integerValue(createName(ModItems.OBSIDIAN_SKULL, "fireResistanceDuration"), 30),
-            PANIC_NECKLACE_COOLDOWN = integerValue(createName(ModItems.PANIC_NECKLACE, "cooldown"), 0),
-            PANIC_NECKLACE_SPEED_DURATION = integerValue(createName(ModItems.PANIC_NECKLACE, "speedDuration"), 8),
-            PANIC_NECKLACE_SPEED_LEVEL = integerValue(createName(ModItems.PANIC_NECKLACE, "speedLevel"), 1),
-            PLASTIC_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = integerValue(createName(ModItems.PLASTIC_DRINKING_HAT, "drinkingDurationMultiplier"), 30),
-            PLASTIC_DRINKING_HAT_EATING_DURATION_MULTIPLIER = integerValue(createName(ModItems.PLASTIC_DRINKING_HAT, "eatingDurationMultiplier"), 60),
-            POCKET_PISTON_KNOCKBACK_STRENGTH = integerValue(createName(ModItems.POCKET_PISTON, "knockbackStrength"), 15),
+            CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS = integerValue(createName(ModItems.CROSS_NECKLACE, "bonusInvincibilityTicks"), 20, 60 * 20),
+            CRYSTAL_HEART_HEALTH_BONUS = integerValue(createName(ModItems.CRYSTAL_HEART, "healthBonus"), 10, 100),
+            DIGGING_CLAWS_TOOL_TIER = integerValue(createName(ModItems.DIGGING_CLAWS, "toolTier"), Tiers.STONE.getLevel() - 1, Tiers.NETHERITE.getLevel() - 1),
+            LUCKY_SCARF_FORTUNE_BONUS = integerValue(createName(ModItems.LUCKY_SCARF, "fortuneBonus"), 1, 100),
             POWER_GLOVE_ATTACK_DAMAGE_BONUS = integerValue(createName(ModItems.POWER_GLOVE, "attackDamageBonus"), 4),
-            RUNNING_SHOES_SPEED_BONUS = integerValue(createName(ModItems.RUNNING_SHOES, "speedBonus"), 40),
-            SHOCK_PENDANT_COOLDOWN = integerValue(createName(ModItems.SHOCK_PENDANT, "cooldown"), 0),
-            SHOCK_PENDANT_STRIKE_CHANCE = integerValue(createName(ModItems.SHOCK_PENDANT, "strikeChance"), 25),
-            SNORKEL_WATER_BREATHING_DURATION = integerValue(createName(ModItems.SNORKEL, "waterBreathingDuration"), 15),
-            STEADFAST_SPIKES_KNOCKBACK_RESISTANCE = integerValue(createName(ModItems.STEADFAST_SPIKES, "knockbackResistance"), 10),
-            SUPERSTITIOUS_HAT_LOOTING_LEVEL_BONUS = integerValue(createName(ModItems.SUPERSTITIOUS_HAT, "lootingLevelBonus"), 1),
-            THORN_PENDANT_COOLDOWN = integerValue(createName(ModItems.THORN_PENDANT, "cooldown"), 0),
+            SUPERSTITIOUS_HAT_LOOTING_LEVEL_BONUS = integerValue(createName(ModItems.SUPERSTITIOUS_HAT, "lootingLevelBonus"), 1, 100),
             THORN_PENDANT_MAX_DAMAGE = integerValue(createName(ModItems.THORN_PENDANT, "maxDamage"), 6),
             THORN_PENDANT_MIN_DAMAGE = integerValue(createName(ModItems.THORN_PENDANT, "minDamage"), 2),
-            THORN_PENDANT_STRIKE_CHANCE = integerValue(createName(ModItems.THORN_PENDANT, "strikeChance"), 50),
-            VAMPIRIC_GLOVE_ABSORPTION_CHANCE = integerValue(createName(ModItems.VAMPIRIC_GLOVE, "absorptionChance"), 100),
-            VAMPIRIC_GLOVE_ABSORPTION_RATIO = integerValue(createName(ModItems.VAMPIRIC_GLOVE, "absorptionRatio"), 20),
             VAMPIRIC_GLOVE_MAX_HEALING_PER_HIT = integerValue(createName(ModItems.VAMPIRIC_GLOVE, "maxHealingPerHit"), 6),
             VILLAGER_HAT_REPUTATION_BONUS = integerValue(createName(ModItems.VILLAGER_HAT, "reputationBonus"), 100),
-            WHOOPEE_CUSHION_FART_CHANCE = integerValue(createName(ModItems.WHOOPEE_CUSHION, "fartChance"), 12);
+
+            ANTIDOTE_VESSEL_MAX_EFFECT_DURATION = durationSeconds(createName(ModItems.ANTIDOTE_VESSEL, "maxEffectDuration"), 5),
+            CROSS_NECKLACE_COOLDOWN = durationSeconds(createName(ModItems.CROSS_NECKLACE, "cooldown"), 0),
+            ETERNAL_STEAK_COOLDOWN = durationSeconds(createName(ModItems.ETERNAL_STEAK, "cooldown"), 15),
+            EVERLASTING_BEEF_COOLDOWN = durationSeconds(createName(ModItems.EVERLASTING_BEEF, "cooldown"), 15),
+            FIRE_GAUNTLET_FIRE_DURATION = durationSeconds(createName(ModItems.FIRE_GAUNTLET, "fireDuration"), 8),
+            FLAME_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.FLAME_PENDANT, "cooldown"), 0),
+            FLAME_PENDANT_FIRE_DURATION = durationSeconds(createName(ModItems.FLAME_PENDANT, "fireDuration"), 10),
+            HELIUM_FLAMINGO_FLIGHT_DURATION = durationSeconds(createName(ModItems.HELIUM_FLAMINGO, "flightDuration"), 8),
+            HELIUM_FLAMINGO_RECHARGE_DURATION = durationSeconds(createName(ModItems.HELIUM_FLAMINGO, "rechargeDuration"), 15),
+            OBSIDIAN_SKULL_FIRE_RESISTANCE_COOLDOWN = durationSeconds(createName(ModItems.OBSIDIAN_SKULL, "fireResistanceCooldown"), 60),
+            OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION = durationSeconds(createName(ModItems.OBSIDIAN_SKULL, "fireResistanceDuration"), 30),
+            PANIC_NECKLACE_COOLDOWN = durationSeconds(createName(ModItems.PANIC_NECKLACE, "cooldown"), 0),
+            PANIC_NECKLACE_SPEED_DURATION = durationSeconds(createName(ModItems.PANIC_NECKLACE, "speedDuration"), 8),
+            SHOCK_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.SHOCK_PENDANT, "cooldown"), 0),
+            SNORKEL_WATER_BREATHING_DURATION = durationSeconds(createName(ModItems.SNORKEL, "waterBreathingDuration"), 15),
+            THORN_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.THORN_PENDANT, "cooldown"), 0),
+
+            BUNNY_HOPPERS_JUMP_BOOST_LEVEL = mobEffectLevel(createName(ModItems.BUNNY_HOPPERS, "jumpBoostLevel"), 2),
+            PANIC_NECKLACE_SPEED_LEVEL = mobEffectLevel(createName(ModItems.PANIC_NECKLACE, "speedLevel"), 1);
+
+    public static final DoubleValue
+            CLOUD_IN_A_BOTTLE_SPRINT_JUMP_VERTICAL_VELOCITY = doubleValue(createName(ModItems.CLOUD_IN_A_BOTTLE, "sprintJumpVerticalVelocity"), 50, 100 * 100, 100),
+            CLOUD_IN_A_BOTTLE_SPRINT_JUMP_HORIZONTAL_VELOCITY = doubleValue(createName(ModItems.CLOUD_IN_A_BOTTLE, "sprintJumpHorizontalVelocity"), 50, 100 * 100, 100),
+            DIGGING_CLAWS_DIG_SPEED_BONUS = doubleValue(createName(ModItems.DIGGING_CLAWS, "digSpeedBonus"), 32, 10),
+            FERAL_CLAWS_ATTACK_SPEED_BONUS = percentage(createName(ModItems.FERAL_CLAWS, "attackSpeedBonus"), 40),
+            FLAME_PENDANT_STRIKE_CHANCE = percentage(createName(ModItems.FLAME_PENDANT, "strikeChance"), 40),
+            FLIPPERS_SWIM_SPEED_BONUS = doubleValue(createName(ModItems.FLIPPERS, "swimSpeedBonus"), 100, 100 * 100, 100),
+            GOLDEN_HOOK_EXPERIENCE_BONUS = doubleValue(createName(ModItems.GOLDEN_HOOK, "experienceBonus"), 75, 10 * 100, 100),
+            NOVELTY_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = percentage(createName(ModItems.NOVELTY_DRINKING_HAT, "drinkingDurationMultiplier"), 30),
+            NOVELTY_DRINKING_HAT_EATING_DURATION_MULTIPLIER = percentage(createName(ModItems.NOVELTY_DRINKING_HAT, "eatingDurationMultiplier"), 60),
+            PLASTIC_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = percentage(createName(ModItems.PLASTIC_DRINKING_HAT, "drinkingDurationMultiplier"), 30),
+            PLASTIC_DRINKING_HAT_EATING_DURATION_MULTIPLIER = percentage(createName(ModItems.PLASTIC_DRINKING_HAT, "eatingDurationMultiplier"), 60),
+            POCKET_PISTON_KNOCKBACK_STRENGTH = doubleValue(createName(ModItems.POCKET_PISTON, "knockbackStrength"), 15, 10),
+            RUNNING_SHOES_SPEED_BONUS = doubleValue(createName(ModItems.RUNNING_SHOES, "speedBonus"), 40, 100 * 100, 100),
+            SHOCK_PENDANT_STRIKE_CHANCE = percentage(createName(ModItems.SHOCK_PENDANT, "strikeChance"), 25),
+            STEADFAST_SPIKES_KNOCKBACK_RESISTANCE = doubleValue(createName(ModItems.STEADFAST_SPIKES, "knockbackResistance"), 10, 10, 10),
+            THORN_PENDANT_STRIKE_CHANCE = percentage(createName(ModItems.THORN_PENDANT, "strikeChance"), 50),
+            VAMPIRIC_GLOVE_ABSORPTION_CHANCE = percentage(createName(ModItems.VAMPIRIC_GLOVE, "absorptionChance"), 100),
+            VAMPIRIC_GLOVE_ABSORPTION_RATIO = doubleValue(createName(ModItems.VAMPIRIC_GLOVE, "absorptionRatio"), 20, 100),
+            WHOOPEE_CUSHION_FART_CHANCE = percentage(createName(ModItems.WHOOPEE_CUSHION, "fartChance"), 12);
 
     private static String createName(RegistrySupplier<? extends Item> item, String name) {
         return String.format("%s.%s.%s",
@@ -113,21 +118,44 @@ public class ModGameRules {
     }
 
     private static IntegerValue integerValue(String name, int defaultValue) {
-        return integerValue(name, defaultValue, (server, value) -> { });
+        return integerValue(name, defaultValue, Integer.MAX_VALUE);
     }
 
-    private static IntegerValue integerValue(String name, int defaultValue, BiConsumer<MinecraftServer, GameRules.IntegerValue> onChanged) {
-        IntegerValue result = new IntegerValue();
+    private static IntegerValue integerValue(String name, int defaultValue, int maxValue) {
+        return integerValue(name, defaultValue, maxValue, 1);
+    }
+
+    private static IntegerValue integerValue(String name, int defaultValue, int maxValue, int multiplier) {
+        IntegerValue result = new IntegerValue(defaultValue, maxValue, multiplier);
         result.update(defaultValue);
         GameRules.Type<GameRules.IntegerValue> type = IntegerValueInvoker.invokeCreate(defaultValue, (server, value) -> {
             result.update(value.get());
             NetworkHandler.CHANNEL.sendToPlayers(server.getPlayerList().getPlayers(), new IntegerGameRuleChangedPacket(name, value.get()));
-            onChanged.accept(server, value);
         });
         result.key = GameRules.register(name, GameRules.Category.PLAYER, type);
 
         INTEGER_VALUES.put(name, result);
         return result;
+    }
+
+    private static IntegerValue durationSeconds(String name, int defaultValue) {
+        return integerValue(name, defaultValue, 20 * 60 * 60, 20);
+    }
+
+    private static IntegerValue mobEffectLevel(String name, int defaultValue) {
+        return integerValue(name, defaultValue, 128);
+    }
+
+    private static DoubleValue doubleValue(String name, int defaultValue, int maxValue, double factor) {
+        return new DoubleValue(integerValue(name, defaultValue, maxValue), factor);
+    }
+
+    private static DoubleValue doubleValue(String name, int defaultValue, int factor) {
+        return doubleValue(name, defaultValue, Integer.MAX_VALUE, factor);
+    }
+
+    private static DoubleValue percentage(String name, int defaultValue) {
+        return doubleValue(name, defaultValue, 100, 100);
     }
 
     public static void updateValue(String key, boolean value) {
@@ -140,8 +168,8 @@ public class ModGameRules {
 
     public static EventResult onPlayerJoinLevel(Entity entity) {
         if (entity instanceof ServerPlayer player) {
-            BOOLEAN_VALUES.forEach((key, value) -> NetworkHandler.CHANNEL.sendToPlayer(player, new BooleanGameRuleChangedPacket(key, value.get())));
-            INTEGER_VALUES.forEach((key, value) -> NetworkHandler.CHANNEL.sendToPlayer(player, new IntegerGameRuleChangedPacket(key, value.get())));
+            BOOLEAN_VALUES.forEach((key, value) -> NetworkHandler.CHANNEL.sendToPlayer(player, new BooleanGameRuleChangedPacket(key, value.value)));
+            INTEGER_VALUES.forEach((key, value) -> NetworkHandler.CHANNEL.sendToPlayer(player, new IntegerGameRuleChangedPacket(key, value.value)));
         }
         return EventResult.pass();
     }
@@ -156,6 +184,7 @@ public class ModGameRules {
         private Boolean value = true;
         private GameRules.Key<GameRules.BooleanValue> key;
 
+        @Override
         public Boolean get() {
             return value;
         }
@@ -171,11 +200,20 @@ public class ModGameRules {
 
     public static class IntegerValue implements Supplier<Integer> {
 
-        private Integer value;
+        private final int max;
+        private final int multiplier;
+        private int value;
         private GameRules.Key<GameRules.IntegerValue> key;
 
+        private IntegerValue(int defaultValue, int max, int multiplier) {
+            this.value = defaultValue;
+            this.max = max;
+            this.multiplier = multiplier;
+        }
+
+        @Override
         public Integer get() {
-            return value;
+            return Math.min(max, Math.max(0, value)) * multiplier;
         }
 
         private void update(MinecraftServer server) {
@@ -184,6 +222,18 @@ public class ModGameRules {
 
         private void update(int value) {
             this.value = value;
+        }
+    }
+
+    public record DoubleValue(IntegerValue integerValue, double factor) implements Supplier<Double> {
+
+        @Override
+        public Double get() {
+            return integerValue.get() / factor;
+        }
+
+        public boolean fuzzyEquals(double a) {
+            return Math.abs(get() - a) < 1e-10;
         }
     }
 }

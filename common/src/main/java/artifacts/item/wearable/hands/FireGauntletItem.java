@@ -18,13 +18,13 @@ public class FireGauntletItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.FIRE_GAUNTLET_FIRE_DURATION.get() <= 0;
+        return ModGameRules.FIRE_GAUNTLET_FIRE_DURATION.get() == 0;
     }
 
     private EventResult onLivingHurt(LivingEntity entity, DamageSource damageSource, float amount) {
         LivingEntity attacker = DamageSourceHelper.getAttacker(damageSource);
         if (isEquippedBy(attacker) && DamageSourceHelper.isMeleeAttack(damageSource) && !entity.fireImmune()) {
-            entity.setSecondsOnFire(Math.max(0, ModGameRules.FIRE_GAUNTLET_FIRE_DURATION.get()));
+            entity.setSecondsOnFire(ModGameRules.FIRE_GAUNTLET_FIRE_DURATION.get() / 20);
         }
         return EventResult.pass();
     }

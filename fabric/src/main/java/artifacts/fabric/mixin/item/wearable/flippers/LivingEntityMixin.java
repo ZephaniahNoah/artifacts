@@ -27,6 +27,6 @@ public abstract class LivingEntityMixin {
     }
 
     private double artifacts$getIncreasedSwimSpeed(double speed) {
-        return speed * Math.max(1, 1 + ModGameRules.FLIPPERS_SWIM_SPEED_BONUS.get() / 100D);
+        return speed * (1 + ModGameRules.FLIPPERS_SWIM_SPEED_BONUS.get());
     }
 }

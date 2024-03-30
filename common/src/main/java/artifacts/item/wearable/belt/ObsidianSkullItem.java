@@ -16,7 +16,7 @@ public class ObsidianSkullItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION.get() <= 0;
+        return ModGameRules.OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION.get() == 0;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ObsidianSkullItem extends WearableArtifactItem {
                 && entity instanceof Player
                 && !ModItems.OBSIDIAN_SKULL.get().isOnCooldown(entity)
         ) {
-            int fireResistanceDuration = ModGameRules.OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION.get() * 20;
+            int fireResistanceDuration = ModGameRules.OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION.get();
 
             if (fireResistanceDuration > 0) {
                 entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, fireResistanceDuration, 0, false, false, true));

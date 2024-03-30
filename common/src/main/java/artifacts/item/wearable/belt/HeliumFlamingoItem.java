@@ -25,7 +25,7 @@ public class HeliumFlamingoItem extends WearableArtifactItem {
 
     @Override
     public boolean isCosmetic() {
-        return ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() <= 0;
+        return ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() == 0;
     }
 
     @Override
@@ -45,8 +45,8 @@ public class HeliumFlamingoItem extends WearableArtifactItem {
         if (swimData == null) {
             return;
         }
-        int maxFlightTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() * 20);
-        int rechargeTime = Math.max(20, ModGameRules.HELIUM_FLAMINGO_RECHARGE_DURATION.get() * 20);
+        int maxFlightTime = Math.max(1, ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get());
+        int rechargeTime = Math.max(20, ModGameRules.HELIUM_FLAMINGO_RECHARGE_DURATION.get());
 
         if (swimData.isSwimming()) {
             if (!ModItems.HELIUM_FLAMINGO.get().isEquippedBy(player)

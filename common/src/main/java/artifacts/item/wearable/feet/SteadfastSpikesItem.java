@@ -15,7 +15,7 @@ public class SteadfastSpikesItem extends WearableArtifactItem {
                 Attributes.KNOCKBACK_RESISTANCE,
                 UUID.fromString("d5e712e8-3f85-436a-bd1d-506d791f7abd"),
                 Artifacts.id("steadfast_spikes_knockback_resistance").toString(),
-                () -> ModGameRules.STEADFAST_SPIKES_ENABLED.get() ? Math.max(0, ModGameRules.STEADFAST_SPIKES_KNOCKBACK_RESISTANCE.get() / 10D) : 0D
+                () -> ModGameRules.STEADFAST_SPIKES_ENABLED.get() ? ModGameRules.STEADFAST_SPIKES_KNOCKBACK_RESISTANCE.get() : 0
             )
         );
     }

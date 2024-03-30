@@ -14,7 +14,7 @@ public class ModItemsForge {
                 ForgeMod.SWIM_SPEED.get(),
                 UUID.fromString("83f4e257-cd5c-4a36-ba4b-c052422ce7cf"),
                 Artifacts.id("flippers_swim_speed_bonus").toString(),
-                () -> Math.max(0, ModGameRules.FLIPPERS_SWIM_SPEED_BONUS.get() / 100D))
-        );
+                ModGameRules.FLIPPERS_SWIM_SPEED_BONUS
+        ));
     }
 }
