@@ -34,7 +34,7 @@ public class ModGameRules {
             KITTY_SLIPPERS_ENABLED = booleanValue(createName(ModItems.KITTY_SLIPPERS, "enabled")),
             NIGHT_VISION_GOGGLES_ENABLED = booleanValue(createName(ModItems.NIGHT_VISION_GOGGLES, "enabled")),
             SCARF_OF_INVISIBILITY_ENABLED = booleanValue(createName(ModItems.SCARF_OF_INVISIBILITY, "enabled")),
-            SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")),
+            SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")), // TODO remove 1.20.2
             STEADFAST_SPIKES_ENABLED = booleanValue(createName(ModItems.STEADFAST_SPIKES, "enabled")), // TODO remove 1.20.2
             UNIVERSAL_ATTRACTOR_ENABLED = booleanValue(createName(ModItems.UNIVERSAL_ATTRACTOR, "enabled")),
 
@@ -42,6 +42,7 @@ public class ModGameRules {
             FLAME_PENDANT_DO_GRANT_FIRE_RESISTANCE = booleanValue(createName(ModItems.FLAME_PENDANT, "doGrantFireResistance")),
             RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT = booleanValue(createName(ModItems.RUNNING_SHOES, "doIncreaseStepHeight")),
             SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE = booleanValue(createName(ModItems.SHOCK_PENDANT, "doCancelLightningDamage")),
+            SNORKEL_IS_INFINITE = booleanValue(createName(ModItems.SNORKEL, "isInfinite"), false),
             UMBRELLA_IS_SHIELD = booleanValue(createName(ModItems.UMBRELLA, "isShield")),
             UMBRELLA_IS_GLIDER = booleanValue(createName(ModItems.UMBRELLA, "isGlider"));
 
@@ -107,8 +108,13 @@ public class ModGameRules {
     }
 
     private static BooleanValue booleanValue(String name) {
+        return booleanValue(name, true);
+    }
+
+    private static BooleanValue booleanValue(String name, boolean defaultValue) {
         BooleanValue result = new BooleanValue();
-        GameRules.Type<GameRules.BooleanValue> type = BooleanValueInvoker.invokeCreate(true, (server, value) -> {
+        result.update(defaultValue);
+        GameRules.Type<GameRules.BooleanValue> type = BooleanValueInvoker.invokeCreate(defaultValue, (server, value) -> {
             result.update(value.get());
             NetworkHandler.CHANNEL.sendToPlayers(server.getPlayerList().getPlayers(), new BooleanGameRuleChangedPacket(name, value.get()));
         });

@@ -16,12 +16,12 @@ import java.util.List;
 public class SnorkelItem extends MobEffectItem {
 
     public SnorkelItem() {
-        super(MobEffects.WATER_BREATHING, ModGameRules.SNORKEL_ENABLED);
+        super(MobEffects.WATER_BREATHING, () -> ModGameRules.SNORKEL_ENABLED.get() && ModGameRules.SNORKEL_WATER_BREATHING_DURATION.get() != 0);
     }
 
     @Override
     protected void addEffectsTooltip(ItemStack stack, List<MutableComponent> tooltip) {
-        if (ModGameRules.SNORKEL_WATER_BREATHING_DURATION.get() == 0) {
+        if (ModGameRules.SNORKEL_IS_INFINITE.get()) {
             tooltip.add(tooltipLine("infinite"));
         } else {
             tooltip.add(tooltipLine("limited"));
@@ -31,10 +31,11 @@ public class SnorkelItem extends MobEffectItem {
     @Override
     protected int getDuration(LivingEntity entity) {
         int duration = ModGameRules.SNORKEL_WATER_BREATHING_DURATION.get();
-
-        if (duration == 0) {
-            return 40;
-        } else if (entity instanceof Player && entity.getItemBySlot(EquipmentSlot.HEAD).is(Items.TURTLE_HELMET) && !entity.isEyeInFluid(FluidTags.WATER)) {
+        if (!ModGameRules.SNORKEL_IS_INFINITE.get()
+                && entity instanceof Player
+                && entity.getItemBySlot(EquipmentSlot.HEAD).is(Items.TURTLE_HELMET)
+                && !entity.isEyeInFluid(FluidTags.WATER)
+        ) {
             duration += 200;
         }
         return duration + 19;
@@ -42,12 +43,12 @@ public class SnorkelItem extends MobEffectItem {
 
     @Override
     protected boolean shouldShowIcon() {
-        return ModGameRules.SNORKEL_WATER_BREATHING_DURATION.get() > 0;
+        return !ModGameRules.SNORKEL_IS_INFINITE.get();
     }
 
     @Override
     public boolean isEffectActive(LivingEntity entity) {
-        if (ModGameRules.SNORKEL_WATER_BREATHING_DURATION.get() > 0 && entity.isEyeInFluid(FluidTags.WATER)) {
+        if (!ModGameRules.SNORKEL_IS_INFINITE.get() && entity.isEyeInFluid(FluidTags.WATER)) {
             return false;
         }
         return super.isEffectActive(entity);
