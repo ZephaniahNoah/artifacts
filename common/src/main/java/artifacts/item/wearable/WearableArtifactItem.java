@@ -14,7 +14,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -39,11 +38,6 @@ public abstract class WearableArtifactItem extends ArtifactItem {
 
     public Stream<ItemStack> findAllEquippedBy(LivingEntity entity) {
         return PlatformServices.platformHelper.findAllEquippedBy(entity, this);
-    }
-
-    @Override
-    public Rarity getRarity(ItemStack stack) {
-        return Rarity.RARE;
     }
 
     public void onEquip(LivingEntity entity, ItemStack stack) {
