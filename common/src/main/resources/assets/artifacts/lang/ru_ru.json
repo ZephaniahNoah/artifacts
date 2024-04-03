@@ -58,7 +58,7 @@
   "artifacts.tooltip.item.umbrella.glider": "Замедляет Ваше падение при удержании.",
   "artifacts.tooltip.item.umbrella.shield": "Можно использовать как щит.",
   "artifacts.tooltip.item.universal_attractor": "Притягивает ближайшие предметы.",
-  "artifacts.tooltip.item.vampiric_glove": "Заставляет владельца поглощать здоровье в ближнем бою.",
+  "artifacts.tooltip.item.vampiric_glove.constant": "Заставляет владельца поглощать здоровье в ближнем бою.",
   "artifacts.tooltip.item.villager_hat": "Снижает цены на товары, что торгуются у крестьян.",
   "artifacts.tooltip.item.whoopee_cushion": "Увеличивает выпускание газов владельца.",
   "artifacts.tooltip.toggle_keymapping": "Нажмите %s для переключения.",

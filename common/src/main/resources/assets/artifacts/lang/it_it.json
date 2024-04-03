@@ -58,7 +58,7 @@
   "artifacts.tooltip.item.umbrella.glider": "Rallenta la caduta quando tenuto in mano",
   "artifacts.tooltip.item.umbrella.shield": "Può essere usato come scudo",
   "artifacts.tooltip.item.universal_attractor": "Attrae gli oggetti vicini",
-  "artifacts.tooltip.item.vampiric_glove": "Gli attacchi in mischia assorbono salute",
+  "artifacts.tooltip.item.vampiric_glove.constant": "Gli attacchi in mischia assorbono salute",
   "artifacts.tooltip.item.villager_hat": "Riduce i prezzi degli scambi con i villici",
   "artifacts.tooltip.item.whoopee_cushion": "Aumenta la flatulenza di chi lo indossa",
   "artifacts.tooltip.toggle_keymapping": "Premi %s per cambiare",

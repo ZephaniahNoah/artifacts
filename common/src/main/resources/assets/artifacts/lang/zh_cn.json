@@ -59,7 +59,7 @@
   "artifacts.tooltip.item.umbrella.glider": "手持时，使你的摔落速度降低",
   "artifacts.tooltip.item.umbrella.shield": "可作为盾牌使用",
   "artifacts.tooltip.item.universal_attractor": "吸引附近的物品",
-  "artifacts.tooltip.item.vampiric_glove": "允许装备者的近战攻击吸血",
+  "artifacts.tooltip.item.vampiric_glove.constant": "允许装备者的近战攻击吸血",
   "artifacts.tooltip.item.villager_hat": "降低村民的交易价格",
   "artifacts.tooltip.item.whoopee_cushion": "增加装备者肠胃中的气体",
   "artifacts.tooltip.tool_tier.1": "木质",

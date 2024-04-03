@@ -58,7 +58,7 @@
   "artifacts.tooltip.item.umbrella.glider": "Caes lentamente cuando lo llevas",
   "artifacts.tooltip.item.umbrella.shield": "Puedes usarlo como escudo",
   "artifacts.tooltip.item.universal_attractor": "Atrae objetos cercanos.",
-  "artifacts.tooltip.item.vampiric_glove": "Cuando ataques, absorbes la vida del mob.",
+  "artifacts.tooltip.item.vampiric_glove.constant": "Cuando ataques, absorbes la vida del mob.",
   "artifacts.tooltip.item.villager_hat": "Baja el precio de comercios con aldeanos",
   "artifacts.tooltip.item.whoopee_cushion": "Te tiras pedos",
   "artifacts.tooltip.toggle_keymapping": "Dale a %s para activar/desactivar",

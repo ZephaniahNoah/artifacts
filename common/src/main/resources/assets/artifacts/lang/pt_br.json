@@ -42,7 +42,7 @@
   "artifacts.tooltip.item.superstitious_hat.single_level": "Aplica um nível extra de pilhagem ao matar entidades",
   "artifacts.tooltip.item.thorn_pendant": "Tem chance de causar dano ao inimigo",
   "artifacts.tooltip.item.universal_attractor": "Atrai itens próximos",
-  "artifacts.tooltip.item.vampiric_glove": "Faz com que os ataques corpo a corpo do usuário absorvam saúde",
+  "artifacts.tooltip.item.vampiric_glove.constant": "Faz com que os ataques corpo a corpo do usuário absorvam saúde",
   "artifacts.tooltip.item.villager_hat": "Diminui os preços de negociação dos aldeões",
   "artifacts.tooltip.item.whoopee_cushion": "Aumenta a flatulência do usuário",
   "curios.identifier.feet": "Pés",

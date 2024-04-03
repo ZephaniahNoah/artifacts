@@ -59,7 +59,7 @@
   "artifacts.tooltip.item.umbrella.glider": "공중에서 천천히 낙하합니다",
   "artifacts.tooltip.item.umbrella.shield": "방패로 사용할 수 있습니다",
   "artifacts.tooltip.item.universal_attractor": "주변 아이템을 끌어옵니다",
-  "artifacts.tooltip.item.vampiric_glove": "공격 시 약간의 체력을 회복할 수 있습니다",
+  "artifacts.tooltip.item.vampiric_glove.constant": "공격 시 약간의 체력을 회복할 수 있습니다",
   "artifacts.tooltip.item.villager_hat": "주민과 할인된 가격으로 거래할 수 있습니다",
   "artifacts.tooltip.item.whoopee_cushion": "'I'm 방구에요'",
   "artifacts.tooltip.toggle_keymapping": "%s 을 눌러 토글하세요",

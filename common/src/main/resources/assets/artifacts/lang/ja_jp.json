@@ -59,7 +59,7 @@
   "artifacts.tooltip.item.umbrella.glider": "持っていると落下が遅くなる",
   "artifacts.tooltip.item.umbrella.shield": "盾としても使える",
   "artifacts.tooltip.item.universal_attractor": "近くのアイテムを引き寄せる",
-  "artifacts.tooltip.item.vampiric_glove": "着用者の近接攻撃で体力を吸収する",
+  "artifacts.tooltip.item.vampiric_glove.constant": "着用者の近接攻撃で体力を吸収する",
   "artifacts.tooltip.item.villager_hat": "村人の取引価格を下げる",
   "artifacts.tooltip.item.whoopee_cushion": "着用者の鼓腸を増加させる",
   "artifacts.tooltip.toggle_keymapping": "%s を押して切り替える",
