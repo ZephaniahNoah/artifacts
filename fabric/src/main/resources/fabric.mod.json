@@ -39,7 +39,7 @@
   ],
   "depends": {
     "fabric": ">=0.86.1",
-    "minecraft": ">=1.20",
+    "minecraft": "1.20.1",
     "architectury": ">=9.0.7",
     "trinkets": "*",
     "cloth-config": "*"
