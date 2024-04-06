@@ -4,6 +4,7 @@ import artifacts.item.wearable.belt.CloudInABottleItem;
 import artifacts.item.wearable.necklace.CharmOfSinkingItem;
 import artifacts.network.DoubleJumpPacket;
 import artifacts.network.NetworkHandler;
+import artifacts.registry.ModGameRules;
 import artifacts.registry.ModItems;
 import dev.architectury.event.events.client.ClientTickEvent;
 import net.minecraft.client.Minecraft;
@@ -33,7 +34,7 @@ public class CloudInABottleInputHandler {
             hasReleasedJumpKey = true;
         } else if (!player.getAbilities().flying && canDoubleJump && hasReleasedJumpKey) {
             canDoubleJump = false;
-            if (ModItems.CLOUD_IN_A_BOTTLE.get().isEquippedBy(player)) {
+            if (ModItems.CLOUD_IN_A_BOTTLE.get().isEquippedBy(player) && ModGameRules.CLOUD_IN_A_BOTTLE_ENABLED.get()) {
                 NetworkHandler.CHANNEL.sendToServer(new DoubleJumpPacket());
                 CloudInABottleItem.jump(player);
             }

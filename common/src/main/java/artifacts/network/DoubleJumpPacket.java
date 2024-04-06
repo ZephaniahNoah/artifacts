@@ -1,6 +1,7 @@
 package artifacts.network;
 
 import artifacts.item.wearable.belt.CloudInABottleItem;
+import artifacts.registry.ModGameRules;
 import dev.architectury.networking.NetworkManager;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -24,7 +25,7 @@ public class DoubleJumpPacket {
     }
 
     void apply(Supplier<NetworkManager.PacketContext> context) {
-        if (context.get().getPlayer() instanceof ServerPlayer player) {
+        if (context.get().getPlayer() instanceof ServerPlayer player && ModGameRules.CLOUD_IN_A_BOTTLE_ENABLED.get()) {
             context.get().queue(() -> {
                 CloudInABottleItem.jump(player);
 
