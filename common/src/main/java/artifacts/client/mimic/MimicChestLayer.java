@@ -15,7 +15,6 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 
@@ -25,8 +24,6 @@ import java.util.Calendar;
 import java.util.List;
 
 public class MimicChestLayer extends RenderLayer<MimicEntity, MimicModel> {
-
-    public static final ResourceLocation CHEST_ATLAS = new ResourceLocation("textures/atlas/chest.png");
 
     public static final List<String> QUARK_CHEST_MATERIALS = Arrays.asList(
             "oak",
@@ -48,7 +45,6 @@ public class MimicChestLayer extends RenderLayer<MimicEntity, MimicModel> {
     public final Material vanillaChestMaterial;
     public final List<Material> chestMaterials;
 
-    @SuppressWarnings("deprecation")
     public MimicChestLayer(RenderLayerParent<MimicEntity, MimicModel> entityRenderer, EntityModelSet modelSet) {
         super(entityRenderer);
         chestModel = new MimicChestLayerModel(modelSet.bakeLayer(MimicChestLayerModel.LAYER_LOCATION));
@@ -65,11 +61,9 @@ public class MimicChestLayer extends RenderLayer<MimicEntity, MimicModel> {
         Material defaultMaterial = vanillaChestMaterial;
 
         if (Platform.isModLoaded("lootr")) {
-            ResourceLocation chestLocation = new ResourceLocation("lootr", "chest");
-            defaultMaterial = new Material(TextureAtlas.LOCATION_BLOCKS, chestLocation);
+            defaultMaterial = createMaterial("lootr", "chest");
         } else if (Platform.isModLoaded("myloot")) {
-            ResourceLocation chestLocation = new ResourceLocation("myloot", "entity/chest/loot");
-            defaultMaterial = new Material(CHEST_ATLAS, chestLocation);
+            defaultMaterial = createMaterial("myloot", "entity/chest/loot");
         }
 
         chestMaterials.add(defaultMaterial);
@@ -86,10 +80,14 @@ public class MimicChestLayer extends RenderLayer<MimicEntity, MimicModel> {
         if (Platform.isModLoaded("quark")) {
             String chestVariant = Platform.isModLoaded("lootr") ? "lootr_normal" : "normal";
             for (String chestMaterial : QUARK_CHEST_MATERIALS) {
-                ResourceLocation chestLocation = new ResourceLocation("quark", String.format("quark_variant_chests/%s/%s", chestMaterial, chestVariant));
-                chestMaterials.add(new Material(CHEST_ATLAS, chestLocation));
+                chestMaterials.add(createMaterial("quark", String.format("quark_variant_chests/%s/%s", chestMaterial, chestVariant)));
             }
         }
+    }
+
+    private static Material createMaterial(String modId, String location) {
+        ResourceLocation chestAtlas = new ResourceLocation("textures/atlas/chest.png");
+        return new Material(chestAtlas, new ResourceLocation(modId, location));
     }
 
     @Override
