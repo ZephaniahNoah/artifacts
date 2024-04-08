@@ -6,6 +6,7 @@
   "plugin": "artifacts.fabric.ArtifactsMixinPlugin",
   "mixins": [
     "compat.origins.ConditionFactoryAccessor",
+    "config.ClientConfigMixin",
     "item.umbrella.LivingEntityMixin",
     "item.wearable.ItemStackMixin",
     "item.wearable.LivingEntitiesMixin",

@@ -1,6 +1,7 @@
 package artifacts.fabric.mixin.item.wearable;
 
 import artifacts.Artifacts;
+import artifacts.fabric.ArtifactsFabric;
 import artifacts.fabric.client.CosmeticsHelper;
 import artifacts.item.ArtifactItem;
 import artifacts.item.wearable.WearableArtifactItem;
@@ -57,11 +58,18 @@ public abstract class WearableArtifactItemMixin extends ArtifactItem {
     @Override
     protected void addTooltip(ItemStack stack, List<MutableComponent> tooltip) {
         if (!isCosmetic()) { // Don't render cosmetics tooltip if item is cosmetic-only
-            String enabled = CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack) ? "disabled" : "enabled";
-            tooltip.add(
-                    Component.translatable("%s.tooltip.cosmetics_%s".formatted(Artifacts.MOD_ID, enabled))
-                            .withStyle(ChatFormatting.ITALIC)
-            );
+            if (!CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
+                tooltip.add(
+                        Component.translatable("%s.tooltip.cosmetics_disabled".formatted(Artifacts.MOD_ID))
+                                .withStyle(ChatFormatting.ITALIC)
+                );
+            } else if (ArtifactsFabric.getClientConfig().alwaysShowCosmeticsToggleTooltip()) {
+                tooltip.add(
+                        Component.translatable("%s.tooltip.cosmetics_enabled".formatted(Artifacts.MOD_ID))
+                                .withStyle(ChatFormatting.ITALIC)
+                );
+            }
+
         }
         super.addTooltip(stack, tooltip);
     }
