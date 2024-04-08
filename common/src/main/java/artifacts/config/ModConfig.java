@@ -22,6 +22,7 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
     @Config(name = "common")
     public static final class Common implements ConfigData {
 
+        @ConfigEntry.Gui.PrefixText
         @ConfigEntry.Gui.Tooltip(count = 4)
         @Comment("""
                 Affects how common artifacts are in chests
