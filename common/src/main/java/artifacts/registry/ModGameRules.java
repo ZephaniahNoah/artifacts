@@ -49,7 +49,7 @@ public class ModGameRules {
     public static final IntegerValue
             CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS = integerValue(createName(ModItems.CROSS_NECKLACE, "bonusInvincibilityTicks"), 20, 60 * 20),
             CRYSTAL_HEART_HEALTH_BONUS = integerValue(createName(ModItems.CRYSTAL_HEART, "healthBonus"), 10, 100),
-            DIGGING_CLAWS_TOOL_TIER = integerValue(createName(ModItems.DIGGING_CLAWS, "toolTier"), Tiers.STONE.getLevel() - 1, Tiers.NETHERITE.getLevel() - 1),
+            DIGGING_CLAWS_TOOL_TIER = integerValue(createName(ModItems.DIGGING_CLAWS, "toolTier"), Tiers.STONE.getLevel() + 1, Tiers.NETHERITE.getLevel() + 1),
             LUCKY_SCARF_FORTUNE_BONUS = integerValue(createName(ModItems.LUCKY_SCARF, "fortuneBonus"), 1, 100),
             POWER_GLOVE_ATTACK_DAMAGE_BONUS = integerValue(createName(ModItems.POWER_GLOVE, "attackDamageBonus"), 4),
             SUPERSTITIOUS_HAT_LOOTING_LEVEL_BONUS = integerValue(createName(ModItems.SUPERSTITIOUS_HAT, "lootingLevelBonus"), 1, 100),
