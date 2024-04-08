@@ -37,10 +37,7 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
         }
 
         @ConfigEntry.Gui.Tooltip(count = 2)
-        @Comment("""
-                The chance everlasting beef drops when a cow
-                or mooshroom is killed by a player
-                """)
+        @Comment("The chance everlasting beef drops when a cow or mooshroom is killed by a player")
         double everlastingBeefChance = 1 / 500D;
 
         public double getEverlastingBeefChance() {
