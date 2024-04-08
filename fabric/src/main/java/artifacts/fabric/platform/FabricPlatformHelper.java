@@ -106,7 +106,7 @@ public class FabricPlatformHelper implements PlatformHelper {
                 float netHeadYaw,
                 float headPitch
         ) {
-            if (CosmeticsHelper.isCosmeticsDisabled(stack)) {
+            if (CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
                 return;
             }
             int index = slotReference.index() + (slotReference.inventory().getSlotType().getGroup().equals("hand") ? 0 : 1);

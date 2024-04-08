@@ -15,6 +15,7 @@
   "artifacts.subtitles.item.whoopee_cushion.fart": "Fart",
   "artifacts.tooltip.cosmetic": "Cosmetic",
   "artifacts.tooltip.cosmetics_disabled": "Cosmetics be disenabled (right-click to switch)",
+  "artifacts.tooltip.cosmetics_enabled": "Cosmetics be enabled (right-click to switch)",
   "artifacts.tooltip.item.antidote_vessel": "Greatly decreases the time of any foul brews",
   "artifacts.tooltip.item.aqua_dashers": "Allows ye to walk over the seas",
   "artifacts.tooltip.item.bunny_hoppers.fall_damage": "Allows ye to fall without takin' damage",

@@ -22,7 +22,7 @@ public class EverlastingFoodItem extends ArtifactItem {
     }
 
     @Override
-    protected boolean isCosmetic() {
+    public boolean isCosmetic() {
         return !isEnabled.get();
     }
 

@@ -42,6 +42,10 @@ public abstract class WearableArtifactItemMixin extends ArtifactItem {
 
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack slotStack, ItemStack holdingStack, Slot slot, ClickAction clickAction, Player player, SlotAccess slotAccess) {
+        if (isCosmetic()) { // Revert to default behavior if tooltip is not shown
+            return super.overrideOtherStackedOnMe(slotStack, holdingStack, slot, clickAction, player, slotAccess);
+        }
+
         if (clickAction == ClickAction.SECONDARY && holdingStack.isEmpty()) {
             CosmeticsHelper.toggleCosmetics(slotStack);
             return true;
@@ -52,14 +56,13 @@ public abstract class WearableArtifactItemMixin extends ArtifactItem {
 
     @Override
     protected void addTooltip(ItemStack stack, List<MutableComponent> tooltip) {
-        if (isCosmetic()) {
-            tooltip.add(Component.translatable("%s.tooltip.cosmetic".formatted(Artifacts.MOD_ID)).withStyle(ChatFormatting.ITALIC));
+        if (!isCosmetic()) { // Don't render cosmetics tooltip if item is cosmetic-only
+            String enabled = CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack) ? "disabled" : "enabled";
+            tooltip.add(
+                    Component.translatable("%s.tooltip.cosmetics_%s".formatted(Artifacts.MOD_ID, enabled))
+                            .withStyle(ChatFormatting.ITALIC)
+            );
         }
-        if (CosmeticsHelper.isCosmeticsDisabled(stack)) {
-            tooltip.add(Component.translatable("%s.tooltip.cosmetics_disabled".formatted(Artifacts.MOD_ID)).withStyle(ChatFormatting.ITALIC));
-        }
-        if (!isCosmetic()) {
-            addEffectsTooltip(stack, tooltip);
-        }
+        super.addTooltip(stack, tooltip);
     }
 }

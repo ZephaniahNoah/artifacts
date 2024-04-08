@@ -57,7 +57,7 @@ public abstract class ArtifactItem extends Item {
         return BuiltInRegistries.ITEM.getKey(this).getPath();
     }
 
-    protected abstract boolean isCosmetic();
+    public abstract boolean isCosmetic();
 
     public boolean isOnCooldown(LivingEntity entity) {
         if (entity instanceof Player player) {
