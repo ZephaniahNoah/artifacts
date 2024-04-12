@@ -58,7 +58,7 @@ public abstract class WearableArtifactItemMixin extends ArtifactItem {
     @Override
     protected void addTooltip(ItemStack stack, List<MutableComponent> tooltip) {
         if (!isCosmetic()) { // Don't render cosmetics tooltip if item is cosmetic-only
-            if (!CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
+            if (CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
                 tooltip.add(
                         Component.translatable("%s.tooltip.cosmetics_disabled".formatted(Artifacts.MOD_ID))
                                 .withStyle(ChatFormatting.ITALIC)
