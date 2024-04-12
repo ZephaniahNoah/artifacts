@@ -9,6 +9,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
@@ -61,6 +62,26 @@ public class ForgePlatformHelper implements PlatformHelper {
     @Override
     public boolean isEyeInWater(Player player) {
         return player.isEyeInFluidType(ForgeMod.WATER_TYPE.get());
+    }
+
+    @Override
+    public boolean isVisibleOnHand(LivingEntity entity, InteractionHand hand, WearableArtifactItem item) {
+        return CuriosApi.getCuriosHelper().getCuriosHandler(entity).resolve()
+                .flatMap(handler -> Optional.ofNullable(handler.getCurios().get("hands")))
+                .map(stacksHandler -> {
+                    int startSlot = hand == InteractionHand.MAIN_HAND ? 0 : 1;
+                    for (int slot = startSlot; slot < stacksHandler.getSlots(); slot += 2) {
+                        ItemStack stack = stacksHandler.getCosmeticStacks().getStackInSlot(slot);
+                        if (stack.isEmpty() && stacksHandler.getRenders().get(slot)) {
+                            stack = stacksHandler.getStacks().getStackInSlot(slot);
+                        }
+
+                        if (stack.getItem() == item) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }).orElse(false);
     }
 
     @Override

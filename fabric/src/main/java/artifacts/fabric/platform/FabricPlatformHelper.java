@@ -17,6 +17,8 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Tuple;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
@@ -71,6 +73,18 @@ public class FabricPlatformHelper implements PlatformHelper {
     @Override
     public boolean isEyeInWater(Player player) {
         return player.isEyeInFluid(FluidTags.WATER);
+    }
+
+    @Override
+    public boolean isVisibleOnHand(LivingEntity entity, InteractionHand hand, WearableArtifactItem item) {
+        return TrinketsApi.getTrinketComponent(entity).stream()
+                .flatMap(component -> component.getAllEquipped().stream())
+                .filter(tuple -> tuple.getA().inventory().getSlotType().getGroup().equals(
+                        hand == InteractionHand.MAIN_HAND ? "hand" : "offhand"
+                )).map(Tuple::getB)
+                .filter(stack -> stack.is(item))
+                .filter(stack -> !CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack))
+                .anyMatch(tuple -> true);
     }
 
     @Override

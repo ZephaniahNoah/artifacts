@@ -3,6 +3,7 @@ package artifacts.platform;
 import artifacts.client.item.renderer.ArtifactRenderer;
 import artifacts.component.SwimData;
 import artifacts.item.wearable.WearableArtifactItem;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
@@ -29,6 +30,8 @@ public interface PlatformHelper {
     SwimData getSwimData(LivingEntity player);
 
     boolean isEyeInWater(Player player);
+
+    boolean isVisibleOnHand(LivingEntity entity, InteractionHand hand, WearableArtifactItem item);
 
     void registerArtifactRenderer(WearableArtifactItem item, Supplier<ArtifactRenderer> rendererSupplier);
 

@@ -37,6 +37,8 @@ public class ArtifactLayers {
             SLIM_GLOVE = createLayerLocation("slim_gloves"),
             GOLDEN_HOOK = createLayerLocation("golden_hook"),
             SLIM_GOLDEN_HOOK = createLayerLocation("slim_golden_hook"),
+            POCKET_PISTON = createLayerLocation("pocket_piston"),
+            SLIM_POCKET_PISTON = createLayerLocation("slim_pocket_piston"),
 
             AQUA_DASHERS = createLayerLocation("aqua_dashers"),
             BUNNY_HOPPERS = createLayerLocation("bunny_hoppers"),
@@ -57,6 +59,10 @@ public class ArtifactLayers {
 
     public static ModelLayerLocation goldenHook(boolean smallArms) {
         return smallArms ? SLIM_GOLDEN_HOOK : GOLDEN_HOOK;
+    }
+
+    public static ModelLayerLocation pocketPiston(boolean smallArms) {
+        return smallArms ? SLIM_POCKET_PISTON : POCKET_PISTON;
     }
 
     public static ModelLayerLocation createLayerLocation(String name) {
@@ -93,6 +99,8 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(SLIM_GLOVE, layer(ArmsModel.createSleevedArms(true), 32, 32));
         EntityModelLayerRegistry.register(GOLDEN_HOOK, layer(ArmsModel.createGoldenHook(false), 64, 32));
         EntityModelLayerRegistry.register(SLIM_GOLDEN_HOOK, layer(ArmsModel.createGoldenHook(true), 64, 32));
+        EntityModelLayerRegistry.register(POCKET_PISTON, layer(ArmsModel.createPocketPiston(false), 32, 16));
+        EntityModelLayerRegistry.register(SLIM_POCKET_PISTON, layer(ArmsModel.createPocketPiston(true), 32, 16));
 
         EntityModelLayerRegistry.register(AQUA_DASHERS, layer(LegsModel.createAquaDashers(), 32, 32));
         EntityModelLayerRegistry.register(BUNNY_HOPPERS, layer(LegsModel.createBunnyHoppers(), 64, 32));

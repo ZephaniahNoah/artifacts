@@ -16,7 +16,9 @@
   ],
   "client": [
     "item.hurtsound.client.LivingEntityMixin",
-    "item.umbrella.client.HumanoidModelMixin"
+    "item.umbrella.client.HumanoidModelMixin",
+    "item.wearable.pocketpiston.client.ItemInHandLayerMixin",
+    "item.wearable.pocketpiston.client.LivingEntityMixin"
   ],
   "server": [
     "item.umbrella.server.ServerGamePacketListenerImplMixin"
