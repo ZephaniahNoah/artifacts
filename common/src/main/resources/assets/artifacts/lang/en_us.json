@@ -204,6 +204,8 @@
   "text.autoconfig.artifacts.option.common.campsite.count": "Campsite count",
   "text.autoconfig.artifacts.option.common.campsite.count.@Tooltip[0]": "Amount of campsite generation attempts per chunk",
   "text.autoconfig.artifacts.option.common.campsite.count.@Tooltip[1]": "Set this to 0 to prevent campsites from generating",
+  "text.autoconfig.artifacts.option.common.campsite.allowLightSources": "Allow light sources",
+  "text.autoconfig.artifacts.option.common.campsite.allowLightSources.@Tooltip": "Whether campsites can contain blocks that emit lights",
   "text.autoconfig.artifacts.option.common.campsite.maxY": "Maximum Y-level",
   "text.autoconfig.artifacts.option.common.campsite.maxY.@Tooltip": "The maximum height campsites can spawn at",
   "text.autoconfig.artifacts.option.common.campsite.mimicChance": "Mimic chance",

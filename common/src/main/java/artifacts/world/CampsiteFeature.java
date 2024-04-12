@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 
 import java.util.ArrayList;
@@ -29,9 +30,12 @@ import java.util.stream.Collectors;
 
 public class CampsiteFeature extends Feature<NoneFeatureConfiguration> {
 
-    private static final BlockStateProvider CAMPFIRES = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-            .add(Blocks.CAMPFIRE.defaultBlockState().setValue(CampfireBlock.LIT, true), 4)
-            .add(Blocks.CAMPFIRE.defaultBlockState().setValue(CampfireBlock.LIT, false), 20)
+    private static final BlockStateProvider UNLIT_CAMPFIRES = SimpleStateProvider.simple(
+            Blocks.CAMPFIRE.defaultBlockState().setValue(CampfireBlock.LIT, false)
+    );
+
+    private static final BlockStateProvider LIT_CAMPFIRES = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+            .add(Blocks.CAMPFIRE.defaultBlockState().setValue(CampfireBlock.LIT, true), 9)
             .add(Blocks.SOUL_CAMPFIRE.defaultBlockState().setValue(CampfireBlock.LIT, true), 1)
     );
 
@@ -75,11 +79,20 @@ public class CampsiteFeature extends Feature<NoneFeatureConfiguration> {
             .add(Blocks.GREEN_BED.defaultBlockState(), 1)
     );
 
-    private static final BlockStateProvider LIGHTS = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-            .add(Blocks.LANTERN.defaultBlockState(), 3)
+    private static final BlockStateProvider LIGHT_SOURCES = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+            .add(Blocks.LANTERN.defaultBlockState(), 4)
             .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, true), 1)
-            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, false), 1)
+            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, true).setValue(CandleBlock.CANDLES, 2), 1)
+            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, true).setValue(CandleBlock.CANDLES, 3), 1)
+            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, true).setValue(CandleBlock.CANDLES, 4), 1)
             .add(Blocks.SOUL_LANTERN.defaultBlockState(), 1)
+    );
+
+    private static final BlockStateProvider UNLIT_LIGHT_SOURCES = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, false), 1)
+            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, false).setValue(CandleBlock.CANDLES, 2), 1)
+            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, false).setValue(CandleBlock.CANDLES, 3), 1)
+            .add(Blocks.CANDLE.defaultBlockState().setValue(CandleBlock.LIT, false).setValue(CandleBlock.CANDLES, 4), 1)
     );
 
     public static final ResourceLocation CHEST_LOOT = Artifacts.id("chests/campsite_chest");
@@ -105,8 +118,7 @@ public class CampsiteFeature extends Feature<NoneFeatureConfiguration> {
                 .forEach(pos -> setBlock(level, pos, Blocks.CAVE_AIR.defaultBlockState()));
 
         placeFloor(level, origin, random);
-
-        setBlock(level, origin, CAMPFIRES.getState(random, origin));
+        placeCampfire(level, origin, random);
 
         Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
         BlockPos pos = origin.relative(direction, 2);
@@ -127,9 +139,7 @@ public class CampsiteFeature extends Feature<NoneFeatureConfiguration> {
             setBlock(level, pos, bedBlock.setValue(BedBlock.PART, BedPart.HEAD));
             setBlock(level, pos.relative(bedDirection.getOpposite()), bedBlock.setValue(BedBlock.PART, BedPart.FOOT));
             placeBarrel(level, pos.relative(bedDirection), random);
-            if (random.nextBoolean()) {
-                setBlock(level, pos.relative(bedDirection).above(), LIGHTS.getState(random, pos));
-            }
+            placeLightSource(level, pos.relative(bedDirection).above(), random);
         }
 
         direction = random.nextBoolean() ? direction.getClockWise() : direction.getCounterClockWise();
@@ -170,6 +180,24 @@ public class CampsiteFeature extends Feature<NoneFeatureConfiguration> {
                         }
                     }
                 });
+    }
+
+    private void placeCampfire(WorldGenLevel level, BlockPos origin, RandomSource random) {
+        BlockState campfire = UNLIT_CAMPFIRES.getState(random, origin);
+        if (Artifacts.CONFIG.common.campsite.allowLightSources && random.nextFloat() < 0.10) {
+            campfire = LIT_CAMPFIRES.getState(random, origin);
+        }
+        setBlock(level, origin, campfire);
+    }
+
+    private void placeLightSource(WorldGenLevel level, BlockPos pos, RandomSource random) {
+        if (random.nextFloat() < 0.5) {
+            BlockState lightSource = UNLIT_LIGHT_SOURCES.getState(random, pos);
+            if (Artifacts.CONFIG.common.campsite.allowLightSources && random.nextFloat() < 0.30) {
+                lightSource = LIGHT_SOURCES.getState(random, pos);
+            }
+            setBlock(level, pos, lightSource);
+        }
     }
 
     private void placeCraftingStation(WorldGenLevel level, BlockPos pos, RandomSource random, Direction facing) {

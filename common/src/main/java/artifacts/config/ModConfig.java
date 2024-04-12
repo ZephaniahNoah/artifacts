@@ -83,6 +83,10 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
             @ConfigEntry.Gui.Tooltip
             @Comment("Whether to use wooden chests from other mods when generating campsites")
             public boolean useModdedChests = true;
+
+            @ConfigEntry.Gui.Tooltip
+            @Comment("Whether campsites can contain blocks that emit light")
+            public boolean allowLightSources = true;
         }
     }
 
