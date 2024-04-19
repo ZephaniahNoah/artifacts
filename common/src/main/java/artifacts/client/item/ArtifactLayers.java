@@ -44,6 +44,7 @@ public class ArtifactLayers {
             BUNNY_HOPPERS = createLayerLocation("bunny_hoppers"),
             KITTY_SLIPPERS = createLayerLocation("kitty_slippers"),
             RUNNING_SHOES = createLayerLocation("running_shoes"),
+            SNOWSHOES = createLayerLocation("snowshoes"),
             STEADFAST_SPIKES = createLayerLocation("steadfast_spikes"),
             FLIPPERS = createLayerLocation("flippers"),
 
@@ -106,6 +107,7 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(BUNNY_HOPPERS, layer(LegsModel.createBunnyHoppers(), 64, 32));
         EntityModelLayerRegistry.register(KITTY_SLIPPERS, layer(LegsModel.createKittySlippers(), 64, 32));
         EntityModelLayerRegistry.register(RUNNING_SHOES, layer(LegsModel.createRunningShoes(), 32, 32));
+        EntityModelLayerRegistry.register(SNOWSHOES, layer(LegsModel.createSnowshoes(), 64, 64));
         EntityModelLayerRegistry.register(STEADFAST_SPIKES, layer(LegsModel.createSteadfastSpikes(), 64, 32));
         EntityModelLayerRegistry.register(FLIPPERS, layer(LegsModel.createFlippers(), 64, 64));
 

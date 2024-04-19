@@ -39,6 +39,9 @@ dependencies {
     modImplementation("me.shedaniel.cloth:cloth-config-forge:${rootProject.cloth_config_version}")
     modImplementation("top.theillusivec4.curios:curios-forge:${rootProject.curios_version}")
 
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${rootProject.mixin_extras_version}"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:${rootProject.mixin_extras_version}"))
+
     modRuntimeOnly("maven.modrinth:curious-armor-stands:1.20-5.0.1")
 }
 

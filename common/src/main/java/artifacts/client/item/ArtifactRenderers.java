@@ -55,6 +55,7 @@ public class ArtifactRenderers {
         register(ModItems.BUNNY_HOPPERS.get(), () -> new GenericArtifactRenderer("bunny_hoppers", new LegsModel(bakeLayer(ArtifactLayers.BUNNY_HOPPERS))));
         register(ModItems.KITTY_SLIPPERS.get(), () -> new GenericArtifactRenderer("kitty_slippers", new LegsModel(bakeLayer(ArtifactLayers.KITTY_SLIPPERS))));
         register(ModItems.RUNNING_SHOES.get(), () -> new GenericArtifactRenderer("running_shoes", new LegsModel(bakeLayer(ArtifactLayers.RUNNING_SHOES))));
+        register(ModItems.SNOWSHOES.get(), () -> new GenericArtifactRenderer("snowshoes", new LegsModel(bakeLayer(ArtifactLayers.SNOWSHOES))));
         register(ModItems.STEADFAST_SPIKES.get(), () -> new GenericArtifactRenderer("steadfast_spikes", new LegsModel(bakeLayer(ArtifactLayers.STEADFAST_SPIKES))));
         register(ModItems.FLIPPERS.get(), () -> new GenericArtifactRenderer("flippers", new LegsModel(bakeLayer(ArtifactLayers.FLIPPERS))));
 

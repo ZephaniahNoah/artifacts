@@ -43,6 +43,7 @@ public class ModGameRules {
             RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT = booleanValue(createName(ModItems.RUNNING_SHOES, "doIncreaseStepHeight")),
             SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE = booleanValue(createName(ModItems.SHOCK_PENDANT, "doCancelLightningDamage")),
             SNORKEL_IS_INFINITE = booleanValue(createName(ModItems.SNORKEL, "isInfinite"), false),
+            SNOWSHOES_ALLOW_WALKING_ON_POWDER_SNOW = booleanValue(createName(ModItems.SNOWSHOES, "allowWalkingOnPowderSnow")),
             UMBRELLA_IS_SHIELD = booleanValue(createName(ModItems.UMBRELLA, "isShield")),
             UMBRELLA_IS_GLIDER = booleanValue(createName(ModItems.UMBRELLA, "isGlider"));
 
@@ -94,6 +95,7 @@ public class ModGameRules {
             RUNNING_SHOES_SPEED_BONUS = doubleValue(createName(ModItems.RUNNING_SHOES, "speedBonus"), 40, 100 * 100, 100),
             SHOCK_PENDANT_STRIKE_CHANCE = percentage(createName(ModItems.SHOCK_PENDANT, "strikeChance"), 25),
             STEADFAST_SPIKES_KNOCKBACK_RESISTANCE = doubleValue(createName(ModItems.STEADFAST_SPIKES, "knockbackResistance"), 10, 10, 10),
+            SNOWSHOES_SLIPPERINESS_REDUCTION = percentage(createName(ModItems.SNOWSHOES, "slipperinessReduction"), 100),
             THORN_PENDANT_STRIKE_CHANCE = percentage(createName(ModItems.THORN_PENDANT, "strikeChance"), 50),
             VAMPIRIC_GLOVE_ABSORPTION_CHANCE = percentage(createName(ModItems.VAMPIRIC_GLOVE, "absorptionChance"), 100),
             VAMPIRIC_GLOVE_ABSORPTION_RATIO = doubleValue(createName(ModItems.VAMPIRIC_GLOVE, "absorptionRatio"), 20, 100),

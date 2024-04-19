@@ -184,6 +184,18 @@ public class LegsModel extends HumanoidModel<LivingEntity> {
         return createShoes(0.5F, CubeListBuilder.create(), CubeListBuilder.create());
     }
 
+    public static MeshDefinition createSnowshoes() {
+        CubeListBuilder leftLeg = CubeListBuilder.create();
+        CubeListBuilder rightLeg = CubeListBuilder.create();
+
+        leftLeg.texOffs(0, 16);
+        leftLeg.addBox(-2.5F, 11.5F, -10, 10, 0, 22);
+        rightLeg.texOffs(0, 16 + 22);
+        rightLeg.addBox(-10 + 2.5F, 11.5F, -10, 10, 0, 22);
+
+        return createLegs(0.5F, leftLeg, rightLeg);
+    }
+
     public static MeshDefinition createSteadfastSpikes() {
         CubeListBuilder leftLeg = CubeListBuilder.create();
         CubeListBuilder rightLeg = CubeListBuilder.create();

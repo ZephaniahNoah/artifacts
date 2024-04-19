@@ -85,6 +85,7 @@ public class ModItems {
     public static RegistrySupplier<WearableArtifactItem> BUNNY_HOPPERS = register("bunny_hoppers", BunnyHoppersItem::new);
     public static RegistrySupplier<WearableArtifactItem> KITTY_SLIPPERS = register("kitty_slippers", KittySlippersItem::new);
     public static RegistrySupplier<WearableArtifactItem> RUNNING_SHOES = register("running_shoes", RunningShoesItem::new);
+    public static RegistrySupplier<WearableArtifactItem> SNOWSHOES = register("snowshoes", SnowshoesItem::new);
     public static RegistrySupplier<WearableArtifactItem> STEADFAST_SPIKES = register("steadfast_spikes", SteadfastSpikesItem::new);
     public static RegistrySupplier<WearableArtifactItem> FLIPPERS = register("flippers", FlippersItem::new);
 
