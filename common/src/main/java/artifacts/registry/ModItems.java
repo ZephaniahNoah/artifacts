@@ -9,10 +9,7 @@ import artifacts.item.wearable.WhoopeeCushionItem;
 import artifacts.item.wearable.belt.*;
 import artifacts.item.wearable.feet.*;
 import artifacts.item.wearable.hands.*;
-import artifacts.item.wearable.head.DrinkingHatItem;
-import artifacts.item.wearable.head.SnorkelItem;
-import artifacts.item.wearable.head.SuperstitiousHatItem;
-import artifacts.item.wearable.head.VillagerHatItem;
+import artifacts.item.wearable.head.*;
 import artifacts.item.wearable.necklace.*;
 import dev.architectury.core.item.ArchitecturySpawnEggItem;
 import dev.architectury.registry.CreativeTabRegistry;
@@ -52,6 +49,7 @@ public class ModItems {
     public static RegistrySupplier<WearableArtifactItem> NIGHT_VISION_GOGGLES = register("night_vision_goggles", () -> new MobEffectItem(MobEffects.NIGHT_VISION, 320, ModGameRules.NIGHT_VISION_GOGGLES_ENABLED));
     public static RegistrySupplier<WearableArtifactItem> VILLAGER_HAT = register("villager_hat", VillagerHatItem::new);
     public static RegistrySupplier<WearableArtifactItem> SUPERSTITIOUS_HAT = register("superstitious_hat", SuperstitiousHatItem::new);
+    public static RegistrySupplier<WearableArtifactItem> COWBOY_HAT = register("cowboy_hat", CowboyHatItem::new);
 
     // necklace
     public static RegistrySupplier<WearableArtifactItem> LUCKY_SCARF = register("lucky_scarf", LuckyScarfItem::new);

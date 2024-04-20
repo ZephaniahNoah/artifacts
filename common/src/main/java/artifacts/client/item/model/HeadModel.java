@@ -157,4 +157,28 @@ public class HeadModel extends HumanoidModel<LivingEntity> {
 
         return createEmptyHat(head);
     }
+
+    public static MeshDefinition createCowboyHat() {
+        CubeListBuilder head = CubeListBuilder.create();
+        CubeListBuilder leftBrim = CubeListBuilder.create();
+        CubeListBuilder rightBrim = CubeListBuilder.create();
+
+        head.texOffs(-16, 16);
+        head.addBox(-6, -5.125F, -8, 12, 0, 16);
+        leftBrim.texOffs(24 - 16, 16);
+        leftBrim.addBox(0, 0, 0, 2, 0, 16);
+        rightBrim.texOffs(28 - 16, 16);
+        rightBrim.addBox(0, 0, 0, 2, 0, 16);
+
+        MeshDefinition mesh = createHat(head);
+
+        mesh.getRoot().getChild("head").addOrReplaceChild("left_brim", leftBrim,
+                PartPose.offsetAndRotation(6, -5.125F, -8, 0, 0, - 45 * (float) Math.PI / 180)
+        );
+        mesh.getRoot().getChild("head").addOrReplaceChild("right_brim", rightBrim,
+                PartPose.offsetAndRotation(-6 - 1.41421F, -5.125F - 1.41421F, -8, 0, 0, 45 * (float) Math.PI / 180)
+        );
+
+        return mesh;
+    }
 }

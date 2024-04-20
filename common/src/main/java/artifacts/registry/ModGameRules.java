@@ -78,6 +78,7 @@ public class ModGameRules {
             THORN_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.THORN_PENDANT, "cooldown"), 0),
 
             BUNNY_HOPPERS_JUMP_BOOST_LEVEL = mobEffectLevel(createName(ModItems.BUNNY_HOPPERS, "jumpBoostLevel"), 2),
+            COWBOY_HAT_SPEED_LEVEL = mobEffectLevel(createName(ModItems.COWBOY_HAT, "speedLevel"), 2),
             ONION_RING_HASTE_LEVEL = mobEffectLevel(createName(ModItems.ONION_RING, "hasteLevel"), 2),
             PANIC_NECKLACE_SPEED_LEVEL = mobEffectLevel(createName(ModItems.PANIC_NECKLACE, "speedLevel"), 1);
 

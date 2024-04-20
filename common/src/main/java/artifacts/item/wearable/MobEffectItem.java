@@ -5,6 +5,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
@@ -54,14 +55,30 @@ public class MobEffectItem extends WearableArtifactItem {
         return duration;
     }
 
+    @Nullable
+    protected LivingEntity getTarget(LivingEntity entity) {
+        return entity;
+    }
+
     protected boolean shouldShowIcon() {
         return false;
+    }
+
+    protected boolean shouldShowParticles() {
+        return false;
+    }
+
+    protected int getUpdateInterval() {
+        return 1;
     }
 
     @Override
     public void wornTick(LivingEntity entity, ItemStack stack) {
         if (isEffectActive(entity) && !entity.level().isClientSide()) {
-            entity.addEffect(new MobEffectInstance(mobEffect, getDuration(entity) - 1, getAmplifier(), false, false, shouldShowIcon()));
+            LivingEntity target = getTarget(entity);
+            if (target != null && entity.tickCount % getUpdateInterval() == 0) {
+                target.addEffect(new MobEffectInstance(mobEffect, getDuration(target) - 1, getAmplifier(), false, shouldShowParticles(), shouldShowIcon()));
+            }
         }
     }
 
@@ -71,7 +88,7 @@ public class MobEffectItem extends WearableArtifactItem {
     }
 
     private void removeRemainingEffect(LivingEntity entity) {
-        if (isEnabled.get() && !entity.level().isClientSide()) {
+        if (isEnabled.get() && !entity.level().isClientSide() && getTarget(entity) == entity) {
             MobEffectInstance effectInstance = entity.getEffect(mobEffect);
             if (effectInstance != null && effectInstance.getAmplifier() == getAmplifier() && !effectInstance.isVisible() && effectInstance.getDuration() < getDuration(entity)) {
                 entity.removeEffect(mobEffect);

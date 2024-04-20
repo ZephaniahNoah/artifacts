@@ -17,6 +17,7 @@ public class ArtifactLayers {
             NIGHT_VISION_GOGGLES = createLayerLocation("night_vision_goggles"),
             SUPERSTITIOUS_HAT = createLayerLocation("superstitious_hat"),
             VILLAGER_HAT = createLayerLocation("villager_hat"),
+            COWBOY_HAT = createLayerLocation("cowboy_hat"),
 
             SCARF = createLayerLocation("scarf"),
             CROSS_NECKLACE = createLayerLocation("cross_necklace"),
@@ -86,6 +87,7 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(NIGHT_VISION_GOGGLES, layer(HeadModel::createNightVisionGoggles, 32, 32));
         EntityModelLayerRegistry.register(SUPERSTITIOUS_HAT, layer(HeadModel::createSuperstitiousHat, 64, 32));
         EntityModelLayerRegistry.register(VILLAGER_HAT, layer(HeadModel::createVillagerHat, 32, 32));
+        EntityModelLayerRegistry.register(COWBOY_HAT, layer(HeadModel::createCowboyHat, 32, 32));
 
         EntityModelLayerRegistry.register(SCARF, layer(ScarfModel::createScarf, 64, 32));
         EntityModelLayerRegistry.register(CROSS_NECKLACE, layer(NecklaceModel::createCrossNecklace, 64, 48));
