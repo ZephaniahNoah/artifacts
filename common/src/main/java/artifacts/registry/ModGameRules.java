@@ -70,6 +70,7 @@ public class ModGameRules {
             HELIUM_FLAMINGO_RECHARGE_DURATION = durationSeconds(createName(ModItems.HELIUM_FLAMINGO, "rechargeDuration"), 15),
             OBSIDIAN_SKULL_FIRE_RESISTANCE_COOLDOWN = durationSeconds(createName(ModItems.OBSIDIAN_SKULL, "fireResistanceCooldown"), 60),
             OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION = durationSeconds(createName(ModItems.OBSIDIAN_SKULL, "fireResistanceDuration"), 30),
+            ONION_RING_HASTE_DURATION_PER_FOOD_POINT = durationSeconds(createName(ModItems.ONION_RING, "hasteDurationPerFoodPoint"), 6),
             PANIC_NECKLACE_COOLDOWN = durationSeconds(createName(ModItems.PANIC_NECKLACE, "cooldown"), 0),
             PANIC_NECKLACE_SPEED_DURATION = durationSeconds(createName(ModItems.PANIC_NECKLACE, "speedDuration"), 8),
             SHOCK_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.SHOCK_PENDANT, "cooldown"), 0),
@@ -77,6 +78,7 @@ public class ModGameRules {
             THORN_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.THORN_PENDANT, "cooldown"), 0),
 
             BUNNY_HOPPERS_JUMP_BOOST_LEVEL = mobEffectLevel(createName(ModItems.BUNNY_HOPPERS, "jumpBoostLevel"), 2),
+            ONION_RING_HASTE_LEVEL = mobEffectLevel(createName(ModItems.ONION_RING, "hasteLevel"), 2),
             PANIC_NECKLACE_SPEED_LEVEL = mobEffectLevel(createName(ModItems.PANIC_NECKLACE, "speedLevel"), 1);
 
     public static final DoubleValue

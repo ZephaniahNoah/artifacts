@@ -46,7 +46,7 @@ public class WearableArtifactCurio implements ICurio {
 
     @Override
     public boolean canEquipFromUse(SlotContext slotContext) {
-        return true;
+        return item.getFoodProperties(stack, slotContext.entity()) == null;
     }
 
     @Override

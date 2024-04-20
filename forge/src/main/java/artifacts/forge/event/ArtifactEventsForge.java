@@ -6,6 +6,7 @@ import artifacts.item.wearable.belt.ObsidianSkullItem;
 import artifacts.item.wearable.feet.BunnyHoppersItem;
 import artifacts.item.wearable.hands.DiggingClawsItem;
 import artifacts.item.wearable.hands.GoldenHookItem;
+import artifacts.item.wearable.hands.OnionRingItem;
 import artifacts.item.wearable.hands.VampiricGloveItem;
 import artifacts.item.wearable.head.DrinkingHatItem;
 import artifacts.item.wearable.necklace.CharmOfSinkingItem;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.*;
@@ -43,6 +45,7 @@ public class ArtifactEventsForge {
         MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onKittySlippersChangeTarget);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onDiggingClawsBreakSpeed);
         MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onDiggingClawsHarvestCheck);
+        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onOnionRingItemUseFinish);
     }
 
     private static void onLivingDamage(LivingDamageEvent event) {
@@ -132,6 +135,13 @@ public class ArtifactEventsForge {
             } else if (gravity.hasModifier(UMBRELLA_SLOW_FALLING)) {
                 gravity.removeModifier(UMBRELLA_SLOW_FALLING);
             }
+        }
+    }
+
+    private static void onOnionRingItemUseFinish(LivingEntityUseItemEvent.Finish event) {
+        FoodProperties properties = event.getItem().getFoodProperties(event.getEntity());
+        if (properties != null) {
+            OnionRingItem.applyMiningSpeedBuff(event.getEntity(), properties);
         }
     }
 }

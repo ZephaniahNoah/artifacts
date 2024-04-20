@@ -6,10 +6,7 @@ import artifacts.registry.ModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.FrameType;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.advancements.critereon.KilledTrigger;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
@@ -43,13 +40,24 @@ public class Advancements extends ForgeAdvancementProvider {
                 .addCriterion("kill_mimic", KilledTrigger.TriggerInstance.playerKilledEntity(
                         EntityPredicate.Builder.entity().of(ModEntityTypes.MIMIC.get())
                 )).save(saver, chestSlayer, existingFileHelper);
+
+        ResourceLocation adventurousEater = Artifacts.id("adventurous_eater");
+        advancement(adventurousEater, ModItems.ONION_RING.get(), true)
+                .parent(parent)
+                .addCriterion("eat_artifact", ConsumeItemTrigger.TriggerInstance.usedItem(
+                        ItemPredicate.Builder.item().of(ItemTags.ARTIFACTS).build()
+                )).save(saver, adventurousEater, existingFileHelper);
     }
 
     private static Advancement.Builder advancement(ResourceLocation id, ItemLike icon) {
-        return Advancement.Builder.advancement().display(display(id.getPath(), icon));
+        return advancement(id, icon, false);
     }
 
-    private static DisplayInfo display(String title, ItemLike icon) {
+    private static Advancement.Builder advancement(ResourceLocation id, ItemLike icon, boolean hidden) {
+        return Advancement.Builder.advancement().display(display(id.getPath(), icon, hidden));
+    }
+
+    private static DisplayInfo display(String title, ItemLike icon, boolean hidden) {
         return new DisplayInfo(
                 new ItemStack(icon),
                 Component.translatable("%s.advancements.%s.title".formatted(Artifacts.MOD_ID, title)),
@@ -58,7 +66,7 @@ public class Advancements extends ForgeAdvancementProvider {
                 FrameType.TASK,
                 true,
                 true,
-                false
+                hidden
         );
     }
 }

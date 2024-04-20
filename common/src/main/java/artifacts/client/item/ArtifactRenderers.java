@@ -49,6 +49,7 @@ public class ArtifactRenderers {
         register(ModItems.POCKET_PISTON.get(), () -> new GloveArtifactRenderer("pocket_piston/pocket_piston_default", "pocket_piston/pocket_piston_slim", ArmsModel.createPocketPistonModel(false), ArmsModel.createPocketPistonModel(true)));
         register(ModItems.VAMPIRIC_GLOVE.get(), () -> new GloveArtifactRenderer("vampiric_glove", ArmsModel.createGloveModel(false), ArmsModel.createGloveModel(true)));
         register(ModItems.GOLDEN_HOOK.get(), () -> new GloveArtifactRenderer("golden_hook/golden_hook_default", "golden_hook/golden_hook_slim", ArmsModel.createGoldenHookModel(false), ArmsModel.createGoldenHookModel(true)));
+        register(ModItems.ONION_RING.get(), () -> new GloveArtifactRenderer("onion_ring/onion_ring_default", "onion_ring/onion_ring_slim", ArmsModel.createOnionRingModel(false), ArmsModel.createOnionRingModel(true)));
 
         // feet
         register(ModItems.AQUA_DASHERS.get(), () -> new GenericArtifactRenderer("aqua_dashers", new LegsModel(bakeLayer(ArtifactLayers.AQUA_DASHERS))));

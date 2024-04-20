@@ -32,7 +32,7 @@ public abstract class WearableArtifactItemMixin extends ArtifactItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player user, InteractionHand hand) {
         ItemStack stack = user.getItemInHand(hand);
-        if (TrinketItem.equipItem(user, stack)) {
+        if (getFoodProperties() == null && TrinketItem.equipItem(user, stack)) {
             user.playSound(getEquipSound(), 1, 1);
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());

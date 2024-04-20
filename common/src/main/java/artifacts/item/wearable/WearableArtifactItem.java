@@ -22,6 +22,14 @@ import java.util.stream.Stream;
 
 public abstract class WearableArtifactItem extends ArtifactItem {
 
+    public WearableArtifactItem(Properties properties) {
+        super(properties);
+    }
+
+    public WearableArtifactItem() {
+        this(new Properties());
+    }
+
     private final List<ArtifactAttributeModifier> attributeModifiers = new ArrayList<>();
 
     public void addAttributeModifier(ArtifactAttributeModifier attributeModifier) {

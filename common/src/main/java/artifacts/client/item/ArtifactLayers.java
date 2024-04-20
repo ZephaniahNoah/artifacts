@@ -39,6 +39,8 @@ public class ArtifactLayers {
             SLIM_GOLDEN_HOOK = createLayerLocation("slim_golden_hook"),
             POCKET_PISTON = createLayerLocation("pocket_piston"),
             SLIM_POCKET_PISTON = createLayerLocation("slim_pocket_piston"),
+            ONION_RING = createLayerLocation("onion_ring"),
+            SLIM_ONION_RING = createLayerLocation("slim_onion_ring"),
 
             AQUA_DASHERS = createLayerLocation("aqua_dashers"),
             BUNNY_HOPPERS = createLayerLocation("bunny_hoppers"),
@@ -66,51 +68,57 @@ public class ArtifactLayers {
         return smallArms ? SLIM_POCKET_PISTON : POCKET_PISTON;
     }
 
+    public static ModelLayerLocation onionRing(boolean smallArms) {
+        return smallArms ? SLIM_ONION_RING : ONION_RING;
+    }
+
     public static ModelLayerLocation createLayerLocation(String name) {
         return new ModelLayerLocation(Artifacts.id(name), name);
     }
 
-    private static Supplier<LayerDefinition> layer(MeshDefinition mesh, int textureWidth, int textureHeight) {
-        return () -> LayerDefinition.create(mesh, textureWidth, textureHeight);
+    private static Supplier<LayerDefinition> layer(Supplier<MeshDefinition> mesh, int textureWidth, int textureHeight) {
+        return () -> LayerDefinition.create(mesh.get(), textureWidth, textureHeight);
     }
 
     public static void register() {
-        EntityModelLayerRegistry.register(DRINKING_HAT, layer(HeadModel.createDrinkingHat(), 64, 32));
-        EntityModelLayerRegistry.register(SNORKEL, layer(HeadModel.createSnorkel(), 64, 32));
-        EntityModelLayerRegistry.register(NIGHT_VISION_GOGGLES, layer(HeadModel.createNightVisionGoggles(), 32, 32));
-        EntityModelLayerRegistry.register(SUPERSTITIOUS_HAT, layer(HeadModel.createSuperstitiousHat(), 64, 32));
-        EntityModelLayerRegistry.register(VILLAGER_HAT, layer(HeadModel.createVillagerHat(), 32, 32));
+        EntityModelLayerRegistry.register(DRINKING_HAT, layer(HeadModel::createDrinkingHat, 64, 32));
+        EntityModelLayerRegistry.register(SNORKEL, layer(HeadModel::createSnorkel, 64, 32));
+        EntityModelLayerRegistry.register(NIGHT_VISION_GOGGLES, layer(HeadModel::createNightVisionGoggles, 32, 32));
+        EntityModelLayerRegistry.register(SUPERSTITIOUS_HAT, layer(HeadModel::createSuperstitiousHat, 64, 32));
+        EntityModelLayerRegistry.register(VILLAGER_HAT, layer(HeadModel::createVillagerHat, 32, 32));
 
-        EntityModelLayerRegistry.register(SCARF, layer(ScarfModel.createScarf(), 64, 32));
-        EntityModelLayerRegistry.register(CROSS_NECKLACE, layer(NecklaceModel.createCrossNecklace(), 64, 48));
-        EntityModelLayerRegistry.register(PANIC_NECKLACE, layer(NecklaceModel.createPanicNecklace(), 64, 48));
-        EntityModelLayerRegistry.register(PENDANT, layer(NecklaceModel.createPendant(), 64, 48));
-        EntityModelLayerRegistry.register(CHARM_OF_SINKING, layer(NecklaceModel.createCharmOfSinking(), 64, 48));
+        EntityModelLayerRegistry.register(SCARF, layer(ScarfModel::createScarf, 64, 32));
+        EntityModelLayerRegistry.register(CROSS_NECKLACE, layer(NecklaceModel::createCrossNecklace, 64, 48));
+        EntityModelLayerRegistry.register(PANIC_NECKLACE, layer(NecklaceModel::createPanicNecklace, 64, 48));
+        EntityModelLayerRegistry.register(PENDANT, layer(NecklaceModel::createPendant, 64, 48));
+        EntityModelLayerRegistry.register(CHARM_OF_SINKING, layer(NecklaceModel::createCharmOfSinking, 64, 48));
 
-        EntityModelLayerRegistry.register(CLOUD_IN_A_BOTTLE, layer(BeltModel.createCloudInABottle(), 32, 32));
-        EntityModelLayerRegistry.register(OBSIDIAN_SKULL, layer(BeltModel.createObsidianSkull(), 32, 32));
-        EntityModelLayerRegistry.register(ANTIDOTE_VESSEL, layer(BeltModel.createAntidoteVessel(), 32, 32));
-        EntityModelLayerRegistry.register(UNIVERSAL_ATTRACTOR, layer(BeltModel.createUniversalAttractor(), 32, 32));
-        EntityModelLayerRegistry.register(CRYSTAL_HEART, layer(BeltModel.createCrystalHeart(), 32, 32));
-        EntityModelLayerRegistry.register(HELIUM_FLAMINGO, layer(BeltModel.createHeliumFlamingo(), 64, 64));
+        EntityModelLayerRegistry.register(CLOUD_IN_A_BOTTLE, layer(BeltModel::createCloudInABottle, 32, 32));
+        EntityModelLayerRegistry.register(OBSIDIAN_SKULL, layer(BeltModel::createObsidianSkull, 32, 32));
+        EntityModelLayerRegistry.register(ANTIDOTE_VESSEL, layer(BeltModel::createAntidoteVessel, 32, 32));
+        EntityModelLayerRegistry.register(UNIVERSAL_ATTRACTOR, layer(BeltModel::createUniversalAttractor, 32, 32));
+        EntityModelLayerRegistry.register(CRYSTAL_HEART, layer(BeltModel::createCrystalHeart, 32, 32));
+        EntityModelLayerRegistry.register(HELIUM_FLAMINGO, layer(BeltModel::createHeliumFlamingo, 64, 64));
 
-        EntityModelLayerRegistry.register(CLAWS, layer(ArmsModel.createClaws(false), 32, 16));
-        EntityModelLayerRegistry.register(SLIM_CLAWS, layer(ArmsModel.createClaws(true), 32, 16));
-        EntityModelLayerRegistry.register(GLOVE, layer(ArmsModel.createSleevedArms(false), 32, 32));
-        EntityModelLayerRegistry.register(SLIM_GLOVE, layer(ArmsModel.createSleevedArms(true), 32, 32));
-        EntityModelLayerRegistry.register(GOLDEN_HOOK, layer(ArmsModel.createGoldenHook(false), 64, 32));
-        EntityModelLayerRegistry.register(SLIM_GOLDEN_HOOK, layer(ArmsModel.createGoldenHook(true), 64, 32));
-        EntityModelLayerRegistry.register(POCKET_PISTON, layer(ArmsModel.createPocketPiston(false), 32, 16));
-        EntityModelLayerRegistry.register(SLIM_POCKET_PISTON, layer(ArmsModel.createPocketPiston(true), 32, 16));
+        EntityModelLayerRegistry.register(CLAWS, layer(() -> ArmsModel.createClaws(false), 32, 16));
+        EntityModelLayerRegistry.register(SLIM_CLAWS, layer(() -> ArmsModel.createClaws(true), 32, 16));
+        EntityModelLayerRegistry.register(GLOVE, layer(() -> ArmsModel.createSleevedArms(false), 32, 32));
+        EntityModelLayerRegistry.register(SLIM_GLOVE, layer(() -> ArmsModel.createSleevedArms(true), 32, 32));
+        EntityModelLayerRegistry.register(GOLDEN_HOOK, layer(() -> ArmsModel.createGoldenHook(false), 64, 32));
+        EntityModelLayerRegistry.register(SLIM_GOLDEN_HOOK, layer(() -> ArmsModel.createGoldenHook(true), 64, 32));
+        EntityModelLayerRegistry.register(POCKET_PISTON, layer(() -> ArmsModel.createPocketPiston(false), 32, 16));
+        EntityModelLayerRegistry.register(SLIM_POCKET_PISTON, layer(() -> ArmsModel.createPocketPiston(true), 32, 16));
+        EntityModelLayerRegistry.register(ONION_RING, layer(() -> ArmsModel.createOnionRing(false), 32, 32));
+        EntityModelLayerRegistry.register(SLIM_ONION_RING, layer(() -> ArmsModel.createOnionRing(true), 32, 32));
 
-        EntityModelLayerRegistry.register(AQUA_DASHERS, layer(LegsModel.createAquaDashers(), 32, 32));
-        EntityModelLayerRegistry.register(BUNNY_HOPPERS, layer(LegsModel.createBunnyHoppers(), 64, 32));
-        EntityModelLayerRegistry.register(KITTY_SLIPPERS, layer(LegsModel.createKittySlippers(), 64, 32));
-        EntityModelLayerRegistry.register(RUNNING_SHOES, layer(LegsModel.createRunningShoes(), 32, 32));
-        EntityModelLayerRegistry.register(SNOWSHOES, layer(LegsModel.createSnowshoes(), 64, 64));
-        EntityModelLayerRegistry.register(STEADFAST_SPIKES, layer(LegsModel.createSteadfastSpikes(), 64, 32));
-        EntityModelLayerRegistry.register(FLIPPERS, layer(LegsModel.createFlippers(), 64, 64));
+        EntityModelLayerRegistry.register(AQUA_DASHERS, layer(LegsModel::createAquaDashers, 32, 32));
+        EntityModelLayerRegistry.register(BUNNY_HOPPERS, layer(LegsModel::createBunnyHoppers, 64, 32));
+        EntityModelLayerRegistry.register(KITTY_SLIPPERS, layer(LegsModel::createKittySlippers, 64, 32));
+        EntityModelLayerRegistry.register(RUNNING_SHOES, layer(LegsModel::createRunningShoes, 32, 32));
+        EntityModelLayerRegistry.register(SNOWSHOES, layer(LegsModel::createSnowshoes, 64, 64));
+        EntityModelLayerRegistry.register(STEADFAST_SPIKES, layer(LegsModel::createSteadfastSpikes, 64, 32));
+        EntityModelLayerRegistry.register(FLIPPERS, layer(LegsModel::createFlippers, 64, 64));
 
-        EntityModelLayerRegistry.register(WHOOPEE_CUSHION, layer(HeadModel.createWhoopeeCushion(), 32, 16));
+        EntityModelLayerRegistry.register(WHOOPEE_CUSHION, layer(HeadModel::createWhoopeeCushion, 32, 16));
     }
 }

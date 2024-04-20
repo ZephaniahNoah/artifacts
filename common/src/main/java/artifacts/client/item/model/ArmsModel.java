@@ -74,18 +74,35 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         };
     }
 
+    public static ArmsModel createOnionRingModel(boolean smallArms) {
+        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.onionRing(smallArms)));
+    }
+
     public static MeshDefinition createEmptyArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
         MeshDefinition mesh = createMesh(CubeDeformation.NONE, 0);
 
-        mesh.getRoot().addOrReplaceChild(
-                "left_arm",
+        mesh.getRoot().addOrReplaceChild("left_arm", leftArm, PartPose.ZERO);
+        mesh.getRoot().addOrReplaceChild("right_arm", rightArm, PartPose.ZERO);
+
+        return mesh;
+    }
+
+    public static MeshDefinition createEmptyArmsCentered(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
+        MeshDefinition mesh = createMesh(CubeDeformation.NONE, 0);
+
+        mesh.getRoot().addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.ZERO);
+        mesh.getRoot().addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.ZERO);
+
+        float armWidth = smallArms ? 3F : 4F;
+        mesh.getRoot().getChild("left_arm").addOrReplaceChild(
+                "artifact",
                 leftArm,
-                PartPose.offset(5, smallArms ? 2.5F : 2, 0)
+                PartPose.offset(- 1 + armWidth / 2, 10, 0)
         );
-        mesh.getRoot().addOrReplaceChild(
-                "right_arm",
+        mesh.getRoot().getChild("right_arm").addOrReplaceChild(
+                "artifact",
                 rightArm,
-                PartPose.offset(-5, smallArms ? 2.5F : 2, 0)
+                PartPose.offset(1 - armWidth / 2, 10, 0)
         );
 
         return mesh;
@@ -207,4 +224,35 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
 
         return mesh;
     }
+    public static MeshDefinition createOnionRing(boolean smallArms) {
+        CubeListBuilder leftArm = CubeListBuilder.create();
+        CubeListBuilder rightArm = CubeListBuilder.create();
+
+        float armWidth = smallArms ? 3 : 4;
+        float armDepth = 4;
+        float h = -4;
+
+        leftArm.texOffs(0, 0);
+        leftArm.addBox(-1 - armWidth / 2, h, -1 - armDepth / 2, armWidth + 2, 2, 1);
+        rightArm.texOffs(16, 0);
+        rightArm.addBox(-1 - armWidth / 2, h, -1 - armDepth / 2, armWidth + 2, 2, 1);
+
+        leftArm.texOffs(0, 3);
+        leftArm.addBox(-1 - armWidth / 2, h, armDepth / 2, armWidth + 2, 2, 1);
+        rightArm.texOffs(16, 3);
+        rightArm.addBox(-1 - armWidth / 2, h, armDepth / 2, armWidth + 2, 2, 1);
+
+        leftArm.texOffs(0, 6);
+        leftArm.addBox(armWidth / 2, h, - armDepth / 2, 1, 2, armDepth);
+        rightArm.texOffs(16, 6);
+        rightArm.addBox(armWidth / 2, h, - armDepth / 2, 1, 2, armDepth);
+
+        leftArm.texOffs(0, 12);
+        leftArm.addBox(-1 - armWidth / 2, h, - armDepth / 2, 1, 2, armDepth);
+        rightArm.texOffs(16, 12);
+        rightArm.addBox(-1 - armWidth / 2, h, - armDepth / 2, 1, 2, armDepth);
+
+        return createEmptyArmsCentered(leftArm, rightArm, smallArms);
+    }
+
 }
