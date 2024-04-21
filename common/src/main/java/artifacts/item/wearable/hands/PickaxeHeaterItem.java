@@ -47,6 +47,7 @@ public class PickaxeHeaterItem extends WearableArtifactItem {
                 && context.getParam(LootContextParams.THIS_ENTITY) instanceof LivingEntity entity
                 && entity.level() instanceof ServerLevel level
                 && ModItems.PICKAXE_HEATER.get().isEquippedBy(entity)
+                && ModGameRules.PICKAXE_HEATER_ENABLED.get()
                 && context.getParam(LootContextParams.BLOCK_STATE).is(ores)
         ) {
             ObjectArrayList<ItemStack> result = new ObjectArrayList<>(items.size());
