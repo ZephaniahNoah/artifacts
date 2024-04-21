@@ -45,7 +45,7 @@ public class Advancements extends ForgeAdvancementProvider {
         advancement(adventurousEater, ModItems.ONION_RING.get(), true)
                 .parent(parent)
                 .addCriterion("eat_artifact", ConsumeItemTrigger.TriggerInstance.usedItem(
-                        ItemPredicate.Builder.item().of(ItemTags.ARTIFACTS).build()
+                        ItemPredicate.Builder.item().of(ModItems.ONION_RING.get()).build()
                 )).save(saver, adventurousEater, existingFileHelper);
     }
 
