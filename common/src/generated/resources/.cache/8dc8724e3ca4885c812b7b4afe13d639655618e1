@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-20T21:46:56.7169139	Item Models: artifacts
+// 1.20.1	2024-04-21T01:22:22.6822139	Item Models: artifacts
 6857b5e2e0cc4e6ce94cda70b101fb3b4881fa68 assets/artifacts/models/item/antidote_vessel.json
 aab84990a6af764a8c1930badc4a9533a46604ac assets/artifacts/models/item/aqua_dashers.json
 b98f8fd8c0021ca2799b347394ef70672c1c3a3b assets/artifacts/models/item/bunny_hoppers.json
@@ -23,6 +23,7 @@ e3e2895942abbe6799c0e48c3d26aa5ac7898208 assets/artifacts/models/item/night_visi
 b84256306f2bbaaf5b8254a246e9566c9bea6dcf assets/artifacts/models/item/obsidian_skull.json
 b49e975fb34efa161453db489e69cf39a240f477 assets/artifacts/models/item/onion_ring.json
 7ad734b1c06f1f65cdd050d0e53da050d1c7920e assets/artifacts/models/item/panic_necklace.json
+4921b789aa6016f86ea489078f006d6defd29a27 assets/artifacts/models/item/pickaxe_heater.json
 7cecd8b4b341331e497ef21e4674c138226eadf5 assets/artifacts/models/item/plastic_drinking_hat.json
 53f2a0e20c731c3094e7750bdfa198852a60375e assets/artifacts/models/item/pocket_piston.json
 72e9d3ee478f28ac4f90802a6f86903b1fe903ef assets/artifacts/models/item/power_glove.json
