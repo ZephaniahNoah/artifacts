@@ -43,14 +43,15 @@ public class ArtifactRenderers {
         register(ModItems.HELIUM_FLAMINGO.get(), () -> new GenericArtifactRenderer("helium_flamingo", BeltModel.createHeliumFlamingoModel()));
 
         // hands
-        register(ModItems.DIGGING_CLAWS.get(), () -> new GloveArtifactRenderer("claws/digging_claws", "claws/digging_claws", ArmsModel.createClawsModel(false), ArmsModel.createClawsModel(true)));
-        register(ModItems.FERAL_CLAWS.get(), () -> new GloveArtifactRenderer("claws/feral_claws", "claws/feral_claws", ArmsModel.createClawsModel(false), ArmsModel.createClawsModel(true)));
-        register(ModItems.POWER_GLOVE.get(), () -> new GloveArtifactRenderer("power_glove", ArmsModel.createGloveModel(false), ArmsModel.createGloveModel(true)));
-        register(ModItems.FIRE_GAUNTLET.get(), () -> new GlowingGloveArtifactRenderer("fire_gauntlet", ArmsModel.createGloveModel(false), ArmsModel.createGloveModel(true)));
-        register(ModItems.POCKET_PISTON.get(), () -> new GloveArtifactRenderer("pocket_piston/pocket_piston_default", "pocket_piston/pocket_piston_slim", ArmsModel.createPocketPistonModel(false), ArmsModel.createPocketPistonModel(true)));
-        register(ModItems.VAMPIRIC_GLOVE.get(), () -> new GloveArtifactRenderer("vampiric_glove", ArmsModel.createGloveModel(false), ArmsModel.createGloveModel(true)));
-        register(ModItems.GOLDEN_HOOK.get(), () -> new GloveArtifactRenderer("golden_hook/golden_hook_default", "golden_hook/golden_hook_slim", ArmsModel.createGoldenHookModel(false), ArmsModel.createGoldenHookModel(true)));
-        register(ModItems.ONION_RING.get(), () -> new GloveArtifactRenderer("onion_ring/onion_ring_default", "onion_ring/onion_ring_slim", ArmsModel.createOnionRingModel(false), ArmsModel.createOnionRingModel(true)));
+        register(ModItems.DIGGING_CLAWS.get(), () -> new GloveArtifactRenderer("digging_claws", "digging_claws", ArmsModel::createClawsModel));
+        register(ModItems.FERAL_CLAWS.get(), () -> new GloveArtifactRenderer("feral_claws", "feral_claws", ArmsModel::createClawsModel));
+        register(ModItems.POWER_GLOVE.get(), () -> new GloveArtifactRenderer("power_glove", ArmsModel::createGloveModel));
+        register(ModItems.FIRE_GAUNTLET.get(), () -> new GlowingGloveArtifactRenderer("fire_gauntlet", ArmsModel::createGloveModel));
+        register(ModItems.POCKET_PISTON.get(), () -> new GloveArtifactRenderer("pocket_piston", ArmsModel::createPocketPistonModel));
+        register(ModItems.VAMPIRIC_GLOVE.get(), () -> new GloveArtifactRenderer("vampiric_glove", ArmsModel::createGloveModel));
+        register(ModItems.GOLDEN_HOOK.get(), () -> new GloveArtifactRenderer("golden_hook", ArmsModel::createGoldenHookModel));
+        register(ModItems.ONION_RING.get(), () -> new GloveArtifactRenderer("onion_ring", ArmsModel::createOnionRingModel));
+        register(ModItems.PICKAXE_HEATER.get(), () -> new GlowingGloveArtifactRenderer("pickaxe_heater", ArmsModel::createPickaxeHeaterModel));
 
         // feet
         register(ModItems.AQUA_DASHERS.get(), () -> new GenericArtifactRenderer("aqua_dashers", new LegsModel(bakeLayer(ArtifactLayers.AQUA_DASHERS))));

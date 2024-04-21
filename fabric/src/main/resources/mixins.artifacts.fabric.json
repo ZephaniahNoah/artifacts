@@ -21,6 +21,7 @@
     "item.wearable.kittyslippers.NearestAttackableTargetGoalMixin",
     "item.wearable.luckyscarf.ApplyBonusCountMixin",
     "item.wearable.onionring.LivingEntityMixin",
+    "item.wearable.pickaxeheater.LootTableMixin",
     "item.wearable.snowshoes.LivingEntityMixin",
     "item.wearable.superstitioushat.EnchantmentHelperMixin"
   ],

@@ -42,6 +42,8 @@ public class ArtifactLayers {
             SLIM_POCKET_PISTON = createLayerLocation("slim_pocket_piston"),
             ONION_RING = createLayerLocation("onion_ring"),
             SLIM_ONION_RING = createLayerLocation("slim_onion_ring"),
+            PICKAXE_HEATER = createLayerLocation("pickaxe_heater"),
+            SLIM_PICKAXE_HEATER = createLayerLocation("slim_pickaxe_heater"),
 
             AQUA_DASHERS = createLayerLocation("aqua_dashers"),
             BUNNY_HOPPERS = createLayerLocation("bunny_hoppers"),
@@ -71,6 +73,10 @@ public class ArtifactLayers {
 
     public static ModelLayerLocation onionRing(boolean smallArms) {
         return smallArms ? SLIM_ONION_RING : ONION_RING;
+    }
+
+    public static ModelLayerLocation pickaxeHeater(boolean smallArms) {
+        return smallArms ? SLIM_PICKAXE_HEATER : PICKAXE_HEATER;
     }
 
     public static ModelLayerLocation createLayerLocation(String name) {
@@ -112,6 +118,8 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(SLIM_POCKET_PISTON, layer(() -> ArmsModel.createPocketPiston(true), 32, 16));
         EntityModelLayerRegistry.register(ONION_RING, layer(() -> ArmsModel.createOnionRing(false), 32, 32));
         EntityModelLayerRegistry.register(SLIM_ONION_RING, layer(() -> ArmsModel.createOnionRing(true), 32, 32));
+        EntityModelLayerRegistry.register(PICKAXE_HEATER, layer(() -> ArmsModel.createPickaxeHeater(false), 64, 32));
+        EntityModelLayerRegistry.register(SLIM_PICKAXE_HEATER, layer(() -> ArmsModel.createPickaxeHeater(true), 64, 32));
 
         EntityModelLayerRegistry.register(AQUA_DASHERS, layer(LegsModel::createAquaDashers, 32, 32));
         EntityModelLayerRegistry.register(BUNNY_HOPPERS, layer(LegsModel::createBunnyHoppers, 64, 32));

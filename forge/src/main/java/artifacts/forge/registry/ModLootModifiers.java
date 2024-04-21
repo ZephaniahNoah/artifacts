@@ -2,6 +2,7 @@ package artifacts.forge.registry;
 
 import artifacts.Artifacts;
 import artifacts.forge.loot.RollLootTableModifier;
+import artifacts.forge.loot.SmeltOresWithPickaxeHeaterModifier;
 import com.mojang.serialization.Codec;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,4 +14,5 @@ public class ModLootModifiers {
     public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Artifacts.MOD_ID);
 
     public static final RegistryObject<Codec<RollLootTableModifier>> ROLL_LOOT_TABLE = LOOT_MODIFIERS.register("roll_loot_table", RollLootTableModifier.CODEC);
+    public static final RegistryObject<Codec<SmeltOresWithPickaxeHeaterModifier>> SMELT_ORE = LOOT_MODIFIERS.register("smelt_ores_with_pickaxe_heater", SmeltOresWithPickaxeHeaterModifier.CODEC);
 }

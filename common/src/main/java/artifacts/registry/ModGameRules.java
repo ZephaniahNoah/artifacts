@@ -33,6 +33,7 @@ public class ModGameRules {
             EVERLASTING_BEEF_ENABLED = booleanValue(createName(ModItems.EVERLASTING_BEEF, "enabled")),
             KITTY_SLIPPERS_ENABLED = booleanValue(createName(ModItems.KITTY_SLIPPERS, "enabled")),
             NIGHT_VISION_GOGGLES_ENABLED = booleanValue(createName(ModItems.NIGHT_VISION_GOGGLES, "enabled")),
+            PICKAXE_HEATER_ENABLED = booleanValue(createName(ModItems.PICKAXE_HEATER, "enabled")),
             SCARF_OF_INVISIBILITY_ENABLED = booleanValue(createName(ModItems.SCARF_OF_INVISIBILITY, "enabled")),
             SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")), // TODO remove 1.20.2
             STEADFAST_SPIKES_ENABLED = booleanValue(createName(ModItems.STEADFAST_SPIKES, "enabled")), // TODO remove 1.20.2

@@ -13,15 +13,17 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.HumanoidArm;
 
+import java.util.function.Function;
+
 public class GlowingGloveArtifactRenderer extends GloveArtifactRenderer {
 
     private final ResourceLocation defaultGlowTexture;
     private final ResourceLocation slimGlowTexture;
 
-    public GlowingGloveArtifactRenderer(String name, ArmsModel defaultModel, ArmsModel slimModel) {
-        super(name, defaultModel, slimModel);
-        defaultGlowTexture = Artifacts.id("textures/entity/curio/glove/%s/%s_default_glow.png", name, name);
-        slimGlowTexture = Artifacts.id("textures/entity/curio/glove/%s/%s_slim_glow.png", name, name);
+    public GlowingGloveArtifactRenderer(String name, Function<Boolean, ArmsModel> model) {
+        super(name, model);
+        defaultGlowTexture = Artifacts.id("textures/entity/curio/%s/%s_default_glow.png", name, name);
+        slimGlowTexture = Artifacts.id("textures/entity/curio/%s/%s_slim_glow.png", name, name);
     }
 
     private ResourceLocation getGlowTexture(boolean hasSlimArms) {

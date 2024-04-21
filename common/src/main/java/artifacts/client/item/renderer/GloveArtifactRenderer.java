@@ -19,6 +19,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Function;
+
 public class GloveArtifactRenderer implements ArtifactRenderer {
 
     private final ResourceLocation defaultTexture;
@@ -26,15 +28,15 @@ public class GloveArtifactRenderer implements ArtifactRenderer {
     private final ArmsModel defaultModel;
     private final ArmsModel slimModel;
 
-    public GloveArtifactRenderer(String name, ArmsModel defaultModel, ArmsModel slimModel) {
-        this(String.format("glove/%s/%s_default", name, name), String.format("glove/%s/%s_slim", name, name), defaultModel, slimModel);
+    public GloveArtifactRenderer(String name, Function<Boolean, ArmsModel> model) {
+        this("%s/%s_default".formatted(name, name), "%s/%s_slim".formatted(name, name), model);
     }
 
-    public GloveArtifactRenderer(String defaultTexturePath, String slimTexturePath, ArmsModel defaultModel, ArmsModel slimModel) {
-        this.defaultTexture = Artifacts.id("textures/entity/curio/%s.png", defaultTexturePath);
-        this.slimTexture = Artifacts.id("textures/entity/curio/%s.png", slimTexturePath);
-        this.defaultModel = defaultModel;
-        this.slimModel = slimModel;
+    public GloveArtifactRenderer(String defaultTexture, String slimTexture, Function<Boolean, ArmsModel> model) {
+        this.defaultTexture = Artifacts.id("textures/entity/curio/%s.png", defaultTexture);
+        this.slimTexture = Artifacts.id("textures/entity/curio/%s.png", slimTexture);
+        this.defaultModel = model.apply(false);
+        this.slimModel = model.apply(true);
     }
 
     @Nullable

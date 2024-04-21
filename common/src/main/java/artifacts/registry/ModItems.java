@@ -78,6 +78,7 @@ public class ModItems {
     public static RegistrySupplier<WearableArtifactItem> VAMPIRIC_GLOVE = register("vampiric_glove", VampiricGloveItem::new);
     public static RegistrySupplier<WearableArtifactItem> GOLDEN_HOOK = register("golden_hook", GoldenHookItem::new);
     public static RegistrySupplier<WearableArtifactItem> ONION_RING = register("onion_ring", OnionRingItem::new);
+    public static RegistrySupplier<WearableArtifactItem> PICKAXE_HEATER = register("pickaxe_heater", PickaxeHeaterItem::new);
 
     // feet
     public static RegistrySupplier<WearableArtifactItem> AQUA_DASHERS = register("aqua_dashers", AquaDashersItem::new);
