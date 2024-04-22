@@ -4,7 +4,9 @@
     "eat_artifact": {
       "conditions": {
         "item": {
-          "tag": "artifacts:artifacts"
+          "items": [
+            "artifacts:onion_ring"
+          ]
         }
       },
       "trigger": "minecraft:consume_item"

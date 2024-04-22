@@ -1,5 +1,11 @@
-// 1.20.1	2024-04-21T01:22:22.6812144	Tags for minecraft:item mod id artifacts
+// 1.20.1	2024-04-22T16:19:59.5635082	Tags for minecraft:item mod id artifacts
 999af66d78e4df65fe503592e2b313e632c7b470 data/artifacts/tags/items/artifacts.json
+2465e2164941a4a1d92ea3320f702f0c092e64c6 data/artifacts/tags/items/slot/all.json
+57a1514da242109caa54be8b0d532f123a367c41 data/artifacts/tags/items/slot/belt.json
+f3a88d2b2d727ac915f44d2fadc08ccc3a7405de data/artifacts/tags/items/slot/feet.json
+8e7aa136f0adea1b0b283f0bb24353164935525a data/artifacts/tags/items/slot/hands.json
+9b9fe80c6f6780be78b00dd9c803cb63cb39c5b9 data/artifacts/tags/items/slot/head.json
+3fbc92127b3ebecc32af93d22e8c06b6c3f6093e data/artifacts/tags/items/slot/necklace.json
 ca485f07958acb2443c5b49cc46bf32ba3bef275 data/minecraft/tags/items/piglin_loved.json
 67ac1f7771168c71238c74d91631b361e0a3934c data/origins/tags/items/meat.json
 159e2d82f9583dca9566cf0a02f01f3485a2f3eb data/origins/tags/items/shields.json
