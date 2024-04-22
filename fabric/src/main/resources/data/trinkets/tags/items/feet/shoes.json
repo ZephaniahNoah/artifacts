@@ -1,12 +1,6 @@
 {
   "replace": false,
   "values": [
-    "artifacts:aqua_dashers",
-    "artifacts:bunny_hoppers",
-    "artifacts:flippers",
-    "artifacts:kitty_slippers",
-    "artifacts:running_shoes",
-    "artifacts:snowshoes",
-    "artifacts:steadfast_spikes"
+    "#artifacts:slot/feet"
   ]
 }
