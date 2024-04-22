@@ -41,6 +41,7 @@ public class ArtifactRenderers {
         register(ModItems.UNIVERSAL_ATTRACTOR.get(), () -> new BeltArtifactRenderer("universal_attractor", BeltModel.createUniversalAttractorModel()));
         register(ModItems.CRYSTAL_HEART.get(), () -> new BeltArtifactRenderer("crystal_heart", BeltModel.createCrystalHeartModel()));
         register(ModItems.HELIUM_FLAMINGO.get(), () -> new GenericArtifactRenderer("helium_flamingo", BeltModel.createHeliumFlamingoModel()));
+        register(ModItems.CHORUS_TOTEM.get(), () -> new BeltArtifactRenderer("chorus_totem", BeltModel.createChorusTotemModel()));
 
         // hands
         register(ModItems.DIGGING_CLAWS.get(), () -> new GloveArtifactRenderer("digging_claws", "digging_claws", ArmsModel::createClawsModel));

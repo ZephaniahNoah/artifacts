@@ -82,7 +82,8 @@ public class ItemTags extends ItemTagsProvider {
                 ModItems.ANTIDOTE_VESSEL.get(),
                 ModItems.UNIVERSAL_ATTRACTOR.get(),
                 ModItems.CRYSTAL_HEART.get(),
-                ModItems.HELIUM_FLAMINGO.get()
+                ModItems.HELIUM_FLAMINGO.get(),
+                ModItems.CHORUS_TOTEM.get()
         );
         tag(FEET).add(
                 ModItems.AQUA_DASHERS.get(),

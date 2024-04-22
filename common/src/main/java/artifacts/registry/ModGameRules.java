@@ -40,6 +40,7 @@ public class ModGameRules {
             UNIVERSAL_ATTRACTOR_ENABLED = booleanValue(createName(ModItems.UNIVERSAL_ATTRACTOR, "enabled")),
 
             BUNNY_HOPPERS_DO_CANCEL_FALL_DAMAGE = booleanValue(createName(ModItems.BUNNY_HOPPERS, "doCancelFallDamage")),
+            CHORUS_TOTEM_DO_CONSUME_ON_USE = booleanValue(createName(ModItems.CHORUS_TOTEM, "doConsumeOnUse")),
             FLAME_PENDANT_DO_GRANT_FIRE_RESISTANCE = booleanValue(createName(ModItems.FLAME_PENDANT, "doGrantFireResistance")),
             RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT = booleanValue(createName(ModItems.RUNNING_SHOES, "doIncreaseStepHeight")),
             SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE = booleanValue(createName(ModItems.SHOCK_PENDANT, "doCancelLightningDamage")),
@@ -61,6 +62,7 @@ public class ModGameRules {
             VILLAGER_HAT_REPUTATION_BONUS = integerValue(createName(ModItems.VILLAGER_HAT, "reputationBonus"), 100),
 
             ANTIDOTE_VESSEL_MAX_EFFECT_DURATION = durationSeconds(createName(ModItems.ANTIDOTE_VESSEL, "maxEffectDuration"), 5),
+            CHORUS_TOTEM_COOLDOWN = durationSeconds(createName(ModItems.CHORUS_TOTEM, "cooldown"), 0),
             CROSS_NECKLACE_COOLDOWN = durationSeconds(createName(ModItems.CROSS_NECKLACE, "cooldown"), 0),
             ETERNAL_STEAK_COOLDOWN = durationSeconds(createName(ModItems.ETERNAL_STEAK, "cooldown"), 15),
             EVERLASTING_BEEF_COOLDOWN = durationSeconds(createName(ModItems.EVERLASTING_BEEF, "cooldown"), 15),
@@ -84,6 +86,7 @@ public class ModGameRules {
             PANIC_NECKLACE_SPEED_LEVEL = mobEffectLevel(createName(ModItems.PANIC_NECKLACE, "speedLevel"), 1);
 
     public static final DoubleValue
+            CHORUS_TOTEM_TELEPORTATION_CHANCE = percentage(createName(ModItems.CHORUS_TOTEM, "teleportationChance"), 100),
             CLOUD_IN_A_BOTTLE_SPRINT_JUMP_VERTICAL_VELOCITY = doubleValue(createName(ModItems.CLOUD_IN_A_BOTTLE, "sprintJumpVerticalVelocity"), 50, 100 * 100, 100),
             CLOUD_IN_A_BOTTLE_SPRINT_JUMP_HORIZONTAL_VELOCITY = doubleValue(createName(ModItems.CLOUD_IN_A_BOTTLE, "sprintJumpHorizontalVelocity"), 50, 100 * 100, 100),
             DIGGING_CLAWS_DIG_SPEED_BONUS = doubleValue(createName(ModItems.DIGGING_CLAWS, "digSpeedBonus"), 32, 10),

@@ -68,6 +68,7 @@ public class ModItems {
     public static RegistrySupplier<WearableArtifactItem> UNIVERSAL_ATTRACTOR = register("universal_attractor", UniversalAttractorItem::new);
     public static RegistrySupplier<WearableArtifactItem> CRYSTAL_HEART = register("crystal_heart", CrystalHeartItem::new);
     public static RegistrySupplier<WearableArtifactItem> HELIUM_FLAMINGO = register("helium_flamingo", HeliumFlamingoItem::new);
+    public static RegistrySupplier<WearableArtifactItem> CHORUS_TOTEM = register("chorus_totem", ChorusTotemItem::new);
 
     // hands
     public static RegistrySupplier<WearableArtifactItem> DIGGING_CLAWS = register("digging_claws", DiggingClawsItem::new);

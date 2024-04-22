@@ -12,6 +12,7 @@
     "item.umbrella.EntityMixin",
     "item.wearable.aquadashers.EntityMixin",
     "item.wearable.charmofsinking.EnchantmentHelperMixin",
+    "item.wearable.chorustotem.LivingEntityMixin",
     "item.wearable.snowshoes.PowderSnowBlockMixin",
     "item.wearable.villagerhat.VillagerMixin"
   ],

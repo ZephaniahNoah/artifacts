@@ -99,6 +99,10 @@ public class BeltModel extends HumanoidModel<LivingEntity> {
         return new BeltModel(RendererUtil.bakeLayer(ArtifactLayers.CRYSTAL_HEART), RenderType::entityTranslucent, 2.5F, -3.01F, 0);
     }
 
+    public static BeltModel createChorusTotemModel() {
+        return new BeltModel(RendererUtil.bakeLayer(ArtifactLayers.CHORUS_TOTEM), 4, -3, -0.5F);
+    }
+
     private static MeshDefinition createBelt(CubeListBuilder charm) {
         CubeDeformation deformation = new CubeDeformation(0.5F);
         MeshDefinition mesh = createMesh(CubeDeformation.NONE, 0);
@@ -218,6 +222,21 @@ public class BeltModel extends HumanoidModel<LivingEntity> {
         charm.addBox(-2.5F, 2, 0, 2, 4, 1);
         charm.texOffs(6, 19);
         charm.addBox(0.5F, 2, 0, 2, 4, 1);
+
+        return createBelt(charm);
+    }
+
+    public static MeshDefinition createChorusTotem() {
+        CubeListBuilder charm = CubeListBuilder.create();
+
+        charm.texOffs(0, 16);
+        charm.addBox(-1.5F, -1, -1, 3, 7, 2);
+        charm.texOffs(10, 16);
+        charm.addBox(-3.5F, 0, 1, 7, 4, 0);
+        charm.texOffs(0, 25);
+        charm.addBox(-2.5F, 3, -2, 5, 2, 2);
+        charm.texOffs(10, 20);
+        charm.addBox(-1, 1, -1.5F, 2, 2, 0);
 
         return createBelt(charm);
     }

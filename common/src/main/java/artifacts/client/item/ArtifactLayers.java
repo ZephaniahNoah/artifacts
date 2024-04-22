@@ -31,6 +31,7 @@ public class ArtifactLayers {
             UNIVERSAL_ATTRACTOR = createLayerLocation("universal_attractor"),
             CRYSTAL_HEART = createLayerLocation("crystal_heart"),
             HELIUM_FLAMINGO = createLayerLocation("helium_flamingo"),
+            CHORUS_TOTEM = createLayerLocation("chorus_totem"),
 
             CLAWS_WIDE = createLayerLocation("claws_wide"),
             CLAWS_SLIM = createLayerLocation("claws_slim"),
@@ -107,6 +108,7 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(UNIVERSAL_ATTRACTOR, layer(BeltModel::createUniversalAttractor, 32, 32));
         EntityModelLayerRegistry.register(CRYSTAL_HEART, layer(BeltModel::createCrystalHeart, 32, 32));
         EntityModelLayerRegistry.register(HELIUM_FLAMINGO, layer(BeltModel::createHeliumFlamingo, 64, 64));
+        EntityModelLayerRegistry.register(CHORUS_TOTEM, layer(BeltModel::createChorusTotem, 32, 32));
 
         EntityModelLayerRegistry.register(CLAWS_WIDE, layer(() -> ArmsModel.createClaws(false), 32, 16));
         EntityModelLayerRegistry.register(CLAWS_SLIM, layer(() -> ArmsModel.createClaws(true), 32, 16));
