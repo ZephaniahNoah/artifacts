@@ -32,18 +32,18 @@ public class ArtifactLayers {
             CRYSTAL_HEART = createLayerLocation("crystal_heart"),
             HELIUM_FLAMINGO = createLayerLocation("helium_flamingo"),
 
-            CLAWS = createLayerLocation("claws"),
-            SLIM_CLAWS = createLayerLocation("slim_claws"),
-            GLOVE = createLayerLocation("gloves"),
-            SLIM_GLOVE = createLayerLocation("slim_gloves"),
-            GOLDEN_HOOK = createLayerLocation("golden_hook"),
-            SLIM_GOLDEN_HOOK = createLayerLocation("slim_golden_hook"),
-            POCKET_PISTON = createLayerLocation("pocket_piston"),
-            SLIM_POCKET_PISTON = createLayerLocation("slim_pocket_piston"),
-            ONION_RING = createLayerLocation("onion_ring"),
-            SLIM_ONION_RING = createLayerLocation("slim_onion_ring"),
-            PICKAXE_HEATER = createLayerLocation("pickaxe_heater"),
-            SLIM_PICKAXE_HEATER = createLayerLocation("slim_pickaxe_heater"),
+            CLAWS_WIDE = createLayerLocation("claws_wide"),
+            CLAWS_SLIM = createLayerLocation("claws_slim"),
+            GLOVE_WIDE = createLayerLocation("glove_wide"),
+            GLOVE_SLIM = createLayerLocation("glove_slim"),
+            GOLDEN_HOOK_WIDE = createLayerLocation("golden_hook_wide"),
+            GOLDEN_HOOK_SLIM = createLayerLocation("golden_hook_slim"),
+            POCKET_PISTON_WIDE = createLayerLocation("pocket_piston_wide"),
+            POCKET_PISTON_SLIM = createLayerLocation("pocket_piston_slim"),
+            ONION_RING_WIDE = createLayerLocation("onion_ring_wide"),
+            ONION_RING_SLIM = createLayerLocation("onion_ring_slim"),
+            PICKAXE_HEATER_WIDE = createLayerLocation("pickaxe_heater_wide"),
+            PICKAXE_HEATER_SLIM = createLayerLocation("pickaxe_heater_slim"),
 
             AQUA_DASHERS = createLayerLocation("aqua_dashers"),
             BUNNY_HOPPERS = createLayerLocation("bunny_hoppers"),
@@ -55,28 +55,28 @@ public class ArtifactLayers {
 
             WHOOPEE_CUSHION = createLayerLocation("whoopee_cushion");
 
-    public static ModelLayerLocation claws(boolean smallArms) {
-        return smallArms ? SLIM_CLAWS : CLAWS;
+    public static ModelLayerLocation claws(boolean hasSlimArms) {
+        return hasSlimArms ? CLAWS_SLIM : CLAWS_WIDE;
     }
 
-    public static ModelLayerLocation glove(boolean smallArms) {
-        return smallArms ? SLIM_GLOVE : GLOVE;
+    public static ModelLayerLocation glove(boolean hasSlimArms) {
+        return hasSlimArms ? GLOVE_SLIM : GLOVE_WIDE;
     }
 
-    public static ModelLayerLocation goldenHook(boolean smallArms) {
-        return smallArms ? SLIM_GOLDEN_HOOK : GOLDEN_HOOK;
+    public static ModelLayerLocation goldenHook(boolean hasSlimArms) {
+        return hasSlimArms ? GOLDEN_HOOK_SLIM : GOLDEN_HOOK_WIDE;
     }
 
-    public static ModelLayerLocation pocketPiston(boolean smallArms) {
-        return smallArms ? SLIM_POCKET_PISTON : POCKET_PISTON;
+    public static ModelLayerLocation pocketPiston(boolean hasSlimArms) {
+        return hasSlimArms ? POCKET_PISTON_SLIM : POCKET_PISTON_WIDE;
     }
 
-    public static ModelLayerLocation onionRing(boolean smallArms) {
-        return smallArms ? SLIM_ONION_RING : ONION_RING;
+    public static ModelLayerLocation onionRing(boolean hasSlimArms) {
+        return hasSlimArms ? ONION_RING_SLIM : ONION_RING_WIDE;
     }
 
-    public static ModelLayerLocation pickaxeHeater(boolean smallArms) {
-        return smallArms ? SLIM_PICKAXE_HEATER : PICKAXE_HEATER;
+    public static ModelLayerLocation pickaxeHeater(boolean hasSlimArms) {
+        return hasSlimArms ? PICKAXE_HEATER_SLIM : PICKAXE_HEATER_WIDE;
     }
 
     public static ModelLayerLocation createLayerLocation(String name) {
@@ -108,18 +108,18 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(CRYSTAL_HEART, layer(BeltModel::createCrystalHeart, 32, 32));
         EntityModelLayerRegistry.register(HELIUM_FLAMINGO, layer(BeltModel::createHeliumFlamingo, 64, 64));
 
-        EntityModelLayerRegistry.register(CLAWS, layer(() -> ArmsModel.createClaws(false), 32, 16));
-        EntityModelLayerRegistry.register(SLIM_CLAWS, layer(() -> ArmsModel.createClaws(true), 32, 16));
-        EntityModelLayerRegistry.register(GLOVE, layer(() -> ArmsModel.createSleevedArms(false), 32, 32));
-        EntityModelLayerRegistry.register(SLIM_GLOVE, layer(() -> ArmsModel.createSleevedArms(true), 32, 32));
-        EntityModelLayerRegistry.register(GOLDEN_HOOK, layer(() -> ArmsModel.createGoldenHook(false), 64, 32));
-        EntityModelLayerRegistry.register(SLIM_GOLDEN_HOOK, layer(() -> ArmsModel.createGoldenHook(true), 64, 32));
-        EntityModelLayerRegistry.register(POCKET_PISTON, layer(() -> ArmsModel.createPocketPiston(false), 32, 16));
-        EntityModelLayerRegistry.register(SLIM_POCKET_PISTON, layer(() -> ArmsModel.createPocketPiston(true), 32, 16));
-        EntityModelLayerRegistry.register(ONION_RING, layer(() -> ArmsModel.createOnionRing(false), 32, 32));
-        EntityModelLayerRegistry.register(SLIM_ONION_RING, layer(() -> ArmsModel.createOnionRing(true), 32, 32));
-        EntityModelLayerRegistry.register(PICKAXE_HEATER, layer(() -> ArmsModel.createPickaxeHeater(false), 64, 32));
-        EntityModelLayerRegistry.register(SLIM_PICKAXE_HEATER, layer(() -> ArmsModel.createPickaxeHeater(true), 64, 32));
+        EntityModelLayerRegistry.register(CLAWS_WIDE, layer(() -> ArmsModel.createClaws(false), 32, 16));
+        EntityModelLayerRegistry.register(CLAWS_SLIM, layer(() -> ArmsModel.createClaws(true), 32, 16));
+        EntityModelLayerRegistry.register(GLOVE_WIDE, layer(() -> ArmsModel.createSleevedArms(false), 32, 32));
+        EntityModelLayerRegistry.register(GLOVE_SLIM, layer(() -> ArmsModel.createSleevedArms(true), 32, 32));
+        EntityModelLayerRegistry.register(GOLDEN_HOOK_WIDE, layer(() -> ArmsModel.createGoldenHook(false), 64, 32));
+        EntityModelLayerRegistry.register(GOLDEN_HOOK_SLIM, layer(() -> ArmsModel.createGoldenHook(true), 64, 32));
+        EntityModelLayerRegistry.register(POCKET_PISTON_WIDE, layer(() -> ArmsModel.createPocketPiston(false), 32, 16));
+        EntityModelLayerRegistry.register(POCKET_PISTON_SLIM, layer(() -> ArmsModel.createPocketPiston(true), 32, 16));
+        EntityModelLayerRegistry.register(ONION_RING_WIDE, layer(() -> ArmsModel.createOnionRing(false), 32, 32));
+        EntityModelLayerRegistry.register(ONION_RING_SLIM, layer(() -> ArmsModel.createOnionRing(true), 32, 32));
+        EntityModelLayerRegistry.register(PICKAXE_HEATER_WIDE, layer(() -> ArmsModel.createPickaxeHeater(false), 64, 32));
+        EntityModelLayerRegistry.register(PICKAXE_HEATER_SLIM, layer(() -> ArmsModel.createPickaxeHeater(true), 64, 32));
 
         EntityModelLayerRegistry.register(AQUA_DASHERS, layer(LegsModel::createAquaDashers, 32, 32));
         EntityModelLayerRegistry.register(BUNNY_HOPPERS, layer(LegsModel::createBunnyHoppers, 64, 32));

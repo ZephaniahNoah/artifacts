@@ -1,6 +1,5 @@
 package artifacts.client.item.renderer;
 
-import artifacts.Artifacts;
 import artifacts.client.item.model.ArmsModel;
 import artifacts.platform.PlatformServices;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -23,19 +22,23 @@ import java.util.function.Function;
 
 public class GloveArtifactRenderer implements ArtifactRenderer {
 
-    private final ResourceLocation defaultTexture;
+    private final ResourceLocation wideTexture;
     private final ResourceLocation slimTexture;
-    private final ArmsModel defaultModel;
+    private final ArmsModel wideModel;
     private final ArmsModel slimModel;
 
     public GloveArtifactRenderer(String name, Function<Boolean, ArmsModel> model) {
-        this("%s/%s_default".formatted(name, name), "%s/%s_slim".formatted(name, name), model);
+        this(ArtifactRenderer.getTexturePath(name, "%s_wide".formatted(name)), ArtifactRenderer.getTexturePath(name, "%s_slim".formatted(name)), model);
     }
 
-    public GloveArtifactRenderer(String defaultTexture, String slimTexture, Function<Boolean, ArmsModel> model) {
-        this.defaultTexture = Artifacts.id("textures/entity/curio/%s.png", defaultTexture);
-        this.slimTexture = Artifacts.id("textures/entity/curio/%s.png", slimTexture);
-        this.defaultModel = model.apply(false);
+    public GloveArtifactRenderer(String wideTexture, String slimTexture, Function<Boolean, ArmsModel> model) {
+        this(ArtifactRenderer.getTexturePath(wideTexture), ArtifactRenderer.getTexturePath(slimTexture), model);
+    }
+
+    public GloveArtifactRenderer(ResourceLocation wideTexture, ResourceLocation slimTexture, Function<Boolean, ArmsModel> model) {
+        this.wideTexture = wideTexture;
+        this.slimTexture = slimTexture;
+        this.wideModel = model.apply(false);
         this.slimModel = model.apply(true);
     }
 
@@ -48,11 +51,11 @@ public class GloveArtifactRenderer implements ArtifactRenderer {
     }
 
     protected ResourceLocation getTexture(boolean hasSlimArms) {
-        return hasSlimArms ? slimTexture : defaultTexture;
+        return hasSlimArms ? slimTexture : wideTexture;
     }
 
     protected ArmsModel getModel(boolean hasSlimArms) {
-        return hasSlimArms ? slimModel : defaultModel;
+        return hasSlimArms ? slimModel : wideModel;
     }
 
     protected static boolean hasSlimArms(Entity entity) {

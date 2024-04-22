@@ -1,6 +1,5 @@
 package artifacts.client.item.renderer;
 
-import artifacts.Artifacts;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
@@ -17,8 +16,8 @@ public class GlowingArtifactRenderer extends GenericArtifactRenderer {
     private final ResourceLocation glowTexture;
 
     public GlowingArtifactRenderer(String name, HumanoidModel<LivingEntity> model) {
-        super(String.format("%s/%s", name, name), model);
-        this.glowTexture = Artifacts.id("textures/entity/curio/%s/%s_glow.png", name, name);
+        super(ArtifactRenderer.getTexturePath(name, name), model);
+        this.glowTexture = ArtifactRenderer.getTexturePath(name, "%s_overlay".formatted(name));
     }
 
     private ResourceLocation getGlowTexture() {

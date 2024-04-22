@@ -45,20 +45,20 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         renderToBuffer(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 
-    public static ArmsModel createClawsModel(boolean smallArms) {
-        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.claws(smallArms)));
+    public static ArmsModel createClawsModel(boolean hasSlimArms) {
+        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.claws(hasSlimArms)));
     }
 
-    public static ArmsModel createGloveModel(boolean smallArms) {
-        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.glove(smallArms)));
+    public static ArmsModel createGloveModel(boolean hasSlimArms) {
+        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.glove(hasSlimArms)));
     }
 
-    public static ArmsModel createGoldenHookModel(boolean smallArms) {
-        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.goldenHook(smallArms)));
+    public static ArmsModel createGoldenHookModel(boolean hasSlimArms) {
+        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.goldenHook(hasSlimArms)));
     }
 
-    public static ArmsModel createPocketPistonModel(boolean smallArms) {
-        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.pocketPiston(smallArms))) {
+    public static ArmsModel createPocketPistonModel(boolean hasSlimArms) {
+        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.pocketPiston(hasSlimArms))) {
 
             @Override
             public void setupAnim(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -76,21 +76,21 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         };
     }
 
-    public static ArmsModel createOnionRingModel(boolean smallArms) {
-        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.onionRing(smallArms)));
+    public static ArmsModel createOnionRingModel(boolean hasSlimArms) {
+        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.onionRing(hasSlimArms)));
     }
 
-    public static ArmsModel createPickaxeHeaterModel(boolean smallArms) {
-        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.pickaxeHeater(smallArms)));
+    public static ArmsModel createPickaxeHeaterModel(boolean hasSlimArms) {
+        return new ArmsModel(RendererUtil.bakeLayer(ArtifactLayers.pickaxeHeater(hasSlimArms)));
     }
 
-    public static MeshDefinition createEmptyArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
+    public static MeshDefinition createEmptyArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean hasSlimArms) {
         MeshDefinition mesh = createMesh(CubeDeformation.NONE, 0);
 
         mesh.getRoot().addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.ZERO);
         mesh.getRoot().addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.ZERO);
 
-        float armWidth = smallArms ? 3F : 4F;
+        float armWidth = hasSlimArms ? 3 : 4;
         mesh.getRoot().getChild("left_arm").addOrReplaceChild(
                 "artifact",
                 leftArm,
@@ -105,33 +105,33 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         return mesh;
     }
 
-    public static MeshDefinition createArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
-        float armWidth = smallArms ? 3 : 4;
+    public static MeshDefinition createArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean hasSlimArms) {
+        float armWidth = hasSlimArms ? 3 : 4;
 
         leftArm.texOffs(0, 0);
         leftArm.addBox(-armWidth / 2, -12, -2, armWidth, 12, 4, new CubeDeformation(0.5F));
         rightArm.texOffs(16, 0);
         rightArm.addBox(-armWidth / 2, -12, -2, armWidth, 12, 4, new CubeDeformation(0.5F));
 
-        return createEmptyArms(leftArm, rightArm, smallArms);
+        return createEmptyArms(leftArm, rightArm, hasSlimArms);
     }
 
-    public static MeshDefinition createSleevedArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
-        float armWidth = smallArms ? 3 : 4;
+    public static MeshDefinition createSleevedArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean hasSlimArms) {
+        float armWidth = hasSlimArms ? 3 : 4;
 
         leftArm.texOffs(0, 16);
         leftArm.addBox(-armWidth / 2, -12, -2, armWidth, 12, 4, new CubeDeformation(0.75F));
         rightArm.texOffs(16, 16);
         rightArm.addBox(-armWidth / 2, -12, -2, armWidth, 12, 4, new CubeDeformation(0.75F));
 
-        return createArms(leftArm, rightArm, smallArms);
+        return createArms(leftArm, rightArm, hasSlimArms);
     }
 
-    public static MeshDefinition createSleevedArms(boolean smallArms) {
-        return createSleevedArms(CubeListBuilder.create(), CubeListBuilder.create(), smallArms);
+    public static MeshDefinition createSleevedArms(boolean hasSlimArms) {
+        return createSleevedArms(CubeListBuilder.create(), CubeListBuilder.create(), hasSlimArms);
     }
 
-    public static MeshDefinition createClaws(boolean smallArms) {
+    public static MeshDefinition createClaws(boolean hasSlimArms) {
         CubeListBuilder leftArm = CubeListBuilder.create();
         CubeListBuilder rightArm = CubeListBuilder.create();
 
@@ -159,10 +159,10 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(20, 6);
         rightArm.addBox(-2, 0, 0.5F, 1, 4, 1);
 
-        return createEmptyArms(leftArm, rightArm, smallArms);
+        return createEmptyArms(leftArm, rightArm, hasSlimArms);
     }
 
-    public static MeshDefinition createGoldenHook(boolean smallArms) {
+    public static MeshDefinition createGoldenHook(boolean hasSlimArms) {
         CubeListBuilder leftArm = CubeListBuilder.create();
         CubeListBuilder rightArm = CubeListBuilder.create();
 
@@ -178,16 +178,16 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(48, 6);
         rightArm.addBox(-0.5F, 0, -0.5F, 1, 2, 1);
 
-        return createSleevedArms(leftArm, rightArm, smallArms);
+        return createSleevedArms(leftArm, rightArm, hasSlimArms);
     }
 
-    public static MeshDefinition createPocketPiston(boolean smallArms) {
+    public static MeshDefinition createPocketPiston(boolean hasSlimArms) {
         CubeListBuilder leftArm = CubeListBuilder.create();
         CubeListBuilder rightArm = CubeListBuilder.create();
         CubeListBuilder leftPistonHead = CubeListBuilder.create();
         CubeListBuilder rightPistonHead = CubeListBuilder.create();
 
-        float armWidth = smallArms ? 3 : 4;
+        float armWidth = hasSlimArms ? 3 : 4;
         float armDepth = 4;
         float d = 0.5F / 4 + 0.01F;
 
@@ -212,7 +212,7 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightPistonHead.texOffs(16, 7);
         rightPistonHead.addBox(-armWidth / 2, d * 3 + d, -armDepth / 2, armWidth, 1, armDepth, headDeformation);
 
-        MeshDefinition mesh = createEmptyArms(leftArm, rightArm, smallArms);
+        MeshDefinition mesh = createEmptyArms(leftArm, rightArm, hasSlimArms);
         mesh.getRoot()
                 .getChild("left_arm")
                 .getChild("artifact")
@@ -225,11 +225,11 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         return mesh;
     }
 
-    public static MeshDefinition createOnionRing(boolean smallArms) {
+    public static MeshDefinition createOnionRing(boolean hasSlimArms) {
         CubeListBuilder leftArm = CubeListBuilder.create();
         CubeListBuilder rightArm = CubeListBuilder.create();
 
-        float armWidth = smallArms ? 3 : 4;
+        float armWidth = hasSlimArms ? 3 : 4;
         float armDepth = 4;
         float h = -4;
 
@@ -253,14 +253,14 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(16, 12);
         rightArm.addBox(-1 - armWidth / 2, h, - armDepth / 2, 1, 2, armDepth);
 
-        return createEmptyArms(leftArm, rightArm, smallArms);
+        return createEmptyArms(leftArm, rightArm, hasSlimArms);
     }
 
-    public static MeshDefinition createPickaxeHeater(boolean smallArms) {
+    public static MeshDefinition createPickaxeHeater(boolean hasSlimArms) {
         CubeListBuilder leftArm = CubeListBuilder.create();
         CubeListBuilder rightArm = CubeListBuilder.create();
 
-        float armWidth = smallArms ? 3 : 4;
+        float armWidth = hasSlimArms ? 3 : 4;
         float armDepth = 4;
         float deformationY = (12 + 0.5F * 2) / 12F;
         CubeDeformation deformation = new CubeDeformation(0, 2 * 0.5F / 12, 2 * 0.5F / 4);
@@ -270,6 +270,6 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(48, 0);
         rightArm.addBox(- armWidth / 2 - 1.5F, 0.5F - 2 * deformationY - 1, -armDepth / 4, 1, 2, 2, deformation);
 
-        return createSleevedArms(leftArm, rightArm, smallArms);
+        return createSleevedArms(leftArm, rightArm, hasSlimArms);
     }
 }

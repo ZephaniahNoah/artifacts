@@ -1,6 +1,5 @@
 package artifacts.client.item.renderer;
 
-import artifacts.Artifacts;
 import artifacts.client.item.model.ArmsModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -17,17 +16,17 @@ import java.util.function.Function;
 
 public class GlowingGloveArtifactRenderer extends GloveArtifactRenderer {
 
-    private final ResourceLocation defaultGlowTexture;
+    private final ResourceLocation wideGlowTexture;
     private final ResourceLocation slimGlowTexture;
 
     public GlowingGloveArtifactRenderer(String name, Function<Boolean, ArmsModel> model) {
         super(name, model);
-        defaultGlowTexture = Artifacts.id("textures/entity/curio/%s/%s_default_glow.png", name, name);
-        slimGlowTexture = Artifacts.id("textures/entity/curio/%s/%s_slim_glow.png", name, name);
+        wideGlowTexture = ArtifactRenderer.getTexturePath(name, "%s_wide_overlay".formatted(name));
+        slimGlowTexture = ArtifactRenderer.getTexturePath(name, "%s_slim_overlay".formatted(name));
     }
 
     private ResourceLocation getGlowTexture(boolean hasSlimArms) {
-        return hasSlimArms ? slimGlowTexture : defaultGlowTexture;
+        return hasSlimArms ? slimGlowTexture : wideGlowTexture;
     }
 
     @Override

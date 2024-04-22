@@ -1,6 +1,5 @@
 package artifacts.client.item.renderer;
 
-import artifacts.Artifacts;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
@@ -17,8 +16,8 @@ public class GenericArtifactRenderer implements ArtifactRenderer {
     private final ResourceLocation texture;
     private final HumanoidModel<LivingEntity> model;
 
-    public GenericArtifactRenderer(String texturePath, HumanoidModel<LivingEntity> model) {
-        this(Artifacts.id("textures/entity/curio/%s.png", texturePath), model);
+    public GenericArtifactRenderer(String name, HumanoidModel<LivingEntity> model) {
+        this(ArtifactRenderer.getTexturePath(name), model);
     }
 
     public GenericArtifactRenderer(ResourceLocation texture, HumanoidModel<LivingEntity> model) {

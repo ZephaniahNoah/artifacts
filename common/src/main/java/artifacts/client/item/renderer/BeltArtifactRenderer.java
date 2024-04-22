@@ -1,6 +1,5 @@
 package artifacts.client.item.renderer;
 
-import artifacts.Artifacts;
 import artifacts.client.item.model.BeltModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -17,12 +16,8 @@ public class BeltArtifactRenderer implements ArtifactRenderer {
     private final ResourceLocation texture;
     private final BeltModel model;
 
-    public BeltArtifactRenderer(String texturePath, BeltModel model) {
-        this(Artifacts.id("textures/entity/curio/%s.png", texturePath), model);
-    }
-
-    public BeltArtifactRenderer(ResourceLocation texture, BeltModel model) {
-        this.texture = texture;
+    public BeltArtifactRenderer(String name, BeltModel model) {
+        this.texture = ArtifactRenderer.getTexturePath(name);
         this.model = model;
     }
 
