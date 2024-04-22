@@ -32,7 +32,7 @@ public class ModGameRules {
             ETERNAL_STEAK_ENABLED = booleanValue(createName(ModItems.ETERNAL_STEAK, "enabled")),
             EVERLASTING_BEEF_ENABLED = booleanValue(createName(ModItems.EVERLASTING_BEEF, "enabled")),
             KITTY_SLIPPERS_ENABLED = booleanValue(createName(ModItems.KITTY_SLIPPERS, "enabled")),
-            NIGHT_VISION_GOGGLES_ENABLED = booleanValue(createName(ModItems.NIGHT_VISION_GOGGLES, "enabled")),
+            NIGHT_VISION_GOGGLES_ENABLED = booleanValue(createName(ModItems.NIGHT_VISION_GOGGLES, "enabled")), // TODO remove 1.20.2
             PICKAXE_HEATER_ENABLED = booleanValue(createName(ModItems.PICKAXE_HEATER, "enabled")),
             SCARF_OF_INVISIBILITY_ENABLED = booleanValue(createName(ModItems.SCARF_OF_INVISIBILITY, "enabled")),
             SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")), // TODO remove 1.20.2
@@ -91,6 +91,7 @@ public class ModGameRules {
             FLAME_PENDANT_STRIKE_CHANCE = percentage(createName(ModItems.FLAME_PENDANT, "strikeChance"), 40),
             FLIPPERS_SWIM_SPEED_BONUS = doubleValue(createName(ModItems.FLIPPERS, "swimSpeedBonus"), 100, 100 * 100, 100),
             GOLDEN_HOOK_EXPERIENCE_BONUS = doubleValue(createName(ModItems.GOLDEN_HOOK, "experienceBonus"), 75, 10 * 100, 100),
+            NIGHT_VISION_GOGGLES_STRENGTH = percentage(createName(ModItems.NIGHT_VISION_GOGGLES, "strength"), 12),
             NOVELTY_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = percentage(createName(ModItems.NOVELTY_DRINKING_HAT, "drinkingDurationMultiplier"), 30),
             NOVELTY_DRINKING_HAT_EATING_DURATION_MULTIPLIER = percentage(createName(ModItems.NOVELTY_DRINKING_HAT, "eatingDurationMultiplier"), 60),
             PLASTIC_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = percentage(createName(ModItems.PLASTIC_DRINKING_HAT, "drinkingDurationMultiplier"), 30),

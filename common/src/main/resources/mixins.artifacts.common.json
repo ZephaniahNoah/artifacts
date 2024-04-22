@@ -18,6 +18,7 @@
   "client": [
     "item.hurtsound.client.LivingEntityMixin",
     "item.umbrella.client.HumanoidModelMixin",
+    "item.wearable.nightvisiongoggles.client.GameRendererMixin",
     "item.wearable.pocketpiston.client.ItemInHandLayerMixin",
     "item.wearable.pocketpiston.client.LivingEntityMixin"
   ],

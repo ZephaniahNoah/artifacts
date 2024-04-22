@@ -112,6 +112,7 @@
   "gamerule.artifacts.kittySlippers.enabled": "Artifacts: Kitty Slippers enabled",
   "gamerule.artifacts.luckyScarf.fortuneBonus": "Artifacts: Lucky Scarf fortune bonus",
   "gamerule.artifacts.nightVisionGoggles.enabled": "Artifacts: Night Vision Goggles enabled",
+  "gamerule.artifacts.nightVisionGoggles.strength": "Artifacts: Night Vision Goggles strength",
   "gamerule.artifacts.noveltyDrinkingHat.drinkingDurationMultiplier": "Artifacts: Novelty Drinking Hat drinking duration multiplier",
   "gamerule.artifacts.noveltyDrinkingHat.eatingDurationMultiplier": "Artifacts: Novelty Drinking Hat eating duration multiplier",
   "gamerule.artifacts.obsidianSkull.fireResistanceCooldown": "Artifacts: Obsidian Skull fire resistance cooldown",

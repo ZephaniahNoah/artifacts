@@ -46,7 +46,7 @@ public class ModItems {
     public static RegistrySupplier<DrinkingHatItem> PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", () -> new DrinkingHatItem(ModGameRules.PLASTIC_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER, ModGameRules.PLASTIC_DRINKING_HAT_EATING_DURATION_MULTIPLIER, false));
     public static RegistrySupplier<DrinkingHatItem> NOVELTY_DRINKING_HAT = register("novelty_drinking_hat", () -> new DrinkingHatItem(ModGameRules.NOVELTY_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER, ModGameRules.NOVELTY_DRINKING_HAT_EATING_DURATION_MULTIPLIER, true));
     public static RegistrySupplier<WearableArtifactItem> SNORKEL = register("snorkel", SnorkelItem::new);
-    public static RegistrySupplier<WearableArtifactItem> NIGHT_VISION_GOGGLES = register("night_vision_goggles", () -> new MobEffectItem(MobEffects.NIGHT_VISION, 320, ModGameRules.NIGHT_VISION_GOGGLES_ENABLED));
+    public static RegistrySupplier<WearableArtifactItem> NIGHT_VISION_GOGGLES = register("night_vision_goggles", () -> new MobEffectItem(MobEffects.NIGHT_VISION, 40, () -> ModGameRules.NIGHT_VISION_GOGGLES_ENABLED.get() && ModGameRules.NIGHT_VISION_GOGGLES_STRENGTH.get() > 0));
     public static RegistrySupplier<WearableArtifactItem> VILLAGER_HAT = register("villager_hat", VillagerHatItem::new);
     public static RegistrySupplier<WearableArtifactItem> SUPERSTITIOUS_HAT = register("superstitious_hat", SuperstitiousHatItem::new);
     public static RegistrySupplier<WearableArtifactItem> COWBOY_HAT = register("cowboy_hat", CowboyHatItem::new);
