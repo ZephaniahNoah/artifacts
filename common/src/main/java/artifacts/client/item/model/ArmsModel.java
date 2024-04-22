@@ -69,7 +69,9 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
             }
 
             private ModelPart getPistonHead(HumanoidArm arm) {
-                return getArm(arm).getChild("piston_head");
+                return getArm(arm)
+                        .getChild("artifact")
+                        .getChild("piston_head");
             }
         };
     }
@@ -83,15 +85,6 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
     }
 
     public static MeshDefinition createEmptyArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
-        MeshDefinition mesh = createMesh(CubeDeformation.NONE, 0);
-
-        mesh.getRoot().addOrReplaceChild("left_arm", leftArm, PartPose.ZERO);
-        mesh.getRoot().addOrReplaceChild("right_arm", rightArm, PartPose.ZERO);
-
-        return mesh;
-    }
-
-    public static MeshDefinition createEmptyArmsCentered(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
         MeshDefinition mesh = createMesh(CubeDeformation.NONE, 0);
 
         mesh.getRoot().addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.ZERO);
@@ -113,14 +106,6 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
     }
 
     public static MeshDefinition createArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
-        leftArm.texOffs(0, 0);
-        rightArm.texOffs(16, 0);
-        addArms(leftArm, rightArm, new CubeDeformation(0.5F), smallArms);
-
-        return createEmptyArms(leftArm, rightArm, smallArms);
-    }
-
-    public static MeshDefinition createArmsCentered(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
         float armWidth = smallArms ? 3 : 4;
 
         leftArm.texOffs(0, 0);
@@ -128,18 +113,10 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(16, 0);
         rightArm.addBox(-armWidth / 2, -12, -2, armWidth, 12, 4, new CubeDeformation(0.5F));
 
-        return createEmptyArmsCentered(leftArm, rightArm, smallArms);
+        return createEmptyArms(leftArm, rightArm, smallArms);
     }
 
     public static MeshDefinition createSleevedArms(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
-        leftArm.texOffs(0, 16);
-        rightArm.texOffs(16, 16);
-        addArms(leftArm, rightArm, new CubeDeformation(0.75F), smallArms);
-
-        return createArms(leftArm, rightArm, smallArms);
-    }
-
-    public static MeshDefinition createSleevedArmsCentered(CubeListBuilder leftArm, CubeListBuilder rightArm, boolean smallArms) {
         float armWidth = smallArms ? 3 : 4;
 
         leftArm.texOffs(0, 16);
@@ -147,47 +124,40 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(16, 16);
         rightArm.addBox(-armWidth / 2, -12, -2, armWidth, 12, 4, new CubeDeformation(0.75F));
 
-        return createArmsCentered(leftArm, rightArm, smallArms);
+        return createArms(leftArm, rightArm, smallArms);
     }
 
     public static MeshDefinition createSleevedArms(boolean smallArms) {
-        return createSleevedArmsCentered(CubeListBuilder.create(), CubeListBuilder.create(), smallArms);
-    }
-
-    private static void addArms(CubeListBuilder leftArm, CubeListBuilder rightArm, CubeDeformation deformation, boolean smallArms) {
-        leftArm.addBox(-1, -2, -2, smallArms ? 3 : 4, 12, 4, deformation);
-        rightArm.addBox(smallArms ? -2 : -3, -2, -2, smallArms ? 3 : 4, 12, 4, deformation);
+        return createSleevedArms(CubeListBuilder.create(), CubeListBuilder.create(), smallArms);
     }
 
     public static MeshDefinition createClaws(boolean smallArms) {
         CubeListBuilder leftArm = CubeListBuilder.create();
         CubeListBuilder rightArm = CubeListBuilder.create();
 
-        int smallArmsOffset = smallArms ? 1 : 0;
-
         // claw 1 lower
         leftArm.texOffs(0, 0);
-        leftArm.addBox(-smallArmsOffset, 10, -1.5F, 3, 5, 1);
+        leftArm.addBox(-2, 0, -1.5F, 3, 5, 1);
         rightArm.texOffs(8, 0);
-        rightArm.addBox(-3 + smallArmsOffset, 10, -1.5F, 3, 5, 1);
+        rightArm.addBox(-1, 0, -1.5F, 3, 5, 1);
 
         // claw 2 lower
         leftArm.texOffs(0, 6);
-        leftArm.addBox(-smallArmsOffset, 10, 0.5F, 3, 5, 1);
+        leftArm.addBox(-2, 0, 0.5F, 3, 5, 1);
         rightArm.texOffs(8, 6);
-        rightArm.addBox(-3 + smallArmsOffset, 10, 0.5F, 3, 5, 1);
+        rightArm.addBox(-1, 0, 0.5F, 3, 5, 1);
 
         // claw 1 upper
         leftArm.texOffs(16, 0);
-        leftArm.addBox(3 - smallArmsOffset, 10, -1.5F, 1, 4, 1);
+        leftArm.addBox(1, 0, -1.5F, 1, 4, 1);
         rightArm.texOffs(20, 0);
-        rightArm.addBox(-4 + smallArmsOffset, 10, -1.5F, 1, 4, 1);
+        rightArm.addBox(-2, 0, -1.5F, 1, 4, 1);
 
         // claw 2 upper
         leftArm.texOffs(16, 6);
-        leftArm.addBox(3 - smallArmsOffset, 10, 0.5F, 1, 4, 1);
+        leftArm.addBox(1, 0, 0.5F, 1, 4, 1);
         rightArm.texOffs(20, 6);
-        rightArm.addBox(-4 + smallArmsOffset, 10, 0.5F, 1, 4, 1);
+        rightArm.addBox(-2, 0, 0.5F, 1, 4, 1);
 
         return createEmptyArms(leftArm, rightArm, smallArms);
     }
@@ -198,15 +168,15 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
 
         // hook
         leftArm.texOffs(32, 0);
-        leftArm.addBox(smallArms ? -2 : -1.5F, 12, -0.5F, 5, 5, 1);
+        leftArm.addBox(-2.5F, 2, -0.5F, 5, 5, 1);
         rightArm.texOffs(48, 0);
-        rightArm.addBox(smallArms ? -3 : -3.5F, 12, -0.5F, 5, 5, 1);
+        rightArm.addBox(-2.5F, 2, -0.5F, 5, 5, 1);
 
         // hook base
         leftArm.texOffs(32, 6);
-        leftArm.addBox(smallArms ? 0 : 0.5F, 10, -0.5F, 1, 2, 1);
+        leftArm.addBox(-0.5F, 0, -0.5F, 1, 2, 1);
         rightArm.texOffs(48, 6);
-        rightArm.addBox(smallArms ? -1 : -1.5F, 10, -0.5F, 1, 2, 1);
+        rightArm.addBox(-0.5F, 0, -0.5F, 1, 2, 1);
 
         return createSleevedArms(leftArm, rightArm, smallArms);
     }
@@ -217,35 +187,39 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         CubeListBuilder leftPistonHead = CubeListBuilder.create();
         CubeListBuilder rightPistonHead = CubeListBuilder.create();
 
+        float armWidth = smallArms ? 3 : 4;
+        float armDepth = 4;
         float d = 0.5F / 4 + 0.01F;
 
         // piston base
-        CubeDeformation baseDeformation = new CubeDeformation(d * 4, d * 3, d * 4);
-        leftArm.texOffs(0, 0)
-                .addBox(-1, 7, -2, smallArms ? 3 : 4, 3, 4, baseDeformation);
-        rightArm.texOffs(16, 0)
-                .addBox(smallArms ? -2 : -3, 7, -2, smallArms ? 3 : 4, 3, 4, baseDeformation);
+        CubeDeformation baseDeformation = new CubeDeformation(d * armWidth, d * 3, d * armDepth);
+        leftArm.texOffs(0, 0);
+        leftArm.addBox(-armWidth / 2, -3, -armDepth / 2, armWidth, 3, armDepth, baseDeformation);
+        rightArm.texOffs(16, 0);
+        rightArm.addBox(-armWidth / 2, -3, -armDepth / 2, armWidth, 3, armDepth, baseDeformation);
 
         // piston rod
-        CubeDeformation rodDeformation = new CubeDeformation(smallArms ? d * 1.333F : d * 2, 0, d * 2);
-        leftPistonHead.texOffs(0, 12)
-                .addBox(0, 8 + d * 3, -1, smallArms ? 1 : 2, 2, 2, rodDeformation);
-        rightPistonHead.texOffs(16, 12)
-                .addBox(smallArms ? -1 : -2, 8 + d * 3, -1, smallArms ? 1 : 2, 2, 2, rodDeformation);
+        CubeDeformation rodDeformation = new CubeDeformation(d * armWidth / 2, 0, d * armDepth / 2);
+        leftPistonHead.texOffs(0, 12);
+        leftPistonHead.addBox(-(armWidth - 2) / 2, -2 + d * 3, -(armDepth - 2) / 2, armWidth - 2, 2, armDepth - 2, rodDeformation);
+        rightPistonHead.texOffs(16, 12);
+        rightPistonHead.addBox(-(armWidth - 2) / 2, -2 + d * 3, -(armDepth - 2) / 2, armWidth - 2, 2, armDepth - 2, rodDeformation);
 
         // piston head
-        CubeDeformation headDeformation = new CubeDeformation(d * 4, d, d * 4);
-        leftPistonHead.texOffs(0, 7)
-                .addBox(-1, 10 + d * 3 + d, -2, smallArms ? 3 : 4, 1, 4, headDeformation);
-        rightPistonHead.texOffs(16, 7)
-                .addBox(smallArms ? -2 : -3, 10 + d * 3 + d, -2, smallArms ? 3 : 4, 1, 4, headDeformation);
+        CubeDeformation headDeformation = new CubeDeformation(d * armWidth, d, d * armDepth);
+        leftPistonHead.texOffs(0, 7);
+        leftPistonHead.addBox(-armWidth / 2, d * 3 + d, -armDepth / 2, armWidth, 1, armDepth, headDeformation);
+        rightPistonHead.texOffs(16, 7);
+        rightPistonHead.addBox(-armWidth / 2, d * 3 + d, -armDepth / 2, armWidth, 1, armDepth, headDeformation);
 
         MeshDefinition mesh = createEmptyArms(leftArm, rightArm, smallArms);
         mesh.getRoot()
                 .getChild("left_arm")
+                .getChild("artifact")
                 .addOrReplaceChild("piston_head", leftPistonHead, PartPose.ZERO);
         mesh.getRoot()
                 .getChild("right_arm")
+                .getChild("artifact")
                 .addOrReplaceChild("piston_head", rightPistonHead, PartPose.ZERO);
 
         return mesh;
@@ -279,7 +253,7 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(16, 12);
         rightArm.addBox(-1 - armWidth / 2, h, - armDepth / 2, 1, 2, armDepth);
 
-        return createEmptyArmsCentered(leftArm, rightArm, smallArms);
+        return createEmptyArms(leftArm, rightArm, smallArms);
     }
 
     public static MeshDefinition createPickaxeHeater(boolean smallArms) {
@@ -296,6 +270,6 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
         rightArm.texOffs(48, 0);
         rightArm.addBox(- armWidth / 2 - 1.5F, 0.5F - 2 * deformationY - 1, -armDepth / 4, 1, 2, 2, deformation);
 
-        return createSleevedArmsCentered(leftArm, rightArm, smallArms);
+        return createSleevedArms(leftArm, rightArm, smallArms);
     }
 }
