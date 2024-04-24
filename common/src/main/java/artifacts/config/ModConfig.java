@@ -45,6 +45,14 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
         }
 
         @ConfigEntry.Gui.Tooltip(count = 2)
+        @Comment("The chance that a skeleton, zombie or piglin spawns with an artifact equipped")
+        double entityEquipmentChance = 1 / 1000D;
+
+        public double getEntityEquipmentChance() {
+            return Math.max(0, entityEquipmentChance);
+        }
+
+        @ConfigEntry.Gui.Tooltip(count = 2)
         @Comment("Whether the Kitty Slippers and Bunny Hoppers change the player's hurt sounds")
         public boolean modifyHurtSounds = true;
 

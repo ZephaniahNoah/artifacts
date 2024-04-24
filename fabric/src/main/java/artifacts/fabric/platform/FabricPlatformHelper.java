@@ -9,7 +9,10 @@ import artifacts.item.wearable.WearableArtifactItem;
 import artifacts.platform.PlatformHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.emi.stepheightentityattribute.StepHeightEntityAttributeMain;
+import dev.emi.trinkets.TrinketSlot;
 import dev.emi.trinkets.api.SlotReference;
+import dev.emi.trinkets.api.TrinketComponent;
+import dev.emi.trinkets.api.TrinketInventory;
 import dev.emi.trinkets.api.TrinketsApi;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import dev.emi.trinkets.api.client.TrinketRendererRegistry;
@@ -28,6 +31,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -44,6 +48,22 @@ public class FabricPlatformHelper implements PlatformHelper {
     @Override
     public Stream<ItemStack> findAllEquippedBy(LivingEntity entity, Item item) {
         return TrinketsHelper.findAllEquippedBy(entity).filter(stack -> stack.getItem() == item);
+    }
+
+    @Override
+    public boolean tryEquipInFirstSlot(LivingEntity entity, ItemStack item) {
+        if (TrinketsApi.getTrinketComponent(entity).isPresent()) {
+            TrinketComponent component = TrinketsApi.getTrinketComponent(entity).get();
+            for (Map<String, TrinketInventory> map : component.getInventory().values()) {
+                for (TrinketInventory inventory : map.values()) {
+                    if (TrinketSlot.canInsert(item, new SlotReference(inventory, 0), entity)) {
+                        inventory.setItem(0, item);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     @Override

@@ -1,10 +1,12 @@
 package artifacts.forge.curio;
 
 import artifacts.item.wearable.WearableArtifactItem;
+import artifacts.util.DamageSourceHelper;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -37,6 +39,15 @@ public class WearableArtifactCurio implements ICurio {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack) {
         item.onUnequip(slotContext.entity(), stack);
+    }
+
+    @NotNull
+    @Override
+    public DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit) {
+        if (DamageSourceHelper.shouldDestroyWornItemsOnDeath(slotContext.entity())) {
+            return DropRule.DESTROY;
+        }
+        return ICurio.super.getDropRule(slotContext, source, lootingLevel, recentlyHit);
     }
 
     @Override

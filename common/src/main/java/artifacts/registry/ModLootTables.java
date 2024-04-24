@@ -1,20 +1,18 @@
-package artifacts.fabric.registry;
+package artifacts.registry;
 
 import artifacts.Artifacts;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ModLootTables {
 
-    // TODO move this to common
-    private static final List<ResourceLocation> LOOTTABLES = List.of(
+    public static final List<ResourceLocation> INJECTED_LOOT_TABLES = List.of(
             EntityType.COW.getDefaultLootTable(),
             EntityType.MOOSHROOM.getDefaultLootTable(),
             BuiltInLootTables.VILLAGE_DESERT_HOUSE,
@@ -45,14 +43,24 @@ public class ModLootTables {
             BuiltInLootTables.WOODLAND_MANSION
     );
 
-    public static void onLootTableLoad(ResourceLocation id, LootTable.Builder supplier) {
-        if (LOOTTABLES.contains(id)) {
-            supplier.withPool(LootPool.lootPool().add(getInjectEntry(id.getPath())));
-        }
+    public static final Map<EntityType<?>, ResourceLocation> ENTITY_EQUIPMENT;
+
+    static {
+        ENTITY_EQUIPMENT = new HashMap<>();
+        List.of(
+                EntityType.ZOMBIE,
+                EntityType.HUSK,
+                EntityType.DROWNED,
+                EntityType.SKELETON,
+                EntityType.STRAY,
+                EntityType.WITHER_SKELETON,
+                EntityType.PIGLIN,
+                EntityType.PIGLIN_BRUTE,
+                EntityType.ZOMBIFIED_PIGLIN
+        ).forEach(type -> ENTITY_EQUIPMENT.put(type, entityEquipmentLootTable(type)));
     }
 
-    private static LootPoolEntryContainer.Builder<?> getInjectEntry(String name) {
-        ResourceLocation table = Artifacts.id("inject/" + name);
-        return LootTableReference.lootTableReference(table).setWeight(1);
+    public static ResourceLocation entityEquipmentLootTable(EntityType<?> entityType) {
+        return Artifacts.id("entity_equipment/%s", BuiltInRegistries.ENTITY_TYPE.getKey(entityType).getPath());
     }
 }

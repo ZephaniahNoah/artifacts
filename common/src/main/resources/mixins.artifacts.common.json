@@ -4,12 +4,14 @@
   "package": "artifacts.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "accessors.LivingEntityAccessor",
     "accessors.MobAccessor",
     "debug.TagLoaderMixin",
     "gamerule.BooleanValueInvoker",
     "gamerule.IntegerValueInvoker",
     "item.hurtsound.LivingEntityMixin",
     "item.umbrella.EntityMixin",
+    "item.wearable.NaturalSpawnerMixin",
     "item.wearable.aquadashers.EntityMixin",
     "item.wearable.charmofsinking.EnchantmentHelperMixin",
     "item.wearable.chorustotem.LivingEntityMixin",
@@ -17,6 +19,7 @@
     "item.wearable.villagerhat.VillagerMixin"
   ],
   "client": [
+    "accessors.client.LivingEntityRendererAccessor",
     "item.hurtsound.client.LivingEntityMixin",
     "item.umbrella.client.HumanoidModelMixin",
     "item.wearable.nightvisiongoggles.client.GameRendererMixin",

@@ -5,7 +5,7 @@ import artifacts.fabric.event.SwimEventsFabric;
 import artifacts.fabric.extensions.ClientConfigFabric;
 import artifacts.fabric.integration.CompatHandler;
 import artifacts.fabric.registry.ModFeatures;
-import artifacts.fabric.registry.ModLootTables;
+import artifacts.fabric.registry.ModLootTablesFabric;
 import artifacts.fabric.trinket.WearableArtifactTrinket;
 import artifacts.item.wearable.WearableArtifactItem;
 import dev.emi.trinkets.api.TrinketsApi;
@@ -30,7 +30,7 @@ public class ArtifactsFabric implements ModInitializer {
         ModFeatures.register();
 
         LootTableEvents.MODIFY.register((rm, lt, id, supplier, s) ->
-                ModLootTables.onLootTableLoad(id, supplier));
+                ModLootTablesFabric.onLootTableLoad(id, supplier));
 
         runCompatibilityHandlers();
     }

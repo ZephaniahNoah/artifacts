@@ -50,6 +50,7 @@ public class LootTables extends LootTableProvider {
         addDrinkingHatsLootTable();
         addArtifactsLootTable();
         addChestLootTables();
+        new EntityEquipment(this).addLootTables();
 
         for (LootModifiers.Builder lootBuilder : lootModifiers.lootBuilders) {
             addLootTable("inject/" + lootBuilder.getName(), lootBuilder.createLootTable(), lootBuilder.getParameterSet());
@@ -340,7 +341,7 @@ public class LootTables extends LootTableProvider {
         return LootTableReference.lootTableReference(Artifacts.id(lootTable)).setWeight(weight);
     }
 
-    private void addLootTable(String location, LootTable.Builder lootTable, LootContextParamSet lootParameterSet) {
+    public void addLootTable(String location, LootTable.Builder lootTable, LootContextParamSet lootParameterSet) {
         if (location.startsWith("inject/")) {
             String actualLocation = location.replace("inject/", "");
             Preconditions.checkArgument(existingFileHelper.exists(new ResourceLocation("loot_tables/" + actualLocation + ".json"), PackType.SERVER_DATA), "Loot table %s does not exist in any known data pack", actualLocation);

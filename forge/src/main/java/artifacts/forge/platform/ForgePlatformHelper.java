@@ -25,7 +25,10 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 import top.theillusivec4.curios.api.client.ICurioRenderer;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -40,6 +43,22 @@ public class ForgePlatformHelper implements PlatformHelper {
     @Override
     public Stream<ItemStack> findAllEquippedBy(LivingEntity entity, Item item) {
         return CuriosApi.getCuriosHelper().findCurios(entity, item).stream().map(SlotResult::stack);
+    }
+
+    @Override
+    public boolean tryEquipInFirstSlot(LivingEntity entity, ItemStack item) {
+        Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosHelper().getCuriosHandler(entity).resolve();
+        if (optional.isPresent()) {
+            ICuriosItemHandler handler = optional.get();
+            for (Map.Entry<String, ICurioStacksHandler> entry : handler.getCurios().entrySet()) {
+                SlotContext slotContext = new SlotContext(entry.getKey(), entity ,0, false, true);
+                if (CuriosApi.getCuriosHelper().isStackValid(slotContext, item)) {
+                    entry.getValue().getStacks().setStackInSlot(0, item);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override

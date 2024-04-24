@@ -22,6 +22,8 @@ public interface PlatformHelper {
 
     Stream<ItemStack> findAllEquippedBy(LivingEntity entity, Item item);
 
+    boolean tryEquipInFirstSlot(LivingEntity entity, ItemStack item);
+
     Attribute getStepHeightAttribute();
 
     boolean isCorrectTierForDrops(Tier tier, BlockState state);
