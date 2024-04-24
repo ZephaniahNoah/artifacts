@@ -94,7 +94,7 @@ public class ModGameRules {
             FLAME_PENDANT_STRIKE_CHANCE = percentage(createName(ModItems.FLAME_PENDANT, "strikeChance"), 40),
             FLIPPERS_SWIM_SPEED_BONUS = doubleValue(createName(ModItems.FLIPPERS, "swimSpeedBonus"), 100, 100 * 100, 100),
             GOLDEN_HOOK_EXPERIENCE_BONUS = doubleValue(createName(ModItems.GOLDEN_HOOK, "experienceBonus"), 75, 10 * 100, 100),
-            NIGHT_VISION_GOGGLES_STRENGTH = percentage(createName(ModItems.NIGHT_VISION_GOGGLES, "strength"), 12),
+            NIGHT_VISION_GOGGLES_STRENGTH = percentage(createName(ModItems.NIGHT_VISION_GOGGLES, "strength"), 25),
             NOVELTY_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = percentage(createName(ModItems.NOVELTY_DRINKING_HAT, "drinkingDurationMultiplier"), 30),
             NOVELTY_DRINKING_HAT_EATING_DURATION_MULTIPLIER = percentage(createName(ModItems.NOVELTY_DRINKING_HAT, "eatingDurationMultiplier"), 60),
             PLASTIC_DRINKING_HAT_DRINKING_DURATION_MULTIPLIER = percentage(createName(ModItems.PLASTIC_DRINKING_HAT, "drinkingDurationMultiplier"), 30),

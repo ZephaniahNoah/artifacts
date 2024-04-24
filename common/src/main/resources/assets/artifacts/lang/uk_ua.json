@@ -39,7 +39,7 @@
   "artifacts.tooltip.item.kitty_slippers": "Кріпери уникають носія",
   "artifacts.tooltip.item.lucky_scarf.multiple_levels": "Застосовує %s додаткових рівнів удачі до видобутих блоків",
   "artifacts.tooltip.item.lucky_scarf.single_level": "Застосовує додатковий рівень удачі до видобутих блоків",
-  "artifacts.tooltip.item.night_vision_goggles": "Дозволяє носію бачити в темряві",
+  "artifacts.tooltip.item.night_vision_goggles.full": "Дозволяє носію бачити в темряві",
   "artifacts.tooltip.item.obsidian_skull": "Носій набуває тимчасового імунітету до вогневої шкоди, якщо поранений вогнем",
   "artifacts.tooltip.item.panic_necklace": "Збільшує швидкість пересування носія після отримання шкоди",
   "artifacts.tooltip.item.pocket_piston": "Збільшує відкидання завдане носієм",

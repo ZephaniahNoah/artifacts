@@ -40,7 +40,7 @@
   "artifacts.tooltip.item.kitty_slippers": "クリーパーは着用者を避ける",
   "artifacts.tooltip.item.lucky_scarf.multiple_levels": "%s の追加レベルの幸運を採掘されたブロックに適用する",
   "artifacts.tooltip.item.lucky_scarf.single_level": "採掘されたブロックに追加レベルの幸運を適用する",
-  "artifacts.tooltip.item.night_vision_goggles": "着用者が暗闇でも見えるようにする",
+  "artifacts.tooltip.item.night_vision_goggles.full": "着用者が暗闇でも見えるようにする",
   "artifacts.tooltip.item.obsidian_skull": "着用者は火で傷ついた場合、一時的に火によるダメージを受けなくなる",
   "artifacts.tooltip.item.panic_necklace": "ダメージを受けた後の着用者の移動速度が増加する",
   "artifacts.tooltip.item.pocket_piston": "着用者が与えるノックバック量が増加する",

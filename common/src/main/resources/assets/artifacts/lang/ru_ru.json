@@ -39,7 +39,7 @@
   "artifacts.tooltip.item.kitty_slippers": "Криперы избегают владельца.",
   "artifacts.tooltip.item.lucky_scarf.multiple_levels": "Добавляет %s дополнительных уровней удачи к добытым блокам.",
   "artifacts.tooltip.item.lucky_scarf.single_level": "Добавляет дополнительный уровень удачи к добытым блокам.",
-  "artifacts.tooltip.item.night_vision_goggles": "Позволяют владельцу видеть в темноте.",
+  "artifacts.tooltip.item.night_vision_goggles.full": "Позволяют владельцу видеть в темноте.",
   "artifacts.tooltip.item.obsidian_skull": "Владелец становится на какое-то время неуязвим к урону огнём при ранении огнём.",
   "artifacts.tooltip.item.panic_necklace": "Увеличивает скорость движения владельца после получения урона.",
   "artifacts.tooltip.item.pocket_piston": "Увеличивает отбрасывание, наносимое по владельцу.",

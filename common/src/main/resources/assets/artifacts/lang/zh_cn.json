@@ -40,7 +40,7 @@
   "artifacts.tooltip.item.kitty_slippers": "苦力怕会回避装备者",
   "artifacts.tooltip.item.lucky_scarf.multiple_levels": "挖掘时提供额外 %s 级的时运魔咒",
   "artifacts.tooltip.item.lucky_scarf.single_level": "挖掘时提供额外一级的时运魔咒",
-  "artifacts.tooltip.item.night_vision_goggles": "允许装备者在黑暗中看清事物",
+  "artifacts.tooltip.item.night_vision_goggles.full": "允许装备者在黑暗中看清事物",
   "artifacts.tooltip.item.obsidian_skull": "令装备者在受到火焰伤害时短暂免疫火焰伤害。",
   "artifacts.tooltip.item.panic_necklace": "在受伤后增加装备者的移动速度",
   "artifacts.tooltip.item.pocket_piston": "增加装备者造成的击退距离",

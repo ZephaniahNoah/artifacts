@@ -39,7 +39,7 @@
   "artifacts.tooltip.item.kitty_slippers": "I creeper evitano chi li indossa",
   "artifacts.tooltip.item.lucky_scarf.multiple_levels": "Applica %s livelli aggiuntivi di fortuna ai blocchi scavati",
   "artifacts.tooltip.item.lucky_scarf.single_level": "Applica un livello aggiuntivo di fortuna ai blocchi scavati",
-  "artifacts.tooltip.item.night_vision_goggles": "Permette di vedere al buio",
+  "artifacts.tooltip.item.night_vision_goggles.full": "Permette di vedere al buio",
   "artifacts.tooltip.item.obsidian_skull": "Rende temporaneamente immuni al fuoco quando danneggiato dalle fiamme",
   "artifacts.tooltip.item.panic_necklace": "Aumenta la velocità di movimento dopo aver subito danno",
   "artifacts.tooltip.item.pocket_piston": "Aumenta il contraccolpo inflitto da chi lo indossa",
