@@ -20,7 +20,6 @@ public class LivingEntityMixin {
     @Inject(method = "completeUsingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;triggerItemUseEffects(Lnet/minecraft/world/item/ItemStack;I)V"))
     protected void completeUsingItem(CallbackInfo ci) {
         FoodProperties properties = useItem.getItem().getFoodProperties();
-        System.out.println(properties);
         if (properties != null) {
             OnionRingItem.applyMiningSpeedBuff((LivingEntity) (Object) this, properties);
         }
