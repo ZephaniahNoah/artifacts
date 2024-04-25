@@ -22,7 +22,7 @@ public class OnionRingItem extends WearableArtifactItem {
     public static void applyMiningSpeedBuff(LivingEntity entity, FoodProperties properties) {
         if (!ModItems.ONION_RING.get().isCosmetic()
                 && ModItems.ONION_RING.get().isEquippedBy(entity)
-                && properties.getNutrition() >= 0
+                && properties.getNutrition() > 0
                 && !properties.canAlwaysEat()
         ) {
             int duration = ModGameRules.ONION_RING_HASTE_DURATION_PER_FOOD_POINT.get() * properties.getNutrition();
