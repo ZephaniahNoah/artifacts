@@ -9,8 +9,8 @@ import net.minecraft.world.entity.player.Player;
 public class GoldenHookItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.GOLDEN_HOOK_EXPERIENCE_BONUS.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.GOLDEN_HOOK_EXPERIENCE_BONUS.get() > 0;
     }
 
     public static int getExperienceBonus(int originalXP, LivingEntity entity, Player attacker) {

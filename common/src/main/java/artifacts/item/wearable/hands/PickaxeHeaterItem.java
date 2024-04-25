@@ -36,8 +36,8 @@ public class PickaxeHeaterItem extends WearableArtifactItem {
     private static ResourceLocation lastRecipe;
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.PICKAXE_HEATER_ENABLED.get();
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.PICKAXE_HEATER_ENABLED.get();
     }
 
     public static ObjectArrayList<ItemStack> getModifiedBlockDrops(ObjectArrayList<ItemStack> items, LootContext context, TagKey<Block> ores, TagKey<Item> rawOres) {

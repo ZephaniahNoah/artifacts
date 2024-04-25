@@ -11,8 +11,8 @@ import net.minecraft.world.item.ItemStack;
 public class WhoopeeCushionItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return false;
+    public boolean hasNonCosmeticEffects() {
+        return true;
     }
 
     @Override

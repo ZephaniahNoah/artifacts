@@ -15,8 +15,8 @@ public class OnionRingItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.ONION_RING_HASTE_DURATION_PER_FOOD_POINT.get() == 0 || ModGameRules.ONION_RING_HASTE_LEVEL.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.ONION_RING_HASTE_DURATION_PER_FOOD_POINT.get() > 0 && ModGameRules.ONION_RING_HASTE_LEVEL.get() > 0;
     }
 
     public static void applyMiningSpeedBuff(LivingEntity entity, FoodProperties properties) {

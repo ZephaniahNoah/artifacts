@@ -14,10 +14,10 @@ import java.util.List;
 public class VampiricGloveItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_RATIO.get() == 0
-                || ModGameRules.VAMPIRIC_GLOVE_MAX_HEALING_PER_HIT.get() == 0
-                || ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_CHANCE.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_RATIO.get() > 0
+                && ModGameRules.VAMPIRIC_GLOVE_MAX_HEALING_PER_HIT.get() > 0
+                && ModGameRules.VAMPIRIC_GLOVE_ABSORPTION_CHANCE.get() > 0;
     }
 
     @Override

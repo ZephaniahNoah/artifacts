@@ -18,8 +18,8 @@ public class PanicNecklaceItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.PANIC_NECKLACE_SPEED_DURATION.get() == 0 || ModGameRules.PANIC_NECKLACE_SPEED_LEVEL.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.PANIC_NECKLACE_SPEED_DURATION.get() > 0 && ModGameRules.PANIC_NECKLACE_SPEED_LEVEL.get() > 0;
     }
 
     private EventResult onLivingHurt(LivingEntity entity, DamageSource damageSource, float amount) {

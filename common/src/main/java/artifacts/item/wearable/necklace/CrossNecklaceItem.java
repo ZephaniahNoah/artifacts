@@ -16,8 +16,8 @@ public class CrossNecklaceItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS.get() > 0;
     }
 
     private static void setCanApplyBonus(ItemStack stack, boolean canApplyBonus) {

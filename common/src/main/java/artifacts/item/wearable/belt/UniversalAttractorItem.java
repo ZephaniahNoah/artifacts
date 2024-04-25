@@ -20,8 +20,8 @@ public class UniversalAttractorItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.UNIVERSAL_ATTRACTOR_ENABLED.get();
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.UNIVERSAL_ATTRACTOR_ENABLED.get();
     }
 
     EventResult onItemToss(Player player, ItemEntity entity) {

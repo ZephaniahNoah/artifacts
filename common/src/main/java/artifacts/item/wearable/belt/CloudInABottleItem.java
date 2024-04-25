@@ -16,8 +16,8 @@ import net.minecraft.world.phys.Vec3;
 public class CloudInABottleItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.CLOUD_IN_A_BOTTLE_ENABLED.get();
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.CLOUD_IN_A_BOTTLE_ENABLED.get();
     }
 
     public static void jump(Player player) {

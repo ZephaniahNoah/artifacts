@@ -26,8 +26,8 @@ public class DrinkingHatItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return drinkingDurationMultiplier.fuzzyEquals(1) && eatingDurationMultiplier.fuzzyEquals(1);
+    public boolean hasNonCosmeticEffects() {
+        return !drinkingDurationMultiplier.fuzzyEquals(1) || !eatingDurationMultiplier.fuzzyEquals(1);
     }
 
     @Override

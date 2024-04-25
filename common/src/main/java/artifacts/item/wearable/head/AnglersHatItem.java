@@ -10,8 +10,9 @@ import java.util.List;
 public class AnglersHatItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.ANGLERS_HAT_LUCK_OF_THE_SEA_LEVEL_BONUS.get() == 0 && ModGameRules.ANGLERS_HAT_LURE_LEVEL_BONUS.get() == 0;
+    protected boolean hasNonCosmeticEffects() {
+        return ModGameRules.ANGLERS_HAT_LUCK_OF_THE_SEA_LEVEL_BONUS.get() > 0
+                || ModGameRules.ANGLERS_HAT_LURE_LEVEL_BONUS.get() > 0;
     }
 
     @Override

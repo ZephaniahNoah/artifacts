@@ -16,8 +16,8 @@ public class FlamePendantItem extends PendantItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return getStrikeChance() == 0 || ModGameRules.FLAME_PENDANT_FIRE_DURATION.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return super.hasNonCosmeticEffects() && ModGameRules.FLAME_PENDANT_FIRE_DURATION.get() > 0;
     }
 
     @Override

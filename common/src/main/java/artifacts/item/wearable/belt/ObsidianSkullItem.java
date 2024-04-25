@@ -15,8 +15,8 @@ import net.minecraft.world.entity.player.Player;
 public class ObsidianSkullItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.OBSIDIAN_SKULL_FIRE_RESISTANCE_DURATION.get() > 0;
     }
 
     @Override

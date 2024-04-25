@@ -18,8 +18,8 @@ public class PocketPistonItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.POCKET_PISTON_KNOCKBACK_STRENGTH.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.POCKET_PISTON_KNOCKBACK_STRENGTH.get() > 0;
     }
 
     private EventResult onLivingHurt(LivingEntity entity, DamageSource damageSource, float amount) {

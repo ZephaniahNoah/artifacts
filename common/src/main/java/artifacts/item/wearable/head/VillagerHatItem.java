@@ -6,7 +6,7 @@ import artifacts.registry.ModGameRules;
 public class VillagerHatItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.VILLAGER_HAT_REPUTATION_BONUS.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.VILLAGER_HAT_REPUTATION_BONUS.get() > 0;
     }
 }

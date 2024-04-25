@@ -8,8 +8,8 @@ import net.minecraft.world.entity.LivingEntity;
 public class CharmOfSinkingItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.CHARM_OF_SINKING_ENABLED.get();
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.CHARM_OF_SINKING_ENABLED.get();
     }
 
     public static boolean shouldSink(LivingEntity entity) {

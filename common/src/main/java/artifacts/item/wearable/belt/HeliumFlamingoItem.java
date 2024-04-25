@@ -24,8 +24,8 @@ public class HeliumFlamingoItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.HELIUM_FLAMINGO_FLIGHT_DURATION.get() > 0;
     }
 
     @Override

@@ -16,8 +16,8 @@ import java.util.List;
 public class SnowshoesItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.SNOWSHOES_ALLOW_WALKING_ON_POWDER_SNOW.get() && ModGameRules.SNOWSHOES_SLIPPERINESS_REDUCTION.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.SNOWSHOES_SLIPPERINESS_REDUCTION.get() > 0;
     }
 
     @Override

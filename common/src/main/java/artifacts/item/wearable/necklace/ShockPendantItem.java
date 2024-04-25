@@ -24,8 +24,8 @@ public class ShockPendantItem extends PendantItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return getStrikeChance() == 0 && !ModGameRules.SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE.get();
+    public boolean hasNonCosmeticEffects() {
+        return super.hasNonCosmeticEffects() || ModGameRules.SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE.get();
     }
 
     @Override

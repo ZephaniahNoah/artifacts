@@ -36,8 +36,8 @@ public class MobEffectItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return !isEnabled.get() || amplifier.get() == 0;
+    protected boolean hasNonCosmeticEffects() {
+        return isEnabled.get() && amplifier.get() > 0;
     }
 
     public boolean isEffectActive(LivingEntity entity) {

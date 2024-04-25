@@ -17,8 +17,8 @@ public class BunnyHoppersItem extends MobEffectItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.BUNNY_HOPPERS_DO_CANCEL_FALL_DAMAGE.get() && super.isCosmetic();
+    public boolean hasNonCosmeticEffects() {
+        return super.hasNonCosmeticEffects() || ModGameRules.BUNNY_HOPPERS_DO_CANCEL_FALL_DAMAGE.get();
     }
 
     @Override

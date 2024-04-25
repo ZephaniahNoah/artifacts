@@ -94,13 +94,17 @@ public abstract class WearableArtifactItem extends ArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
+    public final boolean isCosmetic() {
         for (ArtifactAttributeModifier modifier : attributeModifiers) {
             if (modifier.getAmount() != 0) {
                 return false;
             }
         }
-        return getFortuneLevel() == 0 && getLootingLevel() == 0;
+        return getFortuneLevel() == 0 && getLootingLevel() == 0 && !canWalkOnPowderedSnow() && !hasNonCosmeticEffects();
+    }
+
+    protected boolean hasNonCosmeticEffects() {
+        return false;
     }
 
     public SoundEvent getEquipSound() {

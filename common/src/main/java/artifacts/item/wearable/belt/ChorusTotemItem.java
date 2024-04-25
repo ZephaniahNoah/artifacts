@@ -24,8 +24,8 @@ public class ChorusTotemItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.CHORUS_TOTEM_TELEPORTATION_CHANCE.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.CHORUS_TOTEM_TELEPORTATION_CHANCE.get() > 0;
     }
 
     @Override

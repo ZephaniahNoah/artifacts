@@ -22,8 +22,8 @@ public class KittySlippersItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.KITTY_SLIPPERS_ENABLED.get();
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.KITTY_SLIPPERS_ENABLED.get();
     }
 
     private EventResult onEntityJoinWorld(Entity entity, Level level) {

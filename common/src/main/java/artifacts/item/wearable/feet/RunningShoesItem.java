@@ -29,8 +29,8 @@ public class RunningShoesItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT.get() && ModGameRules.RUNNING_SHOES_SPEED_BONUS.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT.get() || ModGameRules.RUNNING_SHOES_SPEED_BONUS.get() > 0;
     }
 
     @Override

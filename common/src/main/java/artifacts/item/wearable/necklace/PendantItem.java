@@ -45,6 +45,11 @@ public abstract class PendantItem extends WearableArtifactItem {
     protected abstract void applyEffect(LivingEntity target, LivingEntity attacker);
 
     @Override
+    protected boolean hasNonCosmeticEffects() {
+        return getStrikeChance() > 0;
+    }
+
+    @Override
     public SoundEvent getEquipSound() {
         return SoundEvents.ARMOR_EQUIP_DIAMOND;
     }

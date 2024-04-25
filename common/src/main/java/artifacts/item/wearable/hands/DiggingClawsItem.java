@@ -23,8 +23,8 @@ import java.util.Optional;
 public class DiggingClawsItem extends WearableArtifactItem {
 
     @Override
-    public boolean isCosmetic() {
-        return getToolTier().isEmpty() && ModGameRules.DIGGING_CLAWS_DIG_SPEED_BONUS.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return getToolTier().isPresent() || ModGameRules.DIGGING_CLAWS_DIG_SPEED_BONUS.get() > 0;
     }
 
     @Override

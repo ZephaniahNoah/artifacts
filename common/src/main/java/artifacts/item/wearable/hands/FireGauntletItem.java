@@ -17,8 +17,8 @@ public class FireGauntletItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return ModGameRules.FIRE_GAUNTLET_FIRE_DURATION.get() == 0;
+    public boolean hasNonCosmeticEffects() {
+        return ModGameRules.FIRE_GAUNTLET_FIRE_DURATION.get() > 0;
     }
 
     private EventResult onLivingHurt(LivingEntity entity, DamageSource damageSource, float amount) {

@@ -21,8 +21,8 @@ public class AntidoteVesselItem extends WearableArtifactItem {
     }
 
     @Override
-    public boolean isCosmetic() {
-        return !ModGameRules.ANTIDOTE_VESSEL_ENABLED.get();
+    protected boolean hasNonCosmeticEffects() {
+        return ModGameRules.ANTIDOTE_VESSEL_ENABLED.get();
     }
 
     @Override
