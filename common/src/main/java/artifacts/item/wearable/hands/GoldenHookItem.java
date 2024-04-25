@@ -21,4 +21,9 @@ public class GoldenHookItem extends WearableArtifactItem {
         int experienceBonus = (int) (originalXP * ModGameRules.GOLDEN_HOOK_EXPERIENCE_BONUS.get());
         return Math.max(0, experienceBonus);
     }
+
+    @Override
+    public boolean makesPiglinsNeutral() {
+        return true;
+    }
 }

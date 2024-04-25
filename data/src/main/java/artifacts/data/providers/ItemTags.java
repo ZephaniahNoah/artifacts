@@ -1,8 +1,10 @@
 package artifacts.data.providers;
 
 import artifacts.Artifacts;
+import artifacts.item.wearable.WearableArtifactItem;
 import artifacts.registry.ModItems;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -106,6 +108,9 @@ public class ItemTags extends ItemTagsProvider {
                 ModItems.UMBRELLA.get()
         );
 
-        tag(net.minecraft.tags.ItemTags.PIGLIN_LOVED).add(ModItems.GOLDEN_HOOK.get());
+        tag(net.minecraft.tags.ItemTags.PIGLIN_LOVED).add(BuiltInRegistries.ITEM.stream()
+                .filter(item -> item instanceof WearableArtifactItem artifactItem && artifactItem.makesPiglinsNeutral())
+                .toArray(Item[]::new)
+        );
     }
 }

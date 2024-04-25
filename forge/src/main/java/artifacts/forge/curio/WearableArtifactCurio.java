@@ -69,4 +69,9 @@ public class WearableArtifactCurio implements ICurio {
     public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting) {
         return item.getLootingLevel();
     }
+
+    @Override
+    public boolean makesPiglinsNeutral(SlotContext slotContext) {
+        return item.makesPiglinsNeutral();
+    }
 }

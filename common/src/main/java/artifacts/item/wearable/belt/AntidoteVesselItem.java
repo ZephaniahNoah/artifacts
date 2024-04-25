@@ -46,4 +46,9 @@ public class AntidoteVesselItem extends WearableArtifactItem {
             }
         });
     }
+
+    @Override
+    public boolean makesPiglinsNeutral() {
+        return true;
+    }
 }

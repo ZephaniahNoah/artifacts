@@ -33,15 +33,16 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class FabricPlatformHelper implements PlatformHelper {
 
     @Override
-    public boolean isEquippedBy(@Nullable LivingEntity entity, Item item) {
+    public boolean isEquippedBy(@Nullable LivingEntity entity, Predicate<ItemStack> predicate) {
         return TrinketsApi.getTrinketComponent(entity)
-                .map(component -> component.isEquipped(item))
+                .map(component -> component.isEquipped(predicate))
                 .orElse(false);
     }
 

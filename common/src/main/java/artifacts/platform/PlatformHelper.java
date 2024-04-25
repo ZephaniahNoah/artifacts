@@ -13,12 +13,17 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public interface PlatformHelper {
 
-    boolean isEquippedBy(@Nullable LivingEntity entity, Item item);
+    default boolean isEquippedBy(@Nullable LivingEntity entity, Item item) {
+        return isEquippedBy(entity, stack -> stack.is(item));
+    }
+
+    boolean isEquippedBy(@Nullable LivingEntity entity, Predicate<ItemStack> predicate);
 
     Stream<ItemStack> findAllEquippedBy(LivingEntity entity, Item item);
 

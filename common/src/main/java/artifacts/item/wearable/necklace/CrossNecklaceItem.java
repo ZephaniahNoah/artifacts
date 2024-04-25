@@ -39,4 +39,9 @@ public class CrossNecklaceItem extends WearableArtifactItem {
             addCooldown(entity, ModGameRules.CROSS_NECKLACE_COOLDOWN.get());
         }
     }
+
+    @Override
+    public boolean makesPiglinsNeutral() {
+        return true;
+    }
 }

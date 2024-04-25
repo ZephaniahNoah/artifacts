@@ -30,14 +30,15 @@ import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class ForgePlatformHelper implements PlatformHelper {
 
     @Override
-    public boolean isEquippedBy(@Nullable LivingEntity entity, Item item) {
-        return entity != null && CuriosApi.getCuriosHelper().findFirstCurio(entity, item).isPresent();
+    public boolean isEquippedBy(@Nullable LivingEntity entity, Predicate<ItemStack> predicate) {
+        return entity != null && CuriosApi.getCuriosHelper().findFirstCurio(entity, predicate).isPresent();
     }
 
     @Override

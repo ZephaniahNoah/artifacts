@@ -62,4 +62,9 @@ public class UniversalAttractorItem extends WearableArtifactItem {
             }
         }
     }
+
+    @Override
+    public boolean makesPiglinsNeutral() {
+        return true;
+    }
 }

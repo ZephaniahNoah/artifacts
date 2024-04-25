@@ -115,6 +115,10 @@ public abstract class WearableArtifactItem extends ArtifactItem {
         return 0;
     }
 
+    public boolean makesPiglinsNeutral() {
+        return false;
+    }
+
     public void toggleItem(ServerPlayer player) {
         findAllEquippedBy(player).forEach(stack -> setActivated(stack, !isActivated(stack)));
     }
