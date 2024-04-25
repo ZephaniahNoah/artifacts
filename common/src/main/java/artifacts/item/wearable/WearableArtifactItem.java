@@ -119,6 +119,10 @@ public abstract class WearableArtifactItem extends ArtifactItem {
         return false;
     }
 
+    public boolean canWalkOnPowderedSnow() {
+        return false;
+    }
+
     public void toggleItem(ServerPlayer player) {
         findAllEquippedBy(player).forEach(stack -> setActivated(stack, !isActivated(stack)));
     }

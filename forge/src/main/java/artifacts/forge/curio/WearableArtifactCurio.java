@@ -74,4 +74,9 @@ public class WearableArtifactCurio implements ICurio {
     public boolean makesPiglinsNeutral(SlotContext slotContext) {
         return item.makesPiglinsNeutral();
     }
+
+    @Override
+    public boolean canWalkOnPowderedSnow(SlotContext slotContext) {
+        return item.canWalkOnPowderedSnow();
+    }
 }

@@ -35,4 +35,9 @@ public class SnowshoesItem extends WearableArtifactItem {
         }
         return friction;
     }
+
+    @Override
+    public boolean canWalkOnPowderedSnow() {
+        return ModGameRules.SNOWSHOES_ALLOW_WALKING_ON_POWDER_SNOW.get();
+    }
 }
