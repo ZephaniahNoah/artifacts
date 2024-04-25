@@ -135,9 +135,7 @@ public class HeadModel extends HumanoidModel<LivingEntity> {
         return createEmptyHat(head);
     }
 
-    public static MeshDefinition createVillagerHat() {
-        CubeListBuilder head = CubeListBuilder.create();
-
+    public static MeshDefinition createBrimmedHat(CubeListBuilder head) {
         head.texOffs(0, 16);
         head.addBox(-8, -5.125F, -8, 16, 0, 16);
 
@@ -180,5 +178,15 @@ public class HeadModel extends HumanoidModel<LivingEntity> {
         );
 
         return mesh;
+    }
+
+    public static MeshDefinition createAnglersHat() {
+        CubeListBuilder head = CubeListBuilder.create();
+        CubeDeformation deformation = new CubeDeformation(0, 0.5F, 0.25F);
+
+        head.texOffs(24, -4);
+        head.addBox(4 + 0.5F, -13.125F - 0.5F, 0.25F, 0, 8, 4, deformation);
+
+        return createBrimmedHat(head);
     }
 }

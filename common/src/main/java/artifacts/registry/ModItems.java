@@ -50,6 +50,7 @@ public class ModItems {
     public static RegistrySupplier<WearableArtifactItem> VILLAGER_HAT = register("villager_hat", VillagerHatItem::new);
     public static RegistrySupplier<WearableArtifactItem> SUPERSTITIOUS_HAT = register("superstitious_hat", SuperstitiousHatItem::new);
     public static RegistrySupplier<WearableArtifactItem> COWBOY_HAT = register("cowboy_hat", CowboyHatItem::new);
+    public static RegistrySupplier<WearableArtifactItem> ANGLERS_HAT = register("anglers_hat", AnglersHatItem::new);
 
     // necklace
     public static RegistrySupplier<WearableArtifactItem> LUCKY_SCARF = register("lucky_scarf", LuckyScarfItem::new);

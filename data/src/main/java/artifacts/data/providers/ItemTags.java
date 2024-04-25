@@ -55,7 +55,8 @@ public class ItemTags extends ItemTagsProvider {
                 ModItems.NIGHT_VISION_GOGGLES.get(),
                 ModItems.VILLAGER_HAT.get(),
                 ModItems.SUPERSTITIOUS_HAT.get(),
-                ModItems.COWBOY_HAT.get()
+                ModItems.COWBOY_HAT.get(),
+                ModItems.ANGLERS_HAT.get()
         );
         tag(NECKLACE).add(
                 ModItems.LUCKY_SCARF.get(),

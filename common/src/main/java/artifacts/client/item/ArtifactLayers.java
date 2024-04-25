@@ -4,6 +4,7 @@ import artifacts.Artifacts;
 import artifacts.client.item.model.*;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 
@@ -16,8 +17,9 @@ public class ArtifactLayers {
             SNORKEL = createLayerLocation("snorkel"),
             NIGHT_VISION_GOGGLES = createLayerLocation("night_vision_goggles"),
             SUPERSTITIOUS_HAT = createLayerLocation("superstitious_hat"),
-            VILLAGER_HAT = createLayerLocation("villager_hat"),
+            BRIMMED_HAT = createLayerLocation("brimmed_hat"),
             COWBOY_HAT = createLayerLocation("cowboy_hat"),
+            ANGLERS_HAT = createLayerLocation("anglers_hat"),
 
             SCARF = createLayerLocation("scarf"),
             CROSS_NECKLACE = createLayerLocation("cross_necklace"),
@@ -93,8 +95,9 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(SNORKEL, layer(HeadModel::createSnorkel, 64, 32));
         EntityModelLayerRegistry.register(NIGHT_VISION_GOGGLES, layer(HeadModel::createNightVisionGoggles, 32, 32));
         EntityModelLayerRegistry.register(SUPERSTITIOUS_HAT, layer(HeadModel::createSuperstitiousHat, 64, 32));
-        EntityModelLayerRegistry.register(VILLAGER_HAT, layer(HeadModel::createVillagerHat, 32, 32));
+        EntityModelLayerRegistry.register(BRIMMED_HAT, layer(() -> HeadModel.createBrimmedHat(CubeListBuilder.create()), 32, 32));
         EntityModelLayerRegistry.register(COWBOY_HAT, layer(HeadModel::createCowboyHat, 32, 32));
+        EntityModelLayerRegistry.register(ANGLERS_HAT, layer(HeadModel::createAnglersHat, 32, 32));
 
         EntityModelLayerRegistry.register(SCARF, layer(ScarfModel::createScarf, 64, 32));
         EntityModelLayerRegistry.register(CROSS_NECKLACE, layer(NecklaceModel::createCrossNecklace, 64, 48));

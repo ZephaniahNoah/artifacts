@@ -50,6 +50,8 @@ public class ModGameRules {
             UMBRELLA_IS_GLIDER = booleanValue(createName(ModItems.UMBRELLA, "isGlider"));
 
     public static final IntegerValue
+            ANGLERS_HAT_LUCK_OF_THE_SEA_LEVEL_BONUS = integerValue(createName(ModItems.ANGLERS_HAT, "luckOfTheSeaLevelBonus"), 1),
+            ANGLERS_HAT_LURE_LEVEL_BONUS = integerValue(createName(ModItems.ANGLERS_HAT, "lureLevelBonus"), 1),
             CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS = integerValue(createName(ModItems.CROSS_NECKLACE, "bonusInvincibilityTicks"), 20, 60 * 20),
             CRYSTAL_HEART_HEALTH_BONUS = integerValue(createName(ModItems.CRYSTAL_HEART, "healthBonus"), 10, 100),
             DIGGING_CLAWS_TOOL_TIER = integerValue(createName(ModItems.DIGGING_CLAWS, "toolTier"), Tiers.STONE.getLevel() + 1, Tiers.NETHERITE.getLevel() + 1),

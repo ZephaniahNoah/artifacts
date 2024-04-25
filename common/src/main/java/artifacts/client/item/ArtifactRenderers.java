@@ -21,8 +21,9 @@ public class ArtifactRenderers {
         register(ModItems.SNORKEL.get(), () -> new GenericArtifactRenderer("snorkel", new HeadModel(bakeLayer(ArtifactLayers.SNORKEL), RenderType::entityTranslucent)));
         register(ModItems.NIGHT_VISION_GOGGLES.get(), () -> new GlowingArtifactRenderer("night_vision_goggles", new HeadModel(bakeLayer(ArtifactLayers.NIGHT_VISION_GOGGLES))));
         register(ModItems.SUPERSTITIOUS_HAT.get(), () -> new GenericArtifactRenderer("superstitious_hat", new HeadModel(bakeLayer(ArtifactLayers.SUPERSTITIOUS_HAT), RenderType::entityCutoutNoCull)));
-        register(ModItems.VILLAGER_HAT.get(), () -> new GenericArtifactRenderer("villager_hat", new HeadModel(bakeLayer(ArtifactLayers.VILLAGER_HAT))));
+        register(ModItems.VILLAGER_HAT.get(), () -> new GenericArtifactRenderer("villager_hat", new HeadModel(bakeLayer(ArtifactLayers.BRIMMED_HAT))));
         register(ModItems.COWBOY_HAT.get(), () -> new GenericArtifactRenderer("cowboy_hat", new HeadModel(bakeLayer(ArtifactLayers.COWBOY_HAT))));
+        register(ModItems.ANGLERS_HAT.get(), () -> new GenericArtifactRenderer("anglers_hat", new HeadModel(bakeLayer(ArtifactLayers.ANGLERS_HAT))));
 
         // necklace
         register(ModItems.LUCKY_SCARF.get(), () -> new GenericArtifactRenderer("lucky_scarf", new ScarfModel(bakeLayer(ArtifactLayers.SCARF), RenderType::entityCutoutNoCull)));
