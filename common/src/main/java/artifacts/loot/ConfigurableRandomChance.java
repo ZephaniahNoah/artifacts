@@ -12,10 +12,12 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public record ConfigurableRandomChance(float defaultProbability) implements LootItemCondition {
 
+    @Override
     public LootItemConditionType getType() {
         return ModLootConditions.CONFIGURABLE_ARTIFACT_CHANCE.get();
     }
 
+    @Override
     public boolean test(LootContext context) {
         if (Artifacts.CONFIG.common.getArtifactRarity() > 9999) {
             return false;
@@ -32,10 +34,12 @@ public record ConfigurableRandomChance(float defaultProbability) implements Loot
 
     public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<ConfigurableRandomChance> {
 
+        @Override
         public void serialize(JsonObject object, ConfigurableRandomChance condition, JsonSerializationContext context) {
             object.addProperty("default_probability", condition.defaultProbability);
         }
 
+        @Override
         public ConfigurableRandomChance deserialize(JsonObject object, JsonDeserializationContext context) {
             return new ConfigurableRandomChance(GsonHelper.getAsFloat(object, "default_probability"));
         }

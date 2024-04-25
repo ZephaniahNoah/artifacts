@@ -31,6 +31,7 @@ public abstract class PlayerMixin extends LivingEntity {
      * It adds the speed after the vanilla method does all the calculations on the base modifier such as haste and underwater
      */
     // TODO: identical artifacts-forge behaviour but could do this on the speed multiplier instead of end result
+    @SuppressWarnings("ConstantConditions")
     @Inject(method = "getDestroySpeed", at = @At("RETURN"), cancellable = true)
     private void increaseMiningSpeed(BlockState state, CallbackInfoReturnable<Float> info) {
         info.setReturnValue(info.getReturnValueF() + DiggingClawsItem.getSpeedBonus((Player) (Object) this, state));

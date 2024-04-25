@@ -29,7 +29,7 @@ public abstract class NearestAttackableTargetGoalMixin<T extends LivingEntity> e
 
     public NearestAttackableTargetGoalMixin(Mob mob, boolean checkVisibility) {
         super(mob, checkVisibility);
-        throw new IllegalStateException();
+        throw new UnsupportedOperationException();
     }
 
     @ModifyArg(method = "<init>(Lnet/minecraft/world/entity/Mob;Ljava/lang/Class;IZZLjava/util/function/Predicate;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/targeting/TargetingConditions;selector(Ljava/util/function/Predicate;)Lnet/minecraft/world/entity/ai/targeting/TargetingConditions;"))

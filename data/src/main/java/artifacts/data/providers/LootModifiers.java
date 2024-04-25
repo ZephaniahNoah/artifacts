@@ -42,7 +42,7 @@ public class LootModifiers implements DataProvider {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    protected List<Builder> lootBuilders = new ArrayList<>();
+    protected final List<Builder> lootBuilders = new ArrayList<>();
     private final PackOutput packOutput;
     private final Map<String, JsonElement> toSerialize = new HashMap<>();
 

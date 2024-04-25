@@ -17,10 +17,12 @@ public class EverlastingBeefChance  implements LootItemCondition {
 
     }
 
+    @Override
     public LootItemConditionType getType() {
         return ModLootConditions.EVERLASTING_BEEF_CHANCE.get();
     }
 
+    @Override
     public boolean test(LootContext context) {
         return context.getRandom().nextDouble() < Artifacts.CONFIG.common.getEverlastingBeefChance();
     }
@@ -31,10 +33,12 @@ public class EverlastingBeefChance  implements LootItemCondition {
 
     public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<EverlastingBeefChance> {
 
+        @Override
         public void serialize(JsonObject object, EverlastingBeefChance condition, JsonSerializationContext context) {
 
         }
 
+        @Override
         public EverlastingBeefChance deserialize(JsonObject object, JsonDeserializationContext context) {
             return INSTANCE;
         }

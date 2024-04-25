@@ -41,6 +41,7 @@ public class MobEffectTags extends IntrinsicHolderTagsProvider<MobEffect> {
         );
     }
 
+    @Override
     public String getName() {
         return "Mob Effect Tags";
     }

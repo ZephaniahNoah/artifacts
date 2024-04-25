@@ -24,12 +24,20 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract boolean hasEffect(MobEffect effect);
 
+    // TODO 1.20.5 use gravity attribute
+    @SuppressWarnings("ConstantConditions")
     @ModifyVariable(method = "travel", ordinal = 0, name = "d", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/world/level/Level;getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;"))
     private double changeGravity(double gravity) {
+        LivingEntity entity = (LivingEntity) (Object) this;
         boolean isFalling = !this.onGround() && this.getDeltaMovement().y <= 0;
-        boolean isInWater = this.isInWater() && !CharmOfSinkingItem.shouldSink((LivingEntity) (Object) this);
+        boolean isInWater = this.isInWater() && !CharmOfSinkingItem.shouldSink(entity);
 
-        if (UmbrellaItem.isHoldingUmbrellaUpright((LivingEntity) (Object) this) && isFalling && !isInWater && !this.hasEffect(MobEffects.SLOW_FALLING) && ModGameRules.UMBRELLA_IS_GLIDER.get()) {
+        if (UmbrellaItem.isHoldingUmbrellaUpright(entity)
+                && isFalling
+                && !isInWater
+                && !this.hasEffect(MobEffects.SLOW_FALLING)
+                && ModGameRules.UMBRELLA_IS_GLIDER.get()
+        ) {
             gravity -= 0.07;
             this.fallDistance = 0;
         }

@@ -16,7 +16,7 @@ public abstract class HurtByTargetGoalMixin extends TargetGoal {
 
     public HurtByTargetGoalMixin(Mob mob, boolean checkVisibility) {
         super(mob, checkVisibility);
-        throw new IllegalStateException();
+        throw new UnsupportedOperationException();
     }
 
     @Inject(method = "canUse", at = @At("HEAD"), cancellable = true)

@@ -25,6 +25,7 @@ public class CampsiteHeightRangePlacement extends PlacementModifier {
         return INSTANCE;
     }
 
+    @Override
     public Stream<BlockPos> getPositions(PlacementContext context, RandomSource randomSource, BlockPos pos) {
         int minY = Artifacts.CONFIG.common.campsite.minY;
         int maxY = Artifacts.CONFIG.common.campsite.maxY;
@@ -34,6 +35,7 @@ public class CampsiteHeightRangePlacement extends PlacementModifier {
         return Stream.of(pos.atY(Mth.randomBetweenInclusive(randomSource, minY, maxY)));
     }
 
+    @Override
     public PlacementModifierType<?> type() {
         return ModPlacementModifierTypes.CAMPSITE_HEIGHT_RANGE.get();
     }

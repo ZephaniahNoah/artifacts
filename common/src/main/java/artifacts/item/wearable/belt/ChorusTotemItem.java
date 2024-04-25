@@ -11,7 +11,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
@@ -42,7 +41,7 @@ public class ChorusTotemItem extends WearableArtifactItem {
     }
 
     public static ItemStack findTotem(LivingEntity entity) {
-        if (entity instanceof Player player && player.getCooldowns().isOnCooldown(ModItems.CHORUS_TOTEM.get())) {
+        if (ModItems.CHORUS_TOTEM.get().isOnCooldown(entity)) {
             return ItemStack.EMPTY;
         }
         for (InteractionHand hand : InteractionHand.values()) {

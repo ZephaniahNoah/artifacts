@@ -26,6 +26,7 @@ public class CeilingHeightFilter extends PlacementFilter {
         return new CeilingHeightFilter(maxHeight);
     }
 
+    @Override
     protected boolean shouldPlace(PlacementContext context, RandomSource random, BlockPos pos) {
         if (maxHeight == 0) {
             return true;
@@ -39,6 +40,7 @@ public class CeilingHeightFilter extends PlacementFilter {
         return false;
     }
 
+    @Override
     public PlacementModifierType<?> type() {
         return ModPlacementModifierTypes.CEILING_HEIGHT_FILTER.get();
     }

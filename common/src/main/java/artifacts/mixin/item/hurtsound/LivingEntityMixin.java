@@ -16,7 +16,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     public LivingEntityMixin(EntityType<?> entityType, Level level) {
         super(entityType, level);
-        throw new IllegalStateException();
+        throw new UnsupportedOperationException();
     }
 
     @Shadow

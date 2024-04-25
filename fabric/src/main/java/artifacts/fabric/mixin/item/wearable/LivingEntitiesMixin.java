@@ -19,7 +19,7 @@ public abstract class LivingEntitiesMixin extends Entity {
 
     public LivingEntitiesMixin(EntityType<?> type, Level world) {
         super(type, world);
-        throw new IllegalStateException();
+        throw new UnsupportedOperationException();
     }
 
     @SuppressWarnings("ConstantConditions")

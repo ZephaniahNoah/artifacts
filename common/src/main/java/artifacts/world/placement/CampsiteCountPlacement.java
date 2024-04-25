@@ -21,10 +21,12 @@ public class CampsiteCountPlacement extends RepeatingPlacement {
         return INSTANCE;
     }
 
+    @Override
     protected int count(RandomSource p_226333_, BlockPos p_226334_) {
         return Artifacts.CONFIG.common.campsite.getCount();
     }
 
+    @Override
     public PlacementModifierType<?> type() {
         return ModPlacementModifierTypes.CAMPSITE_COUNT.get();
     }

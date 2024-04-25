@@ -37,7 +37,7 @@ public class HeliumFlamingoItem extends WearableArtifactItem {
     @NotNull
     @Override
     public SoundEvent getEquipSound() {
-        return ModSoundEvents.POP.get(); // TODO pitch 0.7
+        return ModSoundEvents.POP.get();
     }
 
     private void onHeliumFlamingoTick(Player player) {
