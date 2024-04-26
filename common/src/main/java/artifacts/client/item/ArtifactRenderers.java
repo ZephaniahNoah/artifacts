@@ -56,14 +56,14 @@ public class ArtifactRenderers {
         register(ModItems.PICKAXE_HEATER.get(), () -> new GlowingGloveArtifactRenderer("pickaxe_heater", ArmsModel::createPickaxeHeaterModel));
 
         // feet
-        register(ModItems.AQUA_DASHERS.get(), () -> new GenericArtifactRenderer("aqua_dashers", new LegsModel(bakeLayer(ArtifactLayers.AQUA_DASHERS))));
+        register(ModItems.AQUA_DASHERS.get(), () -> new BootArtifactRenderer("aqua_dashers", hasArmor -> new LegsModel(bakeLayer(hasArmor ? ArtifactLayers.AQUA_DASHERS_LARGE : ArtifactLayers.AQUA_DASHERS_SMALL))));
         register(ModItems.BUNNY_HOPPERS.get(), () -> new GenericArtifactRenderer("bunny_hoppers", new LegsModel(bakeLayer(ArtifactLayers.BUNNY_HOPPERS))));
         register(ModItems.KITTY_SLIPPERS.get(), () -> new GenericArtifactRenderer("kitty_slippers", new LegsModel(bakeLayer(ArtifactLayers.KITTY_SLIPPERS))));
-        register(ModItems.RUNNING_SHOES.get(), () -> new GenericArtifactRenderer("running_shoes", new LegsModel(bakeLayer(ArtifactLayers.RUNNING_SHOES))));
+        register(ModItems.RUNNING_SHOES.get(), () -> new BootArtifactRenderer("running_shoes", hasArmor -> new LegsModel(bakeLayer(hasArmor ? ArtifactLayers.BOOTS_LARGE : ArtifactLayers.BOOTS_SMALL))));
         register(ModItems.SNOWSHOES.get(), () -> new GenericArtifactRenderer("snowshoes", new LegsModel(bakeLayer(ArtifactLayers.SNOWSHOES))));
         register(ModItems.STEADFAST_SPIKES.get(), () -> new GenericArtifactRenderer("steadfast_spikes", new LegsModel(bakeLayer(ArtifactLayers.STEADFAST_SPIKES))));
         register(ModItems.FLIPPERS.get(), () -> new GenericArtifactRenderer("flippers", new LegsModel(bakeLayer(ArtifactLayers.FLIPPERS))));
-        register(ModItems.ROOTED_BOOTS.get(), () -> new GenericArtifactRenderer("rooted_boots", new LegsModel(bakeLayer(ArtifactLayers.ROOTED_BOOTS))));
+        register(ModItems.ROOTED_BOOTS.get(), () -> new BootArtifactRenderer("rooted_boots", hasArmor -> new LegsModel(bakeLayer(hasArmor ? ArtifactLayers.BOOTS_LARGE : ArtifactLayers.BOOTS_SMALL))));
 
         // curio
         register(ModItems.WHOOPEE_CUSHION.get(), () -> new GenericArtifactRenderer("whoopee_cushion", new HeadModel(bakeLayer(ArtifactLayers.WHOOPEE_CUSHION))));

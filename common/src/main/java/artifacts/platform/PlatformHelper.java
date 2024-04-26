@@ -40,6 +40,8 @@ public interface PlatformHelper {
 
     boolean isVisibleOnHand(LivingEntity entity, InteractionHand hand, WearableArtifactItem item);
 
+    boolean areBootsHidden(LivingEntity entity);
+
     void registerArtifactRenderer(WearableArtifactItem item, Supplier<ArtifactRenderer> rendererSupplier);
 
     @Nullable

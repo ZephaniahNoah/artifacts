@@ -109,6 +109,11 @@ public class FabricPlatformHelper implements PlatformHelper {
     }
 
     @Override
+    public boolean areBootsHidden(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
     public void registerArtifactRenderer(WearableArtifactItem item, Supplier<ArtifactRenderer> rendererSupplier) {
         TrinketRendererRegistry.registerRenderer(item, new ArtifactTrinketRenderer(rendererSupplier.get()));
     }

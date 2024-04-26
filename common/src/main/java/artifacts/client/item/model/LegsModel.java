@@ -58,7 +58,11 @@ public class LegsModel extends HumanoidModel<LivingEntity> {
         return createLegs(delta, leftLeg, rightLeg);
     }
 
-    public static MeshDefinition createShoes(float delta, CubeListBuilder leftLeg, CubeListBuilder rightLeg) {
+    public static MeshDefinition createBoots(float delta) {
+        return createBoots(delta, CubeListBuilder.create(), CubeListBuilder.create());
+    }
+
+    public static MeshDefinition createBoots(float delta, CubeListBuilder leftLeg, CubeListBuilder rightLeg) {
         CubeDeformation deformation = new CubeDeformation(delta, delta / 4, delta / 4);
 
         // shoe tips
@@ -79,11 +83,10 @@ public class LegsModel extends HumanoidModel<LivingEntity> {
         return createSleevedLegs(0.51F, leftLeg, rightLeg);
     }
 
-    public static MeshDefinition createAquaDashers() {
+    public static MeshDefinition createAquaDashers(float delta) {
         CubeListBuilder leftLeg = CubeListBuilder.create();
         CubeListBuilder rightLeg = CubeListBuilder.create();
 
-        float delta = 1.25F;
         CubeDeformation deformation = new CubeDeformation(0, delta, delta);
 
         // wings
@@ -92,7 +95,7 @@ public class LegsModel extends HumanoidModel<LivingEntity> {
         rightLeg.texOffs(16, 16);
         rightLeg.addBox(-2 - delta, 0, -2 + 3 + delta * 3 / 2, 0, 12, 4, deformation);
 
-        return createShoes(delta, leftLeg, rightLeg);
+        return createBoots(delta, leftLeg, rightLeg);
     }
 
     public static MeshDefinition createBunnyHoppers() {
@@ -180,10 +183,6 @@ public class LegsModel extends HumanoidModel<LivingEntity> {
         return createSlippers(leftLeg, rightLeg);
     }
 
-    public static MeshDefinition createRunningShoes() {
-        return createShoes(0.5F, CubeListBuilder.create(), CubeListBuilder.create());
-    }
-
     public static MeshDefinition createSnowshoes() {
         CubeListBuilder leftLeg = CubeListBuilder.create();
         CubeListBuilder rightLeg = CubeListBuilder.create();
@@ -211,9 +210,5 @@ public class LegsModel extends HumanoidModel<LivingEntity> {
         rightLeg.addBox(0.5F, 9, -7, 1, 3, 5);
 
         return createSleevedLegs(0.5F, leftLeg, rightLeg);
-    }
-
-    public static MeshDefinition createRootedBoots() {
-        return createShoes(1.25F, CubeListBuilder.create(), CubeListBuilder.create());
     }
 }

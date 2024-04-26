@@ -48,14 +48,15 @@ public class ArtifactLayers {
             PICKAXE_HEATER_WIDE = createLayerLocation("pickaxe_heater_wide"),
             PICKAXE_HEATER_SLIM = createLayerLocation("pickaxe_heater_slim"),
 
-            AQUA_DASHERS = createLayerLocation("aqua_dashers"),
+            AQUA_DASHERS_SMALL = createLayerLocation("aqua_dashers_small"),
+            AQUA_DASHERS_LARGE = createLayerLocation("aqua_dashers_large"),
             BUNNY_HOPPERS = createLayerLocation("bunny_hoppers"),
             KITTY_SLIPPERS = createLayerLocation("kitty_slippers"),
-            RUNNING_SHOES = createLayerLocation("running_shoes"),
+            BOOTS_SMALL = createLayerLocation("boots_small"),
+            BOOTS_LARGE = createLayerLocation("boots_large"),
             SNOWSHOES = createLayerLocation("snowshoes"),
             STEADFAST_SPIKES = createLayerLocation("steadfast_spikes"),
             FLIPPERS = createLayerLocation("flippers"),
-            ROOTED_BOOTS = createLayerLocation("rooted_boots"),
 
             WHOOPEE_CUSHION = createLayerLocation("whoopee_cushion");
 
@@ -127,14 +128,15 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(PICKAXE_HEATER_WIDE, layer(() -> ArmsModel.createPickaxeHeater(false), 64, 32));
         EntityModelLayerRegistry.register(PICKAXE_HEATER_SLIM, layer(() -> ArmsModel.createPickaxeHeater(true), 64, 32));
 
-        EntityModelLayerRegistry.register(AQUA_DASHERS, layer(LegsModel::createAquaDashers, 32, 32));
+        EntityModelLayerRegistry.register(AQUA_DASHERS_SMALL, layer(() -> LegsModel.createAquaDashers(0.5F), 32, 32));
+        EntityModelLayerRegistry.register(AQUA_DASHERS_LARGE, layer(() -> LegsModel.createAquaDashers(1.25F), 32, 32));
         EntityModelLayerRegistry.register(BUNNY_HOPPERS, layer(LegsModel::createBunnyHoppers, 64, 32));
         EntityModelLayerRegistry.register(KITTY_SLIPPERS, layer(LegsModel::createKittySlippers, 64, 32));
-        EntityModelLayerRegistry.register(RUNNING_SHOES, layer(LegsModel::createRunningShoes, 32, 32));
+        EntityModelLayerRegistry.register(BOOTS_SMALL, layer(() -> LegsModel.createBoots(0.5F), 32, 32));
+        EntityModelLayerRegistry.register(BOOTS_LARGE, layer(() -> LegsModel.createBoots(1.25F), 32, 32));
         EntityModelLayerRegistry.register(SNOWSHOES, layer(LegsModel::createSnowshoes, 64, 64));
         EntityModelLayerRegistry.register(STEADFAST_SPIKES, layer(LegsModel::createSteadfastSpikes, 64, 32));
         EntityModelLayerRegistry.register(FLIPPERS, layer(LegsModel::createFlippers, 64, 64));
-        EntityModelLayerRegistry.register(ROOTED_BOOTS, layer(LegsModel::createRootedBoots, 32, 32));
 
         EntityModelLayerRegistry.register(WHOOPEE_CUSHION, layer(HeadModel::createWhoopeeCushion, 32, 16));
     }

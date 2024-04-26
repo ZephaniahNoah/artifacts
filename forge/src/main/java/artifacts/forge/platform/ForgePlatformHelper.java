@@ -3,6 +3,7 @@ package artifacts.forge.platform;
 import artifacts.client.item.renderer.ArtifactRenderer;
 import artifacts.component.SwimData;
 import artifacts.forge.capability.SwimDataCapability;
+import artifacts.forge.integration.CosmeticArmorCompat;
 import artifacts.item.wearable.WearableArtifactItem;
 import artifacts.platform.PlatformHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.TierSortingRegistry;
+import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -104,6 +106,14 @@ public class ForgePlatformHelper implements PlatformHelper {
                     }
                     return false;
                 }).orElse(false);
+    }
+
+    @Override
+    public boolean areBootsHidden(LivingEntity entity) {
+        if (entity instanceof Player player && ModList.get().isLoaded("cosmeticarmorreworked")) {
+            return CosmeticArmorCompat.areBootsHidden(player);
+        }
+        return false;
     }
 
     @Override
