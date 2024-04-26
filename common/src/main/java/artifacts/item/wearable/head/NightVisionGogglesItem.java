@@ -1,7 +1,11 @@
 package artifacts.item.wearable.head;
 
+import artifacts.Artifacts;
+import artifacts.client.ToggleKeyHandler;
 import artifacts.item.wearable.MobEffectItem;
 import artifacts.registry.ModGameRules;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
@@ -20,6 +24,10 @@ public class NightVisionGogglesItem extends MobEffectItem {
             tooltip.add(tooltipLine("full"));
         } else {
             tooltip.add(tooltipLine("partial"));
+        }
+        KeyMapping key = ToggleKeyHandler.getToggleKey(this);
+        if (key != null && (!key.isUnbound() || !isActivated(stack))) {
+            tooltip.add(Component.translatable("%s.tooltip.toggle_keymapping".formatted(Artifacts.MOD_ID), key.getTranslatedKeyMessage()));
         }
     }
 }
