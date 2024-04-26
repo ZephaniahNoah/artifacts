@@ -36,7 +36,7 @@ public class LivingEntityMixin {
             } else {
                 ModItems.CHORUS_TOTEM.get().addCooldown(entity, ModGameRules.CHORUS_TOTEM_COOLDOWN.get());
             }
-            entity.setHealth(5F);
+            entity.setHealth(Math.min(entity.getMaxHealth(), Math.max(1, ModGameRules.CHORUS_TOTEM_HEALTH_RESTORED.get())));
             if (entity instanceof ServerPlayer player) {
                 entity.level().playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1, 1);
                 NetworkHandler.CHANNEL.sendToPlayer(player, new ChorusTotemUsedPacket());

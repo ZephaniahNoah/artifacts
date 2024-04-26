@@ -55,6 +55,7 @@ public class ModGameRules {
             ANGLERS_HAT_LUCK_OF_THE_SEA_LEVEL_BONUS = integerValue(createName(ModItems.ANGLERS_HAT, "luckOfTheSeaLevelBonus"), 1),
             ANGLERS_HAT_LURE_LEVEL_BONUS = integerValue(createName(ModItems.ANGLERS_HAT, "lureLevelBonus"), 1),
             CROSS_NECKLACE_BONUS_INVINCIBILITY_TICKS = integerValue(createName(ModItems.CROSS_NECKLACE, "bonusInvincibilityTicks"), 20, 60 * 20),
+            CHORUS_TOTEM_HEALTH_RESTORED = integerValue(createName(ModItems.CHORUS_TOTEM, "healthRestored"), 10),
             CRYSTAL_HEART_HEALTH_BONUS = integerValue(createName(ModItems.CRYSTAL_HEART, "healthBonus"), 10, 100),
             DIGGING_CLAWS_TOOL_TIER = integerValue(createName(ModItems.DIGGING_CLAWS, "toolTier"), Tiers.STONE.getLevel() + 1, Tiers.NETHERITE.getLevel() + 1),
             LUCKY_SCARF_FORTUNE_BONUS = integerValue(createName(ModItems.LUCKY_SCARF, "fortuneBonus"), 1, 100),

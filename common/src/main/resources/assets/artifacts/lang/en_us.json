@@ -99,6 +99,7 @@
   "gamerule.artifacts.charmOfSinking.enabled": "Artifacts: Charm of Sinking enabled",
   "gamerule.artifacts.chorusTotem.consumedOnUse": "Artifacts: Chorus Totem consumed on use",
   "gamerule.artifacts.chorusTotem.cooldown": "Artifacts: Chorus Totem cooldown",
+  "gamerule.artifacts.chorusTotem.healthRestored": "Artifacts: Chorus Totem health restored",
   "gamerule.artifacts.chorusTotem.teleportationChance": "Artifacts: Chorus Totem teleportation chance",
   "gamerule.artifacts.cloudInABottle.enabled": "Artifacts: Cloud in a Bottle enabled",
   "gamerule.artifacts.cloudInABottle.sprintJumpHorizontalVelocity": "Artifacts: Cloud in a Bottle sprint jump horizontal velocity",
