@@ -65,13 +65,20 @@ public class LootModifiers implements DataProvider {
         for (ResourceLocation lootTable : Arrays.asList(
                 BuiltInLootTables.VILLAGE_DESERT_HOUSE,
                 BuiltInLootTables.VILLAGE_PLAINS_HOUSE,
-                BuiltInLootTables.VILLAGE_SAVANNA_HOUSE,
+                BuiltInLootTables.VILLAGE_SAVANNA_HOUSE
+        )) {
+            builder(lootTable, 0.05F)
+                    .item(ModItems.VILLAGER_HAT.get());
+        }
+        for (ResourceLocation lootTable : Arrays.asList(
                 BuiltInLootTables.VILLAGE_SNOWY_HOUSE,
                 BuiltInLootTables.VILLAGE_TAIGA_HOUSE
         )) {
-            builder(lootTable, 0.02F)
-                    .item(ModItems.VILLAGER_HAT.get());
+            builder(lootTable, 0.08F)
+                    .item(ModItems.VILLAGER_HAT.get())
+                    .item(ModItems.SNOWSHOES.get());
         }
+
         builder(BuiltInLootTables.SPAWN_BONUS_CHEST, 1)
                 .item(ModItems.WHOOPEE_CUSHION.get());
         builder(BuiltInLootTables.VILLAGE_ARMORER, 0.1F)
@@ -86,7 +93,8 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.WHOOPEE_CUSHION.get(), 2)
                 .item(ModItems.KITTY_SLIPPERS.get())
                 .item(ModItems.BUNNY_HOPPERS.get())
-                .item(ModItems.SCARF_OF_INVISIBILITY.get());
+                .item(ModItems.SCARF_OF_INVISIBILITY.get())
+                .item(ModItems.ANGLERS_HAT.get());
         builder(BuiltInLootTables.VILLAGE_TEMPLE, 0.2F)
                 .item(ModItems.CROSS_NECKLACE.get())
                 .item(ModItems.ANTIDOTE_VESSEL.get())
@@ -97,6 +105,7 @@ public class LootModifiers implements DataProvider {
         builder(BuiltInLootTables.VILLAGE_WEAPONSMITH, 0.1F)
                 .item(ModItems.FERAL_CLAWS.get());
         builder(BuiltInLootTables.ABANDONED_MINESHAFT, 0.3F)
+                .item(ModItems.ONION_RING.get(), 2)
                 .item(ModItems.NIGHT_VISION_GOGGLES.get())
                 .item(ModItems.PANIC_NECKLACE.get())
                 .item(ModItems.OBSIDIAN_SKULL.get())
@@ -105,11 +114,14 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.CLOUD_IN_A_BOTTLE.get())
                 .item(ModItems.VAMPIRIC_GLOVE.get())
                 .item(ModItems.AQUA_DASHERS.get())
+                .item(ModItems.PICKAXE_HEATER.get())
                 .drinkingHat(1);
-        builder(BuiltInLootTables.BASTION_HOGLIN_STABLE, 0.2F)
+        builder(BuiltInLootTables.BASTION_HOGLIN_STABLE, 0.25F)
                 .artifact(5)
                 .item(ModItems.BUNNY_HOPPERS.get(), 3)
                 .item(ModItems.FLAME_PENDANT.get(), 3)
+                .item(ModItems.COWBOY_HAT.get(), 3)
+                .item(ModItems.PICKAXE_HEATER.get(), 3)
                 .item(ModItems.EVERLASTING_BEEF.get());
         builder(BuiltInLootTables.BASTION_TREASURE, 0.65F)
                 .artifact(6)
@@ -131,6 +143,7 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.BUNNY_HOPPERS.get(), 3)
                 .item(ModItems.LUCKY_SCARF.get(), 3)
                 .item(ModItems.AQUA_DASHERS.get(), 3)
+                .item(ModItems.ANGLERS_HAT.get(), 3)
                 .drinkingHat(3);
         builder(BuiltInLootTables.DESERT_PYRAMID, 0.2F)
                 .item(ModItems.FLAME_PENDANT.get(), 2)
@@ -141,20 +154,24 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.UMBRELLA.get())
                 .item(ModItems.SCARF_OF_INVISIBILITY.get())
                 .item(ModItems.UNIVERSAL_ATTRACTOR.get())
-                .item(ModItems.VAMPIRIC_GLOVE.get());
+                .item(ModItems.VAMPIRIC_GLOVE.get())
+                .item(ModItems.ONION_RING.get());
         builder(BuiltInLootTables.END_CITY_TREASURE, 0.3F)
-                .artifact(3)
+                .item(ModItems.CHORUS_TOTEM.get(), 6)
+                .item(ModItems.HELIUM_FLAMINGO.get(), 4)
                 .item(ModItems.CRYSTAL_HEART.get())
-                .item(ModItems.CLOUD_IN_A_BOTTLE.get())
-                .item(ModItems.HELIUM_FLAMINGO.get(), 4);
-        builder(BuiltInLootTables.JUNGLE_TEMPLE, 0.3F)
+                .item(ModItems.CLOUD_IN_A_BOTTLE.get());
+        builder(BuiltInLootTables.JUNGLE_TEMPLE, 0.35F)
                 .item(ModItems.KITTY_SLIPPERS.get(), 2)
-                .item(ModItems.BUNNY_HOPPERS.get());
+                .item(ModItems.ROOTED_BOOTS.get(), 2)
+                .item(ModItems.BUNNY_HOPPERS.get())
+                .item(ModItems.ANGLERS_HAT.get());
         builder(BuiltInLootTables.NETHER_BRIDGE, 0.15F)
                 .item(ModItems.CROSS_NECKLACE.get())
                 .item(ModItems.NIGHT_VISION_GOGGLES.get())
                 .item(ModItems.POCKET_PISTON.get())
                 .item(ModItems.RUNNING_SHOES.get())
+                .item(ModItems.COWBOY_HAT.get())
                 .drinkingHat(1);
         builder(BuiltInLootTables.PILLAGER_OUTPOST, 0.25F)
                 .item(ModItems.PANIC_NECKLACE.get())
@@ -165,7 +182,8 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.SCARF_OF_INVISIBILITY.get())
                 .item(ModItems.CRYSTAL_HEART.get())
                 .item(ModItems.CLOUD_IN_A_BOTTLE.get())
-                .item(ModItems.SUPERSTITIOUS_HAT.get());
+                .item(ModItems.SUPERSTITIOUS_HAT.get())
+                .item(ModItems.ROOTED_BOOTS.get());
         builder(BuiltInLootTables.RUINED_PORTAL, 0.15F)
                 .item(ModItems.NIGHT_VISION_GOGGLES.get())
                 .item(ModItems.THORN_PENDANT.get())
@@ -173,7 +191,8 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.POWER_GLOVE.get())
                 .item(ModItems.UNIVERSAL_ATTRACTOR.get())
                 .item(ModItems.OBSIDIAN_SKULL.get())
-                .item(ModItems.LUCKY_SCARF.get());
+                .item(ModItems.LUCKY_SCARF.get())
+                .item(ModItems.COWBOY_HAT.get());
         builder(BuiltInLootTables.SHIPWRECK_TREASURE, 0.15F)
                 .item(ModItems.GOLDEN_HOOK.get(), 3)
                 .item(ModItems.SNORKEL.get())
@@ -187,13 +206,14 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.RUNNING_SHOES.get())
                 .item(ModItems.CHARM_OF_SINKING.get());
         builder(BuiltInLootTables.STRONGHOLD_CORRIDOR, 0.3F)
-                .artifact(3)
                 .item(ModItems.POWER_GLOVE.get())
                 .item(ModItems.ANTIDOTE_VESSEL.get())
                 .item(ModItems.SUPERSTITIOUS_HAT.get())
                 .item(ModItems.LUCKY_SCARF.get())
                 .item(ModItems.AQUA_DASHERS.get())
-                .item(ModItems.HELIUM_FLAMINGO.get());
+                .item(ModItems.HELIUM_FLAMINGO.get())
+                .item(ModItems.ROOTED_BOOTS.get())
+                .item(ModItems.PICKAXE_HEATER.get());
         builder(BuiltInLootTables.UNDERWATER_RUIN_BIG, 0.45F)
                 .item(ModItems.SNORKEL.get(), 3)
                 .item(ModItems.FLIPPERS.get(), 3)
@@ -202,9 +222,25 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.FIRE_GAUNTLET.get())
                 .item(ModItems.CROSS_NECKLACE.get())
                 .item(ModItems.POWER_GLOVE.get())
-                .item(ModItems.CLOUD_IN_A_BOTTLE.get());
-        builder(BuiltInLootTables.WOODLAND_MANSION, 0.25F)
+                .item(ModItems.CLOUD_IN_A_BOTTLE.get())
+                .item(ModItems.ANGLERS_HAT.get());
+        builder(BuiltInLootTables.WOODLAND_MANSION, 0.4F)
+                .item(ModItems.CHORUS_TOTEM.get(), 2)
                 .artifact(1);
+        builder(BuiltInLootTables.IGLOO_CHEST, 0.3F)
+                .item(ModItems.SNOWSHOES.get(), 2)
+                .item(ModItems.VILLAGER_HAT.get())
+                .item(ModItems.LUCKY_SCARF.get());
+        builder(BuiltInLootTables.ANCIENT_CITY_ICE_BOX, 0.2F)
+                .item(ModItems.SNOWSHOES.get());
+        builder(BuiltInLootTables.ANCIENT_CITY, 0.15F)
+                .item(ModItems.ROOTED_BOOTS.get())
+                .item(ModItems.PICKAXE_HEATER.get())
+                .item(ModItems.ONION_RING.get())
+                .item(ModItems.AQUA_DASHERS.get())
+                .item(ModItems.CHARM_OF_SINKING.get())
+                .item(ModItems.SHOCK_PENDANT.get())
+                .item(ModItems.HELIUM_FLAMINGO.get());
     }
 
     protected Builder builder(ResourceLocation lootTable, float baseChance) {
