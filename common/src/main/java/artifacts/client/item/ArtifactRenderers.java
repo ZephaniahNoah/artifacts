@@ -63,6 +63,7 @@ public class ArtifactRenderers {
         register(ModItems.SNOWSHOES.get(), () -> new GenericArtifactRenderer("snowshoes", new LegsModel(bakeLayer(ArtifactLayers.SNOWSHOES))));
         register(ModItems.STEADFAST_SPIKES.get(), () -> new GenericArtifactRenderer("steadfast_spikes", new LegsModel(bakeLayer(ArtifactLayers.STEADFAST_SPIKES))));
         register(ModItems.FLIPPERS.get(), () -> new GenericArtifactRenderer("flippers", new LegsModel(bakeLayer(ArtifactLayers.FLIPPERS))));
+        register(ModItems.ROOTED_BOOTS.get(), () -> new GenericArtifactRenderer("rooted_boots", new LegsModel(bakeLayer(ArtifactLayers.ROOTED_BOOTS))));
 
         // curio
         register(ModItems.WHOOPEE_CUSHION.get(), () -> new GenericArtifactRenderer("whoopee_cushion", new HeadModel(bakeLayer(ArtifactLayers.WHOOPEE_CUSHION))));

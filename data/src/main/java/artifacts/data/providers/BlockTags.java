@@ -30,5 +30,7 @@ public class BlockTags extends BlockTagsProvider {
         for (String chestType : MimicChestLayer.QUARK_CHEST_MATERIALS) {
             tag(ModTags.CAMPSITE_CHESTS).addOptional(new ResourceLocation("quark", "%s_chest".formatted(chestType)));
         }
+
+        tag(ModTags.ROOTED_BOOTS_GRASS).addTag(net.minecraft.tags.BlockTags.ANIMALS_SPAWNABLE_ON);
     }
 }

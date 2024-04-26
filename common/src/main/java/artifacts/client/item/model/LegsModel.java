@@ -212,4 +212,8 @@ public class LegsModel extends HumanoidModel<LivingEntity> {
 
         return createSleevedLegs(0.5F, leftLeg, rightLeg);
     }
+
+    public static MeshDefinition createRootedBoots() {
+        return createShoes(1.25F, CubeListBuilder.create(), CubeListBuilder.create());
+    }
 }

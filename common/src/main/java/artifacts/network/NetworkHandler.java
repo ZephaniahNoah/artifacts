@@ -14,5 +14,6 @@ public class NetworkHandler {
         CHANNEL.register(DoubleJumpPacket.class, DoubleJumpPacket::encode, DoubleJumpPacket::new, DoubleJumpPacket::apply);
         CHANNEL.register(SwimPacket.class, SwimPacket::encode, SwimPacket::new, SwimPacket::apply);
         CHANNEL.register(ChorusTotemUsedPacket.class, ChorusTotemUsedPacket::encode, ChorusTotemUsedPacket::new, ChorusTotemUsedPacket::apply);
+        CHANNEL.register(PlaySoundAtPlayerPacket.class, PlaySoundAtPlayerPacket::encode, PlaySoundAtPlayerPacket::new, PlaySoundAtPlayerPacket::apply);
     }
 }

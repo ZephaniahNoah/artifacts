@@ -34,6 +34,7 @@ public class ModGameRules {
             KITTY_SLIPPERS_ENABLED = booleanValue(createName(ModItems.KITTY_SLIPPERS, "enabled")),
             NIGHT_VISION_GOGGLES_ENABLED = booleanValue(createName(ModItems.NIGHT_VISION_GOGGLES, "enabled")), // TODO remove 1.20.2
             PICKAXE_HEATER_ENABLED = booleanValue(createName(ModItems.PICKAXE_HEATER, "enabled")),
+            ROOTED_BOOTS_ENABLED = booleanValue(createName(ModItems.ROOTED_BOOTS, "enabled")),
             SCARF_OF_INVISIBILITY_ENABLED = booleanValue(createName(ModItems.SCARF_OF_INVISIBILITY, "enabled")),
             SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")), // TODO remove 1.20.2
             STEADFAST_SPIKES_ENABLED = booleanValue(createName(ModItems.STEADFAST_SPIKES, "enabled")), // TODO remove 1.20.2
@@ -42,6 +43,7 @@ public class ModGameRules {
             BUNNY_HOPPERS_DO_CANCEL_FALL_DAMAGE = booleanValue(createName(ModItems.BUNNY_HOPPERS, "doCancelFallDamage")),
             CHORUS_TOTEM_DO_CONSUME_ON_USE = booleanValue(createName(ModItems.CHORUS_TOTEM, "doConsumeOnUse")),
             FLAME_PENDANT_DO_GRANT_FIRE_RESISTANCE = booleanValue(createName(ModItems.FLAME_PENDANT, "doGrantFireResistance")),
+            ROOTED_BOOTS_DO_GROW_PLANTS_AFTER_EATING = booleanValue(createName(ModItems.ROOTED_BOOTS, "doGrowPlantsAfterEating")),
             RUNNING_SHOES_DO_INCREASE_STEP_HEIGHT = booleanValue(createName(ModItems.RUNNING_SHOES, "doIncreaseStepHeight")),
             SHOCK_PENDANT_DO_CANCEL_LIGHTNING_DAMAGE = booleanValue(createName(ModItems.SHOCK_PENDANT, "doCancelLightningDamage")),
             SNORKEL_IS_INFINITE = booleanValue(createName(ModItems.SNORKEL, "isInfinite"), false),
@@ -78,6 +80,7 @@ public class ModGameRules {
             ONION_RING_HASTE_DURATION_PER_FOOD_POINT = durationSeconds(createName(ModItems.ONION_RING, "hasteDurationPerFoodPoint"), 6),
             PANIC_NECKLACE_COOLDOWN = durationSeconds(createName(ModItems.PANIC_NECKLACE, "cooldown"), 0),
             PANIC_NECKLACE_SPEED_DURATION = durationSeconds(createName(ModItems.PANIC_NECKLACE, "speedDuration"), 8),
+            ROOTED_BOOTS_HUNGER_REPLENISHING_DURATION = durationSeconds(createName(ModItems.ROOTED_BOOTS, "hungerReplenishingDuration"), 15),
             SHOCK_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.SHOCK_PENDANT, "cooldown"), 0),
             SNORKEL_WATER_BREATHING_DURATION = durationSeconds(createName(ModItems.SNORKEL, "waterBreathingDuration"), 15),
             THORN_PENDANT_COOLDOWN = durationSeconds(createName(ModItems.THORN_PENDANT, "cooldown"), 0),

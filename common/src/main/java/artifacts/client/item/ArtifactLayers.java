@@ -55,6 +55,7 @@ public class ArtifactLayers {
             SNOWSHOES = createLayerLocation("snowshoes"),
             STEADFAST_SPIKES = createLayerLocation("steadfast_spikes"),
             FLIPPERS = createLayerLocation("flippers"),
+            ROOTED_BOOTS = createLayerLocation("rooted_boots"),
 
             WHOOPEE_CUSHION = createLayerLocation("whoopee_cushion");
 
@@ -133,6 +134,7 @@ public class ArtifactLayers {
         EntityModelLayerRegistry.register(SNOWSHOES, layer(LegsModel::createSnowshoes, 64, 64));
         EntityModelLayerRegistry.register(STEADFAST_SPIKES, layer(LegsModel::createSteadfastSpikes, 64, 32));
         EntityModelLayerRegistry.register(FLIPPERS, layer(LegsModel::createFlippers, 64, 64));
+        EntityModelLayerRegistry.register(ROOTED_BOOTS, layer(LegsModel::createRootedBoots, 32, 32));
 
         EntityModelLayerRegistry.register(WHOOPEE_CUSHION, layer(HeadModel::createWhoopeeCushion, 32, 16));
     }

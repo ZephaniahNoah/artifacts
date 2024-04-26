@@ -4,6 +4,7 @@ import artifacts.item.UmbrellaItem;
 import artifacts.item.wearable.belt.CloudInABottleItem;
 import artifacts.item.wearable.belt.ObsidianSkullItem;
 import artifacts.item.wearable.feet.BunnyHoppersItem;
+import artifacts.item.wearable.feet.RootedBootsItem;
 import artifacts.item.wearable.hands.DiggingClawsItem;
 import artifacts.item.wearable.hands.GoldenHookItem;
 import artifacts.item.wearable.hands.OnionRingItem;
@@ -45,7 +46,7 @@ public class ArtifactEventsForge {
         MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onKittySlippersChangeTarget);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onDiggingClawsBreakSpeed);
         MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onDiggingClawsHarvestCheck);
-        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onOnionRingItemUseFinish);
+        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onFoodEaten);
     }
 
     private static void onLivingDamage(LivingDamageEvent event) {
@@ -138,10 +139,11 @@ public class ArtifactEventsForge {
         }
     }
 
-    private static void onOnionRingItemUseFinish(LivingEntityUseItemEvent.Finish event) {
+    private static void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
         FoodProperties properties = event.getItem().getFoodProperties(event.getEntity());
         if (properties != null) {
             OnionRingItem.applyMiningSpeedBuff(event.getEntity(), properties);
+            RootedBootsItem.applyBoneMeal(event.getEntity(), properties);
         }
     }
 }

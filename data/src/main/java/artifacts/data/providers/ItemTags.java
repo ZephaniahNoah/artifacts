@@ -95,7 +95,8 @@ public class ItemTags extends ItemTagsProvider {
                 ModItems.RUNNING_SHOES.get(),
                 ModItems.SNOWSHOES.get(),
                 ModItems.STEADFAST_SPIKES.get(),
-                ModItems.FLIPPERS.get()
+                ModItems.FLIPPERS.get(),
+                ModItems.ROOTED_BOOTS.get()
         );
         tag(ALL).add(
                 ModItems.WHOOPEE_CUSHION.get()
