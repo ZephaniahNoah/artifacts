@@ -6,17 +6,26 @@
       "conditions": [
         {
           "condition": "artifacts:configurable_random_chance",
-          "default_probability": 0.05
+          "default_probability": 0.3
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "artifacts:snowshoes",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
           "name": "artifacts:villager_hat"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:lucky_scarf"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "artifacts:inject/chests/village/village_savanna_house"
+  "random_sequence": "artifacts:inject/chests/igloo_chest"
 }

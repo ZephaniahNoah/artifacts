@@ -61,6 +61,11 @@
           "weight": 3
         },
         {
+          "type": "minecraft:item",
+          "name": "artifacts:anglers_hat",
+          "weight": 3
+        },
+        {
           "type": "minecraft:loot_table",
           "name": "artifacts:items/drinking_hat",
           "weight": 3

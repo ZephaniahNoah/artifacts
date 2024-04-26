@@ -6,7 +6,7 @@
       "conditions": [
         {
           "condition": "artifacts:configurable_random_chance",
-          "default_probability": 0.2
+          "default_probability": 0.25
         }
       ],
       "entries": [
@@ -23,6 +23,16 @@
         {
           "type": "minecraft:item",
           "name": "artifacts:flame_pendant",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:cowboy_hat",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:pickaxe_heater",
           "weight": 3
         },
         {

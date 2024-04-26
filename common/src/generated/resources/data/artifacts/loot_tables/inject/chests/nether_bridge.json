@@ -27,6 +27,10 @@
           "name": "artifacts:running_shoes"
         },
         {
+          "type": "minecraft:item",
+          "name": "artifacts:cowboy_hat"
+        },
+        {
           "type": "minecraft:loot_table",
           "name": "artifacts:items/drinking_hat"
         }

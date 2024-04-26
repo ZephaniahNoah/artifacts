@@ -11,11 +11,6 @@
       ],
       "entries": [
         {
-          "type": "minecraft:loot_table",
-          "name": "artifacts:artifact",
-          "weight": 3
-        },
-        {
           "type": "minecraft:item",
           "name": "artifacts:power_glove"
         },
@@ -38,6 +33,14 @@
         {
           "type": "minecraft:item",
           "name": "artifacts:helium_flamingo"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:rooted_boots"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:pickaxe_heater"
         }
       ],
       "rolls": 1.0

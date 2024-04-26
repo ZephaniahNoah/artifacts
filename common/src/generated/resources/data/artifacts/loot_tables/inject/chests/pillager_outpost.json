@@ -45,6 +45,10 @@
         {
           "type": "minecraft:item",
           "name": "artifacts:superstitious_hat"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:rooted_boots"
         }
       ],
       "rolls": 1.0

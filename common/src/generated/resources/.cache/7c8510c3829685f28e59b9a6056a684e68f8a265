@@ -1,10 +1,13 @@
-// 1.20.1	2023-08-07T15:40:51.4012188	Global Loot Modifiers : artifacts
+// 1.20.1	2024-04-26T21:33:26.2462376	Global Loot Modifiers : artifacts
 717aecbcb5de27f53f2554062faa538697ceba2b data/artifacts/loot_modifiers/inject/chests/abandoned_mineshaft.json
+1136bc619cca468a8bed3e6ef7259726eb585e75 data/artifacts/loot_modifiers/inject/chests/ancient_city.json
+b3a064b1ddd98d44b980820989c785aeb903e470 data/artifacts/loot_modifiers/inject/chests/ancient_city_ice_box.json
 4f13c072a3167f1d359e73c42eac7b7e84d258a2 data/artifacts/loot_modifiers/inject/chests/bastion_hoglin_stable.json
 c8b4c3f12d1080273ac90d021b8b9e8f49d83383 data/artifacts/loot_modifiers/inject/chests/bastion_treasure.json
 efdbc0cb7a0249bff29fd7901d605c49afd975e2 data/artifacts/loot_modifiers/inject/chests/buried_treasure.json
 b2b9ea6f13ea817a3b22b1184363117f389e6f23 data/artifacts/loot_modifiers/inject/chests/desert_pyramid.json
 b5201154b59b38bd7972794589dbe6ebf5c315b3 data/artifacts/loot_modifiers/inject/chests/end_city_treasure.json
+fdcdd55517e09c36528fa3889418e4f2f03f54e3 data/artifacts/loot_modifiers/inject/chests/igloo_chest.json
 acee2a8af7491bbc83e48fc4fc7a1ea01b4f179f data/artifacts/loot_modifiers/inject/chests/jungle_temple.json
 d501d62a14faedb960809f0c86a6e8a33c473e26 data/artifacts/loot_modifiers/inject/chests/nether_bridge.json
 5f199c8b927b583abd82dc485e29e5b1cfaeeaa3 data/artifacts/loot_modifiers/inject/chests/pillager_outpost.json

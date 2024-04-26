@@ -11,9 +11,14 @@
       ],
       "entries": [
         {
-          "type": "minecraft:loot_table",
-          "name": "artifacts:artifact",
-          "weight": 3
+          "type": "minecraft:item",
+          "name": "artifacts:chorus_totem",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:helium_flamingo",
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -22,11 +27,6 @@
         {
           "type": "minecraft:item",
           "name": "artifacts:cloud_in_a_bottle"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "artifacts:helium_flamingo",
-          "weight": 4
         }
       ],
       "rolls": 1.0

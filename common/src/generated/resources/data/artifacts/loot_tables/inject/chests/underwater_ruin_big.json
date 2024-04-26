@@ -43,6 +43,10 @@
         {
           "type": "minecraft:item",
           "name": "artifacts:cloud_in_a_bottle"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:anglers_hat"
         }
       ],
       "rolls": 1.0

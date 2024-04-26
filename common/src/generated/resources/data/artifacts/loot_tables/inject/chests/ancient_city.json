@@ -6,39 +6,41 @@
       "conditions": [
         {
           "condition": "artifacts:configurable_random_chance",
-          "default_probability": 0.2
+          "default_probability": 0.15
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "artifacts:umbrella",
-          "weight": 3
+          "name": "artifacts:rooted_boots"
         },
         {
           "type": "minecraft:item",
-          "name": "artifacts:whoopee_cushion",
-          "weight": 2
+          "name": "artifacts:pickaxe_heater"
         },
         {
           "type": "minecraft:item",
-          "name": "artifacts:kitty_slippers"
+          "name": "artifacts:onion_ring"
         },
         {
           "type": "minecraft:item",
-          "name": "artifacts:bunny_hoppers"
+          "name": "artifacts:aqua_dashers"
         },
         {
           "type": "minecraft:item",
-          "name": "artifacts:scarf_of_invisibility"
+          "name": "artifacts:charm_of_sinking"
         },
         {
           "type": "minecraft:item",
-          "name": "artifacts:anglers_hat"
+          "name": "artifacts:shock_pendant"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:helium_flamingo"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "artifacts:inject/chests/village/village_tannery"
+  "random_sequence": "artifacts:inject/chests/ancient_city"
 }

@@ -6,17 +6,17 @@
       "conditions": [
         {
           "condition": "artifacts:configurable_random_chance",
-          "default_probability": 0.05
+          "default_probability": 0.2
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "artifacts:villager_hat"
+          "name": "artifacts:snowshoes"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "artifacts:inject/chests/village/village_savanna_house"
+  "random_sequence": "artifacts:inject/chests/ancient_city_ice_box"
 }

@@ -12,6 +12,11 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "artifacts:onion_ring",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
           "name": "artifacts:night_vision_goggles"
         },
         {
@@ -41,6 +46,10 @@
         {
           "type": "minecraft:item",
           "name": "artifacts:aqua_dashers"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:pickaxe_heater"
         },
         {
           "type": "minecraft:loot_table",
