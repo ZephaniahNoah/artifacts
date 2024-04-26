@@ -52,10 +52,12 @@ public class ForgePlatformHelper implements PlatformHelper {
         if (optional.isPresent()) {
             ICuriosItemHandler handler = optional.get();
             for (Map.Entry<String, ICurioStacksHandler> entry : handler.getCurios().entrySet()) {
-                SlotContext slotContext = new SlotContext(entry.getKey(), entity ,0, false, true);
-                if (CuriosApi.getCuriosHelper().isStackValid(slotContext, item)) {
-                    entry.getValue().getStacks().setStackInSlot(0, item);
-                    return true;
+                for (int i = 0; i < entry.getValue().getSlots(); i++) {
+                    SlotContext slotContext = new SlotContext(entry.getKey(), entity ,i, false, true);
+                    if (CuriosApi.getCuriosHelper().isStackValid(slotContext, item) && entry.getValue().getStacks().getStackInSlot(i).isEmpty()) {
+                        entry.getValue().getStacks().setStackInSlot(i, item);
+                        return true;
+                    }
                 }
             }
         }

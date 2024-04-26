@@ -57,7 +57,7 @@ public class FabricPlatformHelper implements PlatformHelper {
             TrinketComponent component = TrinketsApi.getTrinketComponent(entity).get();
             for (Map<String, TrinketInventory> map : component.getInventory().values()) {
                 for (TrinketInventory inventory : map.values()) {
-                    if (TrinketSlot.canInsert(item, new SlotReference(inventory, 0), entity)) {
+                    if (TrinketSlot.canInsert(item, new SlotReference(inventory, 0), entity) && inventory.getItem(0).isEmpty()) {
                         inventory.setItem(0, item);
                         return true;
                     }
