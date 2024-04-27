@@ -5,7 +5,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "artifacts:configurable_random_chance",
+          "condition": "artifacts:artifact_rarity_adjusted_chance",
           "default_probability": 0.3
         }
       ],

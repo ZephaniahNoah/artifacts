@@ -6,7 +6,8 @@
       "loot_table_id": "minecraft:archaeology/desert_pyramid"
     },
     {
-      "condition": "artifacts:archaeology_chance"
+      "condition": "artifacts:config_value_chance",
+      "config": "archaeology"
     }
   ],
   "lootTable": "artifacts:inject/archaeology/desert_pyramid",

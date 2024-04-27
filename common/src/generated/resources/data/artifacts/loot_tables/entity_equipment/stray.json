@@ -4,7 +4,8 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "artifacts:entity_equipment_chance"
+          "condition": "artifacts:config_value_chance",
+          "config": "entity_equipment"
         }
       ],
       "entries": [

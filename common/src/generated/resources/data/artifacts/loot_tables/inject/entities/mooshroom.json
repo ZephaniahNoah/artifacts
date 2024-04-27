@@ -5,7 +5,8 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "artifacts:everlasting_beef_chance"
+          "condition": "artifacts:config_value_chance",
+          "config": "everlasting_beef"
         },
         {
           "condition": "minecraft:killed_by_player"
