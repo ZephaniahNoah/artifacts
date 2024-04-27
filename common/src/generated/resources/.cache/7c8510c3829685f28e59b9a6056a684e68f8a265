@@ -1,4 +1,9 @@
-// 1.20.1	2024-04-26T21:33:26.2462376	Global Loot Modifiers : artifacts
+// 1.20.1	2024-04-27T10:42:41.0882156	Global Loot Modifiers : artifacts
+d6b90b116c172716cdc3f96445823946d372d593 data/artifacts/loot_modifiers/inject/archaeology/desert_pyramid.json
+297720835f90cdea623b198897728b828decd170 data/artifacts/loot_modifiers/inject/archaeology/desert_well.json
+49fb15a6741d4061bc63ce01bb610ce852178fe1 data/artifacts/loot_modifiers/inject/archaeology/ocean_ruin_cold.json
+e42f0e5b0ad5cd7c2099107262a3a2c9c568c102 data/artifacts/loot_modifiers/inject/archaeology/ocean_ruin_warm.json
+90d6b7d0789310e8dd508dbc6002910b2f63fd5e data/artifacts/loot_modifiers/inject/archaeology/trail_ruins_rare.json
 717aecbcb5de27f53f2554062faa538697ceba2b data/artifacts/loot_modifiers/inject/chests/abandoned_mineshaft.json
 1136bc619cca468a8bed3e6ef7259726eb585e75 data/artifacts/loot_modifiers/inject/chests/ancient_city.json
 b3a064b1ddd98d44b980820989c785aeb903e470 data/artifacts/loot_modifiers/inject/chests/ancient_city_ice_box.json

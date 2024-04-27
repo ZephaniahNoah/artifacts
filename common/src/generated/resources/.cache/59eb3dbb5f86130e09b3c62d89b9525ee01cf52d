@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-26T22:14:58.6540577	Loot Tables
+// 1.20.1	2024-04-27T11:02:52.2590326	Loot Tables
 4ce5a501b68ec82d97074f4325c7e8d66495453e data/artifacts/loot_tables/artifact.json
 f3a78338ff83006144edc4d5ad489611b10c4f67 data/artifacts/loot_tables/chests/campsite_barrel.json
 bf33f27678bf8410ac7a8f3cb8643d5d8adda98d data/artifacts/loot_tables/chests/campsite_barrel/cobblestone.json
@@ -22,6 +22,11 @@ de8135b3d661b0b8ce5b334a0db942109a4382fc data/artifacts/loot_tables/entity_equip
 52c0a2974b9a3c68d6d83e8cee0bc868aeabaa62 data/artifacts/loot_tables/entity_equipment/wither_skeleton.json
 ff5d2a468bf9e805a1a658a987bb395488890885 data/artifacts/loot_tables/entity_equipment/zombie.json
 0999fa428c1fda006f0b064441074c3fdd5ecbea data/artifacts/loot_tables/entity_equipment/zombified_piglin.json
+ddfac48a1c5239e7130bca1dca25726fbc094cfc data/artifacts/loot_tables/inject/archaeology/desert_pyramid.json
+9e1af55662bb33d1fa456512a8cbb37d7d94116c data/artifacts/loot_tables/inject/archaeology/desert_well.json
+e569efbd32f10f1fb3d85fc54acac3b9f078b8e9 data/artifacts/loot_tables/inject/archaeology/ocean_ruin_cold.json
+cc59182879f54c35db9ce8afa1261c2b7fc209dc data/artifacts/loot_tables/inject/archaeology/ocean_ruin_warm.json
+27678ff7e62ef2af3cece37665341ce31bfb8e94 data/artifacts/loot_tables/inject/archaeology/trail_ruins_rare.json
 b1fc5e1078ee2bf53c620f40ade0dad1c7bd4835 data/artifacts/loot_tables/inject/chests/abandoned_mineshaft.json
 a68c01c7230ce1572188d70323042398ab419533 data/artifacts/loot_tables/inject/chests/ancient_city.json
 12907237fac6ab4986292f712786ef588039b9a6 data/artifacts/loot_tables/inject/chests/ancient_city_ice_box.json

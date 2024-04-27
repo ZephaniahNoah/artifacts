@@ -1,0 +1,14 @@
+{
+  "type": "artifacts:roll_loot_table",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:archaeology/desert_pyramid"
+    },
+    {
+      "condition": "artifacts:archaeology_chance"
+    }
+  ],
+  "lootTable": "artifacts:inject/archaeology/desert_pyramid",
+  "replace": true
+}
