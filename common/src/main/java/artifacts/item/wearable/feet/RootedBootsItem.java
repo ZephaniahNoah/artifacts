@@ -5,6 +5,7 @@ import artifacts.network.PlaySoundAtPlayerPacket;
 import artifacts.registry.ModGameRules;
 import artifacts.registry.ModTags;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
@@ -17,6 +18,11 @@ public class RootedBootsItem extends WearableArtifactItem {
     @Override
     protected boolean hasNonCosmeticEffects() {
         return ModGameRules.ROOTED_BOOTS_ENABLED.get();
+    }
+
+    @Override
+    public SoundEvent getEquipSound() {
+        return SoundEvents.ARMOR_EQUIP_LEATHER;
     }
 
     @Override

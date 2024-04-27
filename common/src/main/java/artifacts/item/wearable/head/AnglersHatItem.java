@@ -3,6 +3,8 @@ package artifacts.item.wearable.head;
 import artifacts.item.wearable.WearableArtifactItem;
 import artifacts.registry.ModGameRules;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -13,6 +15,11 @@ public class AnglersHatItem extends WearableArtifactItem {
     protected boolean hasNonCosmeticEffects() {
         return ModGameRules.ANGLERS_HAT_LUCK_OF_THE_SEA_LEVEL_BONUS.get() > 0
                 || ModGameRules.ANGLERS_HAT_LURE_LEVEL_BONUS.get() > 0;
+    }
+
+    @Override
+    public SoundEvent getEquipSound() {
+        return SoundEvents.ARMOR_EQUIP_LEATHER;
     }
 
     @Override
