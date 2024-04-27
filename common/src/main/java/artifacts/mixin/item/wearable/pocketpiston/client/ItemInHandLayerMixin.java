@@ -22,14 +22,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ItemInHandLayerMixin {
 
     @Inject(method = "renderArmWithItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/ItemInHandRenderer;renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V"))
-    public void renderArmWithItem(LivingEntity entity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, HumanoidArm humanoidArm, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
+    private void renderArmWithItem(LivingEntity entity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, HumanoidArm humanoidArm, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
         InteractionHand hand = RendererUtil.getInteractionHand(entity, humanoidArm);
         if (entity instanceof Player player
                 && PlatformServices.platformHelper.isVisibleOnHand(player, hand, ModItems.POCKET_PISTON.get())
         ) {
             poseStack.translate(0, 0, -1.5 / 16);
             if (player.swingingArm == hand) {
-                float length = ((LivingEntityExtensions) entity).getPocketPistonLength() * 2;
+                float length = ((LivingEntityExtensions) entity).artifacts$getPocketPistonLength() * 2;
                 poseStack.translate(0, 0, -length / 16);
             }
         }

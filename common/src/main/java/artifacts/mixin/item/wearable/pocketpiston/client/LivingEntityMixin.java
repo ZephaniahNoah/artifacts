@@ -29,7 +29,7 @@ public abstract class LivingEntityMixin implements LivingEntityExtensions {
     private int pocketPistonTimeRemaining;
 
     @Inject(method = "tick", at = @At("HEAD"))
-    public void updatePocketPistonLength(CallbackInfo ci) {
+    private void updatePocketPistonLength(CallbackInfo ci) {
         if (swingTime != 0) {
             pocketPistonTimeRemaining = RETRACTION_DELAY + RETRACTION_DURATION;
         }
@@ -44,7 +44,7 @@ public abstract class LivingEntityMixin implements LivingEntityExtensions {
 
     @Unique
     @Override
-    public float getPocketPistonLength() {
+    public float artifacts$getPocketPistonLength() {
         Minecraft minecraft = Minecraft.getInstance();
         float partialTick = (minecraft.isPaused() ? 0 : minecraft.getFrameTime());
         float d = (pocketPistonTimeRemaining + partialTick - 1 < RETRACTION_DURATION ? -1F : 1F) / RETRACTION_DURATION;

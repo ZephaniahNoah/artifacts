@@ -23,7 +23,7 @@ public abstract class HurtByTargetGoalMixin extends TargetGoal {
     private void cancelRevenge(CallbackInfoReturnable<Boolean> info) {
         LivingEntity attacker = mob.getLastHurtByMob();
         if (ModTags.isInTag(mob.getType(), ModTags.CREEPERS) && ModItems.KITTY_SLIPPERS.get().isEquippedBy(attacker)) {
-            info.setReturnValue(false);
+            info.setReturnValue(false); // early return intended!
         }
     }
 }

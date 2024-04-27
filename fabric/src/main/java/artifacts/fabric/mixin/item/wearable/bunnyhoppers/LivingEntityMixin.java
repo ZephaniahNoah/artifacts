@@ -15,7 +15,7 @@ public abstract class LivingEntityMixin {
     @Inject(method = "causeFallDamage", cancellable = true, at = @At("HEAD"))
     private void cancelFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> info) {
         if (BunnyHoppersItem.shouldCancelFallDamage((LivingEntity) (Object) this)) {
-            info.setReturnValue(false);
+            info.setReturnValue(false); // early return intended
         }
     }
 }

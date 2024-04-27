@@ -83,7 +83,7 @@ public abstract class EntityMixin {
         }
     }
 
-    @SuppressWarnings("ConstantConditions")
+    @SuppressWarnings({"ConstantConditions", "UnreachableCode"})
     @Unique
     private boolean isRunningWithAquaDashers() {
         if (!((Object) this instanceof LivingEntity entity)) {

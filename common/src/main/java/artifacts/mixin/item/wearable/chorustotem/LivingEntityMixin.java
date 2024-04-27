@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
 
+    @SuppressWarnings("UnreachableCode")
     @Inject(method = "checkTotemDeathProtection", at = @At("HEAD"), cancellable = true)
     private void checkTotemDeathProtection(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity entity = (LivingEntity) (Object) this;
@@ -41,7 +42,7 @@ public class LivingEntityMixin {
                 entity.level().playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1, 1);
                 NetworkHandler.CHANNEL.sendToPlayer(player, new ChorusTotemUsedPacket());
             }
-            cir.setReturnValue(true);
+            cir.setReturnValue(true); // early return intended!
         }
     }
 }
