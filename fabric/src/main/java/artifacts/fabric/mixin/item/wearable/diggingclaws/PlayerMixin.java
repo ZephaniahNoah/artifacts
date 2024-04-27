@@ -9,8 +9,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {
@@ -20,11 +18,9 @@ public abstract class PlayerMixin extends LivingEntity {
         throw new IllegalStateException();
     }
 
-    @Inject(method = "hasCorrectToolForDrops", at = @At("HEAD"), cancellable = true)
-    private void increaseBaseToolTier(BlockState state, CallbackInfoReturnable<Boolean> info) {
-        if (DiggingClawsItem.canDiggingClawsHarvest(this, state)) {
-            info.setReturnValue(true);
-        }
+    @ModifyReturnValue(method = "hasCorrectToolForDrops", at = @At("RETURN"))
+    private boolean increaseBaseToolTier(boolean original, BlockState state) {
+        return original || DiggingClawsItem.canDiggingClawsHarvest(this, state);
     }
 
     /**

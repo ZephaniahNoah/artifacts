@@ -65,7 +65,7 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
                 super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
                 HumanoidArm mainHandSide = RendererUtil.getArmSide(entity, entity.swingingArm);
                 getPistonHead(mainHandSide.getOpposite()).y = 0;
-                getPistonHead(mainHandSide).y = ((LivingEntityExtensions) entity).getPocketPistonLength() * 2;
+                getPistonHead(mainHandSide).y = ((LivingEntityExtensions) entity).artifacts$getPocketPistonLength() * 2;
             }
 
             private ModelPart getPistonHead(HumanoidArm arm) {
