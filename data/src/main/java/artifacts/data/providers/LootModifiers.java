@@ -2,6 +2,7 @@ package artifacts.data.providers;
 
 import artifacts.Artifacts;
 import artifacts.forge.loot.RollLootTableModifier;
+import artifacts.loot.ArchaeologyChance;
 import artifacts.loot.ConfigurableRandomChance;
 import artifacts.loot.EverlastingBeefChance;
 import artifacts.registry.ModItems;
@@ -241,12 +242,60 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.CHARM_OF_SINKING.get())
                 .item(ModItems.SHOCK_PENDANT.get())
                 .item(ModItems.HELIUM_FLAMINGO.get());
+
+        archaeologyBuilder(BuiltInLootTables.DESERT_PYRAMID_ARCHAEOLOGY)
+                .item(ModItems.COWBOY_HAT.get())
+                .item(ModItems.OBSIDIAN_SKULL.get())
+                .item(ModItems.SNORKEL.get())
+                .item(ModItems.POWER_GLOVE.get())
+                .item(ModItems.KITTY_SLIPPERS.get())
+                .item(ModItems.NIGHT_VISION_GOGGLES.get())
+                .item(ModItems.SHOCK_PENDANT.get());
+        archaeologyBuilder(BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY)
+                .item(ModItems.CHARM_OF_SINKING.get())
+                .item(ModItems.UNIVERSAL_ATTRACTOR.get())
+                .item(ModItems.SUPERSTITIOUS_HAT.get())
+                .item(ModItems.UMBRELLA.get())
+                .drinkingHat(1);
+        archaeologyBuilder(BuiltInLootTables.OCEAN_RUIN_COLD_ARCHAEOLOGY)
+                .item(ModItems.LUCKY_SCARF.get())
+                .item(ModItems.FIRE_GAUNTLET.get())
+                .item(ModItems.ANGLERS_HAT.get())
+                .item(ModItems.DIGGING_CLAWS.get())
+                .item(ModItems.ANTIDOTE_VESSEL.get());
+        archaeologyBuilder(BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY)
+                .item(ModItems.AQUA_DASHERS.get())
+                .item(ModItems.ONION_RING.get())
+                .item(ModItems.RUNNING_SHOES.get())
+                .item(ModItems.BUNNY_HOPPERS.get())
+                .item(ModItems.VAMPIRIC_GLOVE.get());
+        archaeologyBuilder(BuiltInLootTables.TRAIL_RUINS_ARCHAEOLOGY_RARE)
+                .item(ModItems.ROOTED_BOOTS.get())
+                .item(ModItems.PICKAXE_HEATER.get())
+                .item(ModItems.AQUA_DASHERS.get())
+                .item(ModItems.SNOWSHOES.get())
+                .item(ModItems.STEADFAST_SPIKES.get())
+                .item(ModItems.VILLAGER_HAT.get())
+                .item(ModItems.CLOUD_IN_A_BOTTLE.get())
+                .item(ModItems.FERAL_CLAWS.get())
+                .item(ModItems.POCKET_PISTON.get())
+                .item(ModItems.WHOOPEE_CUSHION.get())
+                .item(ModItems.FLAME_PENDANT.get())
+                .item(ModItems.THORN_PENDANT.get());
     }
 
     protected Builder builder(ResourceLocation lootTable, float baseChance) {
         Builder builder = new Builder(lootTable);
         builder.lootPoolCondition(ConfigurableRandomChance.configurableRandomChance(baseChance));
         builder.lootModifierCondition(LootTableIdCondition.builder(lootTable));
+        lootBuilders.add(builder);
+        return builder;
+    }
+
+    protected Builder archaeologyBuilder(ResourceLocation lootTable) {
+        Builder builder = new Builder(lootTable).replace();
+        builder.lootModifierCondition(LootTableIdCondition.builder(lootTable));
+        builder.lootModifierCondition(ArchaeologyChance.archaeologyChance());
         lootBuilders.add(builder);
         return builder;
     }
@@ -300,6 +349,7 @@ public class LootModifiers implements DataProvider {
         private final ResourceLocation lootTable;
         private final LootPool.Builder lootPool = LootPool.lootPool();
         private final List<LootItemCondition> conditions;
+        private boolean replace = false;
 
         private LootContextParamSet paramSet = LootContextParamSets.CHEST;
 
@@ -311,7 +361,7 @@ public class LootModifiers implements DataProvider {
         private RollLootTableModifier build() {
             System.out.println(lootTable);
             System.out.println(lootTable.getPath());
-            return new RollLootTableModifier(conditions.toArray(new LootItemCondition[]{}), Artifacts.id("inject/%s", lootTable.getPath()));
+            return new RollLootTableModifier(conditions.toArray(new LootItemCondition[]{}), Artifacts.id("inject/%s", lootTable.getPath()), replace);
         }
 
         protected LootTable.Builder createLootTable() {
@@ -328,6 +378,11 @@ public class LootModifiers implements DataProvider {
 
         private Builder parameterSet(LootContextParamSet paramSet) {
             this.paramSet = paramSet;
+            return this;
+        }
+
+        public Builder replace() {
+            this.replace = true;
             return this;
         }
 

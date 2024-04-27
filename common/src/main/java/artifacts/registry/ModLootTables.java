@@ -43,6 +43,14 @@ public class ModLootTables {
             BuiltInLootTables.WOODLAND_MANSION
     );
 
+    public static final List<ResourceLocation> ARCHAEOLOGY_LOOT_TABLES = List.of(
+            BuiltInLootTables.DESERT_PYRAMID_ARCHAEOLOGY,
+            BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY,
+            BuiltInLootTables.OCEAN_RUIN_COLD_ARCHAEOLOGY,
+            BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY,
+            BuiltInLootTables.TRAIL_RUINS_ARCHAEOLOGY_RARE
+    );
+
     public static final Map<EntityType<?>, ResourceLocation> ENTITY_EQUIPMENT;
 
     static {

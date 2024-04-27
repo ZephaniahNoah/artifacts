@@ -52,6 +52,14 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
             return Math.max(0, entityEquipmentChance);
         }
 
+        @ConfigEntry.Gui.Tooltip
+        @Comment("The chance that an artifact generates in suspicious sand or gravel")
+        double archaeologyChance = 1 / 16D;
+
+        public double getArchaeologyChance() {
+            return Math.max(0, archaeologyChance);
+        }
+
         @ConfigEntry.Gui.Tooltip(count = 2)
         @Comment("Whether the Kitty Slippers and Bunny Hoppers change the player's hurt sounds")
         public boolean modifyHurtSounds = true;
