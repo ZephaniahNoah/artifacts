@@ -1,7 +1,6 @@
 package artifacts.forge;
 
 import artifacts.Artifacts;
-import artifacts.ArtifactsClient;
 import artifacts.config.ModConfig;
 import artifacts.forge.capability.SwimDataCapability;
 import artifacts.forge.curio.WearableArtifactCurio;
@@ -18,11 +17,11 @@ import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.common.capability.CurioItemCapability;
 
@@ -30,25 +29,24 @@ import top.theillusivec4.curios.common.capability.CurioItemCapability;
 public class ArtifactsForge {
 
     public ArtifactsForge() {
-        EventBuses.registerModEventBus(Artifacts.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
+        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        EventBuses.registerModEventBus(Artifacts.MOD_ID, modBus);
 
         Artifacts.init();
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ArtifactsClient::init);
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ArtifactsForgeClient::new);
-
-        registerConfig();
-
-        SwimDataCapability.setup();
-
-        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            new ArtifactsForgeClient(modBus);
+        }
 
         ModLootModifiers.LOOT_MODIFIERS.register(modBus);
         modBus.addListener(this::onCommonSetup);
 
+        MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, this::onAttachCapabilities);
+
+        registerConfig();
+        SwimDataCapability.setup();
         ArtifactEventsForge.register();
         SwimEventsForge.register();
-
-        MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, this::onAttachCapabilities);
     }
 
     private void registerConfig() {
