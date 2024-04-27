@@ -27,7 +27,7 @@ public class OnionRingItem extends WearableArtifactItem {
         ) {
             int duration = ModGameRules.ONION_RING_HASTE_DURATION_PER_FOOD_POINT.get() * properties.getNutrition();
             int level = ModGameRules.ONION_RING_HASTE_LEVEL.get();
-            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, duration, level - 1, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, duration, level - 1, false, false, true));
         }
     }
 }
