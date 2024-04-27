@@ -10,11 +10,11 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-public record ArtifactRarityRandomChance(float defaultProbability) implements LootItemCondition {
+public record ArtifactRarityAdjustedChance(float defaultProbability) implements LootItemCondition {
 
     @Override
     public LootItemConditionType getType() {
-        return ModLootConditions.CONFIGURABLE_ARTIFACT_CHANCE.get();
+        return ModLootConditions.ARTIFACT_RARITY_ADJUSTED_CHANCE.get();
     }
 
     @Override
@@ -28,20 +28,20 @@ public record ArtifactRarityRandomChance(float defaultProbability) implements Lo
         return context.getRandom().nextFloat() < adjustedProbability;
     }
 
-    public static LootItemCondition.Builder configurableRandomChance(float probability) {
-        return () -> new ArtifactRarityRandomChance(probability);
+    public static LootItemCondition.Builder adjustedChance(float probability) {
+        return () -> new ArtifactRarityAdjustedChance(probability);
     }
 
-    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<ArtifactRarityRandomChance> {
+    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<ArtifactRarityAdjustedChance> {
 
         @Override
-        public void serialize(JsonObject object, ArtifactRarityRandomChance condition, JsonSerializationContext context) {
+        public void serialize(JsonObject object, ArtifactRarityAdjustedChance condition, JsonSerializationContext context) {
             object.addProperty("default_probability", condition.defaultProbability);
         }
 
         @Override
-        public ArtifactRarityRandomChance deserialize(JsonObject object, JsonDeserializationContext context) {
-            return new ArtifactRarityRandomChance(GsonHelper.getAsFloat(object, "default_probability"));
+        public ArtifactRarityAdjustedChance deserialize(JsonObject object, JsonDeserializationContext context) {
+            return new ArtifactRarityAdjustedChance(GsonHelper.getAsFloat(object, "default_probability"));
         }
     }
 }

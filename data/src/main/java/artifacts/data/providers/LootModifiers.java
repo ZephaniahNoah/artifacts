@@ -2,7 +2,7 @@ package artifacts.data.providers;
 
 import artifacts.Artifacts;
 import artifacts.forge.loot.RollLootTableModifier;
-import artifacts.loot.ArtifactRarityRandomChance;
+import artifacts.loot.ArtifactRarityAdjustedChance;
 import artifacts.loot.ConfigValueChance;
 import artifacts.registry.ModItems;
 import com.google.common.collect.ImmutableList;
@@ -285,7 +285,7 @@ public class LootModifiers implements DataProvider {
 
     protected Builder builder(ResourceLocation lootTable, float baseChance) {
         Builder builder = new Builder(lootTable);
-        builder.lootPoolCondition(ArtifactRarityRandomChance.configurableRandomChance(baseChance));
+        builder.lootPoolCondition(ArtifactRarityAdjustedChance.adjustedChance(baseChance));
         builder.lootModifierCondition(LootTableIdCondition.builder(lootTable));
         lootBuilders.add(builder);
         return builder;
