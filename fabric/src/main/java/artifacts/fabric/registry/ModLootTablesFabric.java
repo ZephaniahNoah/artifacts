@@ -1,7 +1,7 @@
 package artifacts.fabric.registry;
 
 import artifacts.Artifacts;
-import artifacts.loot.ArchaeologyChance;
+import artifacts.loot.ConfigValueChance;
 import artifacts.loot.ReplaceWithLootTableFunction;
 import artifacts.registry.ModLootTables;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +18,7 @@ public class ModLootTablesFabric {
         if (ModLootTables.ARCHAEOLOGY_LOOT_TABLES.contains(id)) {
             supplier.modifyPools(pool -> pool.apply(ReplaceWithLootTableFunction
                     .replaceWithLootTable(getInjectName(id))
-                    .when(ArchaeologyChance.archaeologyChance()))
+                    .when(ConfigValueChance.archaeologyChance()))
             );
         }
     }

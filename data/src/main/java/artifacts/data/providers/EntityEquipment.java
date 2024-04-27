@@ -1,6 +1,6 @@
 package artifacts.data.providers;
 
-import artifacts.loot.EntityEquipmentChance;
+import artifacts.loot.ConfigValueChance;
 import artifacts.registry.ModItems;
 import artifacts.registry.ModLootTables;
 import com.google.common.collect.Sets;
@@ -87,7 +87,7 @@ public class EntityEquipment {
     public void addEquipment(EntityType<?> entityType, LootPool.Builder pool) {
         entityTypes.add(entityType);
         LootTable.Builder builder = LootTable.lootTable();
-        builder.withPool(pool.when(EntityEquipmentChance.entityEquipmentChance()));
+        builder.withPool(pool.when(ConfigValueChance.entityEquipmentChance()));
         lootTables.addLootTable(ModLootTables.entityEquipmentLootTable(entityType).getPath(), builder, LootContextParamSets.ALL_PARAMS);
     }
 }

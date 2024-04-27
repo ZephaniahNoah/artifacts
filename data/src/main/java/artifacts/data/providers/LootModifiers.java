@@ -2,9 +2,8 @@ package artifacts.data.providers;
 
 import artifacts.Artifacts;
 import artifacts.forge.loot.RollLootTableModifier;
-import artifacts.loot.ArchaeologyChance;
-import artifacts.loot.ConfigurableRandomChance;
-import artifacts.loot.EverlastingBeefChance;
+import artifacts.loot.ArtifactRarityRandomChance;
+import artifacts.loot.ConfigValueChance;
 import artifacts.registry.ModItems;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
@@ -55,7 +54,7 @@ public class LootModifiers implements DataProvider {
         for (ResourceLocation lootTable : List.of(EntityType.COW.getDefaultLootTable(), EntityType.MOOSHROOM.getDefaultLootTable())) {
             lootBuilders.add(
                     new Builder(lootTable)
-                            .lootPoolCondition(EverlastingBeefChance.everlastingBeefChance())
+                            .lootPoolCondition(ConfigValueChance.everlastingBeefChance())
                             .lootModifierCondition(LootTableIdCondition.builder(lootTable))
                             .parameterSet(LootContextParamSets.ENTITY)
                             .lootPoolCondition(LootItemKilledByPlayerCondition.killedByPlayer())
@@ -286,7 +285,7 @@ public class LootModifiers implements DataProvider {
 
     protected Builder builder(ResourceLocation lootTable, float baseChance) {
         Builder builder = new Builder(lootTable);
-        builder.lootPoolCondition(ConfigurableRandomChance.configurableRandomChance(baseChance));
+        builder.lootPoolCondition(ArtifactRarityRandomChance.configurableRandomChance(baseChance));
         builder.lootModifierCondition(LootTableIdCondition.builder(lootTable));
         lootBuilders.add(builder);
         return builder;
@@ -295,7 +294,7 @@ public class LootModifiers implements DataProvider {
     protected Builder archaeologyBuilder(ResourceLocation lootTable) {
         Builder builder = new Builder(lootTable).replace();
         builder.lootModifierCondition(LootTableIdCondition.builder(lootTable));
-        builder.lootModifierCondition(ArchaeologyChance.archaeologyChance());
+        builder.lootModifierCondition(ConfigValueChance.archaeologyChance());
         lootBuilders.add(builder);
         return builder;
     }

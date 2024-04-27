@@ -38,27 +38,15 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
 
         @ConfigEntry.Gui.Tooltip(count = 2)
         @Comment("The chance everlasting beef drops when a cow or mooshroom is killed by a player")
-        double everlastingBeefChance = 1 / 500D;
-
-        public double getEverlastingBeefChance() {
-            return Math.max(0, everlastingBeefChance);
-        }
+        public double everlastingBeefChance = 1 / 500D;
 
         @ConfigEntry.Gui.Tooltip(count = 2)
         @Comment("The chance that a skeleton, zombie or piglin spawns with an artifact equipped")
-        double entityEquipmentChance = 1 / 1000D;
-
-        public double getEntityEquipmentChance() {
-            return Math.max(0, entityEquipmentChance);
-        }
+        public double entityEquipmentChance = 1 / 1000D;
 
         @ConfigEntry.Gui.Tooltip
         @Comment("The chance that an artifact generates in suspicious sand or gravel")
-        double archaeologyChance = 1 / 16D;
-
-        public double getArchaeologyChance() {
-            return Math.max(0, archaeologyChance);
-        }
+        public double archaeologyChance = 1 / 16D;
 
         @ConfigEntry.Gui.Tooltip(count = 2)
         @Comment("Whether the Kitty Slippers and Bunny Hoppers change the player's hurt sounds")

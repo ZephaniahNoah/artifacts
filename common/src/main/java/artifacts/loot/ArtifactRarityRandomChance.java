@@ -10,7 +10,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-public record ConfigurableRandomChance(float defaultProbability) implements LootItemCondition {
+public record ArtifactRarityRandomChance(float defaultProbability) implements LootItemCondition {
 
     @Override
     public LootItemConditionType getType() {
@@ -29,19 +29,19 @@ public record ConfigurableRandomChance(float defaultProbability) implements Loot
     }
 
     public static LootItemCondition.Builder configurableRandomChance(float probability) {
-        return () -> new ConfigurableRandomChance(probability);
+        return () -> new ArtifactRarityRandomChance(probability);
     }
 
-    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<ConfigurableRandomChance> {
+    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<ArtifactRarityRandomChance> {
 
         @Override
-        public void serialize(JsonObject object, ConfigurableRandomChance condition, JsonSerializationContext context) {
+        public void serialize(JsonObject object, ArtifactRarityRandomChance condition, JsonSerializationContext context) {
             object.addProperty("default_probability", condition.defaultProbability);
         }
 
         @Override
-        public ConfigurableRandomChance deserialize(JsonObject object, JsonDeserializationContext context) {
-            return new ConfigurableRandomChance(GsonHelper.getAsFloat(object, "default_probability"));
+        public ArtifactRarityRandomChance deserialize(JsonObject object, JsonDeserializationContext context) {
+            return new ArtifactRarityRandomChance(GsonHelper.getAsFloat(object, "default_probability"));
         }
     }
 }
