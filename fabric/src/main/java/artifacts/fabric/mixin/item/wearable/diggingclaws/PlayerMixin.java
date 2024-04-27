@@ -1,6 +1,7 @@
 package artifacts.fabric.mixin.item.wearable.diggingclaws;
 
 import artifacts.item.wearable.hands.DiggingClawsItem;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -32,8 +33,8 @@ public abstract class PlayerMixin extends LivingEntity {
      */
     // TODO: identical artifacts-forge behaviour but could do this on the speed multiplier instead of end result
     @SuppressWarnings("ConstantConditions")
-    @Inject(method = "getDestroySpeed", at = @At("RETURN"), cancellable = true)
-    private void increaseMiningSpeed(BlockState state, CallbackInfoReturnable<Float> info) {
-        info.setReturnValue(info.getReturnValueF() + DiggingClawsItem.getSpeedBonus((Player) (Object) this, state));
+    @ModifyReturnValue(method = "getDestroySpeed", at = @At("RETURN"))
+    private float increaseMiningSpeed(float original, BlockState state) {
+        return original + DiggingClawsItem.getSpeedBonus((Player) (Object) this, state);
     }
 }
