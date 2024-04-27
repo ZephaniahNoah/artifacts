@@ -137,27 +137,27 @@ public class ArmsModel extends HumanoidModel<LivingEntity> {
 
         // claw 1 lower
         leftArm.texOffs(0, 0);
-        leftArm.addBox(-2, 0, -1.5F, 3, 5, 1);
+        leftArm.addBox(hasSlimArms ? -2 : -1.5F, 0, -1.5F, 3, 5, 1);
         rightArm.texOffs(8, 0);
-        rightArm.addBox(-1, 0, -1.5F, 3, 5, 1);
+        rightArm.addBox(hasSlimArms ? -1 : -1.5F, 0, -1.5F, 3, 5, 1);
 
         // claw 2 lower
         leftArm.texOffs(0, 6);
-        leftArm.addBox(-2, 0, 0.5F, 3, 5, 1);
+        leftArm.addBox(hasSlimArms ? -2 : -1.5F, 0, 0.5F, 3, 5, 1);
         rightArm.texOffs(8, 6);
-        rightArm.addBox(-1, 0, 0.5F, 3, 5, 1);
+        rightArm.addBox(hasSlimArms ? -1 : -1.5F, 0, 0.5F, 3, 5, 1);
 
         // claw 1 upper
         leftArm.texOffs(16, 0);
-        leftArm.addBox(1, 0, -1.5F, 1, 4, 1);
+        leftArm.addBox(hasSlimArms ? 1 : 1.5F, 0, -1.5F, 1, 4, 1);
         rightArm.texOffs(20, 0);
-        rightArm.addBox(-2, 0, -1.5F, 1, 4, 1);
+        rightArm.addBox(hasSlimArms ? -2 : -2.5F, 0, -1.5F, 1, 4, 1);
 
         // claw 2 upper
         leftArm.texOffs(16, 6);
-        leftArm.addBox(1, 0, 0.5F, 1, 4, 1);
+        leftArm.addBox(hasSlimArms ? 1 : 1.5F, 0, 0.5F, 1, 4, 1);
         rightArm.texOffs(20, 6);
-        rightArm.addBox(-2, 0, 0.5F, 1, 4, 1);
+        rightArm.addBox(hasSlimArms ? -2 : -2.5F, 0, 0.5F, 1, 4, 1);
 
         return createEmptyArms(leftArm, rightArm, hasSlimArms);
     }
