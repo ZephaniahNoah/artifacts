@@ -30,6 +30,7 @@ import top.theillusivec4.curios.api.client.ICurioRenderer;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -40,23 +41,29 @@ public class ForgePlatformHelper implements PlatformHelper {
 
     @Override
     public boolean isEquippedBy(@Nullable LivingEntity entity, Predicate<ItemStack> predicate) {
-        return entity != null && CuriosApi.getCuriosHelper().findFirstCurio(entity, predicate).isPresent();
+        return entity != null && CuriosApi.getCuriosInventory(entity).resolve()
+                .flatMap(inv -> inv.findFirstCurio(predicate))
+                .isPresent();
     }
 
     @Override
     public Stream<ItemStack> findAllEquippedBy(LivingEntity entity, Item item) {
-        return CuriosApi.getCuriosHelper().findCurios(entity, item).stream().map(SlotResult::stack);
+        return CuriosApi.getCuriosInventory(entity).resolve()
+                .map(inv -> inv.findCurios(item))
+                .orElse(List.of()).stream()
+                .map(SlotResult::stack);
     }
 
     @Override
     public boolean tryEquipInFirstSlot(LivingEntity entity, ItemStack item) {
-        Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosHelper().getCuriosHandler(entity).resolve();
+        Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(entity).resolve();
         if (optional.isPresent()) {
             ICuriosItemHandler handler = optional.get();
             for (Map.Entry<String, ICurioStacksHandler> entry : handler.getCurios().entrySet()) {
                 for (int i = 0; i < entry.getValue().getSlots(); i++) {
-                    SlotContext slotContext = new SlotContext(entry.getKey(), entity ,i, false, true);
-                    if (CuriosApi.getCuriosHelper().isStackValid(slotContext, item) && entry.getValue().getStacks().getStackInSlot(i).isEmpty()) {
+                    SlotContext slotContext = new SlotContext(entry.getKey(), entity, i, false, true);
+                    //noinspection ConstantConditions
+                    if (CuriosApi.isStackValid(slotContext, item) && entry.getValue().getStacks().getStackInSlot(i).isEmpty()) {
                         entry.getValue().getStacks().setStackInSlot(i, item);
                         return true;
                     }
@@ -90,7 +97,7 @@ public class ForgePlatformHelper implements PlatformHelper {
 
     @Override
     public boolean isVisibleOnHand(LivingEntity entity, InteractionHand hand, WearableArtifactItem item) {
-        return CuriosApi.getCuriosHelper().getCuriosHandler(entity).resolve()
+        return CuriosApi.getCuriosInventory(entity).resolve()
                 .flatMap(handler -> Optional.ofNullable(handler.getCurios().get("hands")))
                 .map(stacksHandler -> {
                     int startSlot = hand == InteractionHand.MAIN_HAND ? 0 : 1;

@@ -31,7 +31,7 @@ public abstract class WearableArtifactItemMixin extends ArtifactItem {
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> tooltipList, TooltipFlag flags) {
         super.appendHoverText(stack, world, tooltipList, flags);
-        Set<String> curioTags = CuriosApi.getCuriosHelper().getCurioTags(stack.getItem());
+        Set<String> curioTags = CuriosApi.getItemStackSlots(stack, true).keySet();
         List<String> slots = new ArrayList<>(curioTags);
 
         if (!Artifacts.CONFIG.client.showTooltips || isCosmetic() || slots.isEmpty() || getAttributeModifiers().isEmpty()) {
