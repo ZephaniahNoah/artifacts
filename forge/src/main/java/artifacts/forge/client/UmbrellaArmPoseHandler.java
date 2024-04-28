@@ -1,13 +1,13 @@
 package artifacts.forge.client;
 
 import artifacts.client.UmbrellaArmPoseHelper;
-import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.common.MinecraftForge;
+import net.neoforged.neoforge.client.event.RenderLivingEvent;
+import net.neoforged.neoforge.common.NeoForge;
 
 public class UmbrellaArmPoseHandler {
 
     public static void setup() {
-        MinecraftForge.EVENT_BUS.addListener(UmbrellaArmPoseHandler::onLivingRender);
+        NeoForge.EVENT_BUS.addListener(UmbrellaArmPoseHandler::onLivingRender);
     }
 
     public static void onLivingRender(RenderLivingEvent.Pre<?, ?> event) {

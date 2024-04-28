@@ -20,11 +20,11 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.*;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.UUID;
 
@@ -38,15 +38,15 @@ public class ArtifactEventsForge {
     );
 
     public static void register() {
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onLivingDamage);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, ArtifactEventsForge::onLivingFall);
-        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onLivingUpdate);
-        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onDrinkingHatItemUse);
-        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onGoldenHookExperienceDrop);
-        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onKittySlippersChangeTarget);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onDiggingClawsBreakSpeed);
-        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onDiggingClawsHarvestCheck);
-        MinecraftForge.EVENT_BUS.addListener(ArtifactEventsForge::onFoodEaten);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onLivingDamage);
+        NeoForge.EVENT_BUS.addListener(EventPriority.HIGH, ArtifactEventsForge::onLivingFall);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onLivingUpdate);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onDrinkingHatItemUse);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onGoldenHookExperienceDrop);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onKittySlippersChangeTarget);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onDiggingClawsBreakSpeed);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onDiggingClawsHarvestCheck);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onFoodEaten);
     }
 
     private static void onLivingDamage(LivingDamageEvent event) {
@@ -120,7 +120,7 @@ public class ArtifactEventsForge {
 
     private static void onUmbrellaLivingUpdate(LivingEvent.LivingTickEvent event) {
         LivingEntity entity = event.getEntity();
-        AttributeInstance gravity = entity.getAttribute(ForgeMod.ENTITY_GRAVITY.get());
+        AttributeInstance gravity = entity.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
         if (gravity != null) {
             boolean isInWater = entity.isInWater() && !CharmOfSinkingItem.shouldSink(entity);
             if (ModGameRules.UMBRELLA_IS_GLIDER.get()
@@ -134,7 +134,7 @@ public class ArtifactEventsForge {
                 }
                 entity.fallDistance = 0;
             } else if (gravity.hasModifier(UMBRELLA_SLOW_FALLING)) {
-                gravity.removeModifier(UMBRELLA_SLOW_FALLING);
+                gravity.removeModifier(UMBRELLA_SLOW_FALLING.getId());
             }
         }
     }

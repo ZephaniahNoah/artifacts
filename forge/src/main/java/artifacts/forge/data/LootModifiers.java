@@ -30,8 +30,8 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootTableIdCondition;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
 import java.nio.file.Path;
 import java.util.*;
@@ -423,7 +423,6 @@ public class LootModifiers implements DataProvider {
                                             EntityPredicate.Builder.entity().flags(
                                                     EntityFlagsPredicate.Builder.flags()
                                                             .setOnFire(true)
-                                                            .build()
                                             )
                                     )
                             )

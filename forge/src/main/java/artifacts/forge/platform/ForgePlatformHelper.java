@@ -2,8 +2,8 @@ package artifacts.forge.platform;
 
 import artifacts.client.item.renderer.ArtifactRenderer;
 import artifacts.component.SwimData;
-import artifacts.forge.capability.SwimDataCapability;
 import artifacts.forge.integration.CosmeticArmorCompat;
+import artifacts.forge.registry.ModAttachmentTypes;
 import artifacts.item.wearable.WearableArtifactItem;
 import artifacts.platform.PlatformHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -18,9 +18,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.TierSortingRegistry;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -41,14 +41,14 @@ public class ForgePlatformHelper implements PlatformHelper {
 
     @Override
     public boolean isEquippedBy(@Nullable LivingEntity entity, Predicate<ItemStack> predicate) {
-        return entity != null && CuriosApi.getCuriosInventory(entity).resolve()
+        return entity != null && CuriosApi.getCuriosInventory(entity)
                 .flatMap(inv -> inv.findFirstCurio(predicate))
                 .isPresent();
     }
 
     @Override
     public Stream<ItemStack> findAllEquippedBy(LivingEntity entity, Item item) {
-        return CuriosApi.getCuriosInventory(entity).resolve()
+        return CuriosApi.getCuriosInventory(entity)
                 .map(inv -> inv.findCurios(item))
                 .orElse(List.of()).stream()
                 .map(SlotResult::stack);
@@ -56,7 +56,7 @@ public class ForgePlatformHelper implements PlatformHelper {
 
     @Override
     public boolean tryEquipInFirstSlot(LivingEntity entity, ItemStack item) {
-        Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(entity).resolve();
+        Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(entity);
         if (optional.isPresent()) {
             ICuriosItemHandler handler = optional.get();
             for (Map.Entry<String, ICurioStacksHandler> entry : handler.getCurios().entrySet()) {
@@ -75,7 +75,7 @@ public class ForgePlatformHelper implements PlatformHelper {
 
     @Override
     public Attribute getStepHeightAttribute() {
-        return ForgeMod.STEP_HEIGHT_ADDITION.get();
+        return NeoForgeMod.STEP_HEIGHT.value();
     }
 
     @Override
@@ -86,18 +86,17 @@ public class ForgePlatformHelper implements PlatformHelper {
     @Nullable
     @Override
     public SwimData getSwimData(LivingEntity player) {
-        // noinspection ConstantConditions
-        return player.getCapability(SwimDataCapability.CAPABILITY).orElse(null);
+        return player.getData(ModAttachmentTypes.SWIM_DATA);
     }
 
     @Override
     public boolean isEyeInWater(Player player) {
-        return player.isEyeInFluidType(ForgeMod.WATER_TYPE.get());
+        return player.isEyeInFluidType(NeoForgeMod.WATER_TYPE.value());
     }
 
     @Override
     public boolean isVisibleOnHand(LivingEntity entity, InteractionHand hand, WearableArtifactItem item) {
-        return CuriosApi.getCuriosInventory(entity).resolve()
+        return CuriosApi.getCuriosInventory(entity)
                 .flatMap(handler -> Optional.ofNullable(handler.getCurios().get("hands")))
                 .map(stacksHandler -> {
                     int startSlot = hand == InteractionHand.MAIN_HAND ? 0 : 1;

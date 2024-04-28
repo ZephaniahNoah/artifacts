@@ -16,11 +16,11 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiOverlaysEvent;
+import net.neoforged.neoforge.client.gui.overlay.VanillaGuiOverlay;
 import top.theillusivec4.curios.client.render.CuriosLayer;
 
 import java.util.Set;
@@ -50,8 +50,8 @@ public class ArtifactsForgeClient {
     }
 
     public void onRegisterGuiOverlays(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.AIR_LEVEL.id(), "helium_flamingo_charge", HeliumFlamingoOverlayRenderer::render);
-        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "artifact_cooldowns", ArtifactCooldownOverlayRenderer::render);
+        event.registerAbove(VanillaGuiOverlay.AIR_LEVEL.id(), Artifacts.id("helium_flamingo_charge"), HeliumFlamingoOverlayRenderer::render);
+        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), Artifacts.id("artifact_cooldowns"), ArtifactCooldownOverlayRenderer::render);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})

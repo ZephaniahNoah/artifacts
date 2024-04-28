@@ -4,8 +4,8 @@ import artifacts.item.UmbrellaItem;
 import artifacts.registry.ModGameRules;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.common.ToolActions;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(UmbrellaItem.class)

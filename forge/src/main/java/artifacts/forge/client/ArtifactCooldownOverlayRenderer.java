@@ -5,7 +5,7 @@ import artifacts.item.wearable.WearableArtifactItem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.neoforged.neoforge.client.gui.overlay.ExtendedGui;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class ArtifactCooldownOverlayRenderer {
 
     @SuppressWarnings("unused")
-    public static void render(ForgeGui gui, GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
+    public static void render(ExtendedGui gui, GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
         if (!Artifacts.CONFIG.client.enableCooldownOverlay || !(gui.getMinecraft().getCameraEntity() instanceof Player player)) {
             return;
         }

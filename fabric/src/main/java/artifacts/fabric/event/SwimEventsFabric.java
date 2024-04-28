@@ -12,7 +12,6 @@ import net.minecraft.world.level.material.FluidState;
 
 public class SwimEventsFabric {
 
-    @SuppressWarnings("UnstableApiUsage")
     public static void register() {
         PlayerSwimCallback.EVENT.register(SwimEventsFabric::onPlayerSwim);
         LivingFluidCollisionCallback.EVENT.register(SwimEventsFabric::onAquaDashersFluidCollision);

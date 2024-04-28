@@ -5,14 +5,14 @@ import artifacts.item.wearable.feet.AquaDashersItem;
 import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import be.florens.expandability.api.forge.PlayerSwimEvent;
 import dev.architectury.event.EventResult;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.Event;
+import net.neoforged.bus.api.Event;
+import net.neoforged.neoforge.common.NeoForge;
 
 public class SwimEventsForge {
 
     public static void register() {
-        MinecraftForge.EVENT_BUS.addListener(SwimEventsForge::onPlayerSwim);
-        MinecraftForge.EVENT_BUS.addListener(SwimEventsForge::onAquaDashersFluidCollision);
+        NeoForge.EVENT_BUS.addListener(SwimEventsForge::onPlayerSwim);
+        NeoForge.EVENT_BUS.addListener(SwimEventsForge::onAquaDashersFluidCollision);
     }
 
     public static void onPlayerSwim(PlayerSwimEvent event) {
@@ -28,7 +28,6 @@ public class SwimEventsForge {
         }
     }
 
-    @SuppressWarnings("UnstableApiUsage")
     private static void onAquaDashersFluidCollision(LivingFluidCollisionEvent event) {
         if (AquaDashersItem.onFluidCollision(event.getEntity(), event.getFluidState())) {
             event.setResult(Event.Result.ALLOW);

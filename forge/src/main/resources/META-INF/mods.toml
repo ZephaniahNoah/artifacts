@@ -15,7 +15,7 @@ description='''Adds various new powerful uncraftable items to make exploration a
 [[mixins]]
 config="mixins.artifacts.common.json"
 [[mixins]]
-config="mixins.artifacts.neoforge.json"
+config="mixins.artifacts.forge.json"
 
 [[dependencies.artifacts]]
     modId="neoforge"
@@ -25,7 +25,7 @@ config="mixins.artifacts.neoforge.json"
 
 [[dependencies.artifacts]]
     modId = "minecraft"
-    mandatory = true
+    type="required"
     versionRange = "[1.20.4,1.20.5)"
     ordering = "NONE"
     side = "BOTH"
