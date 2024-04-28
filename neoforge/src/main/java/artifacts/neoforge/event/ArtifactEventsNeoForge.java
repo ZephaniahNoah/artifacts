@@ -28,7 +28,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.UUID;
 
-public class ArtifactEventsForge {
+public class ArtifactEventsNeoForge {
 
     private static final AttributeModifier UMBRELLA_SLOW_FALLING = new AttributeModifier(
             UUID.fromString("a7a25453-2065-4a96-bc83-df600e13f390"),
@@ -38,15 +38,15 @@ public class ArtifactEventsForge {
     );
 
     public static void register() {
-        NeoForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onLivingDamage);
-        NeoForge.EVENT_BUS.addListener(EventPriority.HIGH, ArtifactEventsForge::onLivingFall);
-        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onLivingUpdate);
-        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onDrinkingHatItemUse);
-        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onGoldenHookExperienceDrop);
-        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onKittySlippersChangeTarget);
-        NeoForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsForge::onDiggingClawsBreakSpeed);
-        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onDiggingClawsHarvestCheck);
-        NeoForge.EVENT_BUS.addListener(ArtifactEventsForge::onFoodEaten);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsNeoForge::onLivingDamage);
+        NeoForge.EVENT_BUS.addListener(EventPriority.HIGH, ArtifactEventsNeoForge::onLivingFall);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsNeoForge::onLivingUpdate);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsNeoForge::onDrinkingHatItemUse);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsNeoForge::onGoldenHookExperienceDrop);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsNeoForge::onKittySlippersChangeTarget);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOW, ArtifactEventsNeoForge::onDiggingClawsBreakSpeed);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsNeoForge::onDiggingClawsHarvestCheck);
+        NeoForge.EVENT_BUS.addListener(ArtifactEventsNeoForge::onFoodEaten);
     }
 
     private static void onLivingDamage(LivingDamageEvent event) {

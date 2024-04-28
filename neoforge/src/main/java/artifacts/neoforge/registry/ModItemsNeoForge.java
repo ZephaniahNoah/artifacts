@@ -7,7 +7,7 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 
 import java.util.UUID;
 
-public class ModItemsForge {
+public class ModItemsNeoForge {
 
     public static void register() {
         artifacts.registry.ModItems.FLIPPERS.get().addAttributeModifier(ArtifactAttributeModifier.create(

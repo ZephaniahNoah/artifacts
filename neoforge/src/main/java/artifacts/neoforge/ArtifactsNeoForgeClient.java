@@ -25,9 +25,9 @@ import top.theillusivec4.curios.client.render.CuriosLayer;
 
 import java.util.Set;
 
-public class ArtifactsForgeClient {
+public class ArtifactsNeoForgeClient {
 
-    public ArtifactsForgeClient(IEventBus modBus) {
+    public ArtifactsNeoForgeClient(IEventBus modBus) {
         ArtifactsClient.init();
 
         modBus.addListener(this::onClientSetup);

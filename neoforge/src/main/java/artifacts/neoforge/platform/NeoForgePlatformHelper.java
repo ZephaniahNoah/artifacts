@@ -37,7 +37,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public class ForgePlatformHelper implements PlatformHelper {
+public class NeoForgePlatformHelper implements PlatformHelper {
 
     @Override
     public boolean isEquippedBy(@Nullable LivingEntity entity, Predicate<ItemStack> predicate) {

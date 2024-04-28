@@ -8,11 +8,11 @@ import dev.architectury.event.EventResult;
 import net.neoforged.bus.api.Event;
 import net.neoforged.neoforge.common.NeoForge;
 
-public class SwimEventsForge {
+public class SwimEventsNeoForge {
 
     public static void register() {
-        NeoForge.EVENT_BUS.addListener(SwimEventsForge::onPlayerSwim);
-        NeoForge.EVENT_BUS.addListener(SwimEventsForge::onAquaDashersFluidCollision);
+        NeoForge.EVENT_BUS.addListener(SwimEventsNeoForge::onPlayerSwim);
+        NeoForge.EVENT_BUS.addListener(SwimEventsNeoForge::onAquaDashersFluidCollision);
     }
 
     public static void onPlayerSwim(PlayerSwimEvent event) {

@@ -3,10 +3,10 @@ package artifacts.neoforge;
 import artifacts.Artifacts;
 import artifacts.config.ModConfig;
 import artifacts.neoforge.curio.WearableArtifactCurio;
-import artifacts.neoforge.event.ArtifactEventsForge;
-import artifacts.neoforge.event.SwimEventsForge;
+import artifacts.neoforge.event.ArtifactEventsNeoForge;
+import artifacts.neoforge.event.SwimEventsNeoForge;
 import artifacts.neoforge.registry.ModAttachmentTypes;
-import artifacts.neoforge.registry.ModItemsForge;
+import artifacts.neoforge.registry.ModItemsNeoForge;
 import artifacts.neoforge.registry.ModLootModifiers;
 import artifacts.item.wearable.WearableArtifactItem;
 import artifacts.registry.ModItems;
@@ -22,12 +22,12 @@ import net.neoforged.neoforge.client.ConfigScreenHandler;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mod(Artifacts.MOD_ID)
-public class ArtifactsForge {
+public class ArtifactsNeoForge {
 
-    public ArtifactsForge(IEventBus modBus) {
+    public ArtifactsNeoForge(IEventBus modBus) {
         Artifacts.init();
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            new ArtifactsForgeClient(modBus);
+            new ArtifactsNeoForgeClient(modBus);
         }
 
         ModLootModifiers.LOOT_MODIFIERS.register(modBus);
@@ -37,8 +37,8 @@ public class ArtifactsForge {
         modBus.addListener(this::registerCapabilities);
 
         registerConfig();
-        ArtifactEventsForge.register();
-        SwimEventsForge.register();
+        ArtifactEventsNeoForge.register();
+        SwimEventsNeoForge.register();
     }
 
     private void registerConfig() {
@@ -59,6 +59,6 @@ public class ArtifactsForge {
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(ModItemsForge::register);
+        event.enqueueWork(ModItemsNeoForge::register);
     }
 }
