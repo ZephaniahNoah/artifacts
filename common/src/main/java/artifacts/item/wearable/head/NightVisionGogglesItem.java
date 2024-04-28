@@ -15,7 +15,7 @@ import java.util.List;
 public class NightVisionGogglesItem extends MobEffectItem {
 
     public NightVisionGogglesItem() {
-        super(MobEffects.NIGHT_VISION, 40, () -> ModGameRules.NIGHT_VISION_GOGGLES_ENABLED.get() && ModGameRules.NIGHT_VISION_GOGGLES_STRENGTH.get() > 0);
+        super(MobEffects.NIGHT_VISION, 40, () -> ModGameRules.NIGHT_VISION_GOGGLES_STRENGTH.get() > 0);
     }
 
     @Override

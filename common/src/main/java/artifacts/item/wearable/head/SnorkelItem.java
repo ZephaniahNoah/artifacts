@@ -16,7 +16,7 @@ import java.util.List;
 public class SnorkelItem extends MobEffectItem {
 
     public SnorkelItem() {
-        super(MobEffects.WATER_BREATHING, () -> ModGameRules.SNORKEL_ENABLED.get() && ModGameRules.SNORKEL_WATER_BREATHING_DURATION.get() != 0);
+        super(MobEffects.WATER_BREATHING, () -> ModGameRules.SNORKEL_WATER_BREATHING_DURATION.get() != 0);
     }
 
     @Override

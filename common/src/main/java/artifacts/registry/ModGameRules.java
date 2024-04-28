@@ -32,12 +32,9 @@ public class ModGameRules {
             ETERNAL_STEAK_ENABLED = booleanValue(createName(ModItems.ETERNAL_STEAK, "enabled")),
             EVERLASTING_BEEF_ENABLED = booleanValue(createName(ModItems.EVERLASTING_BEEF, "enabled")),
             KITTY_SLIPPERS_ENABLED = booleanValue(createName(ModItems.KITTY_SLIPPERS, "enabled")),
-            NIGHT_VISION_GOGGLES_ENABLED = booleanValue(createName(ModItems.NIGHT_VISION_GOGGLES, "enabled")), // TODO remove 1.20.2
             PICKAXE_HEATER_ENABLED = booleanValue(createName(ModItems.PICKAXE_HEATER, "enabled")),
             ROOTED_BOOTS_ENABLED = booleanValue(createName(ModItems.ROOTED_BOOTS, "enabled")),
             SCARF_OF_INVISIBILITY_ENABLED = booleanValue(createName(ModItems.SCARF_OF_INVISIBILITY, "enabled")),
-            SNORKEL_ENABLED = booleanValue(createName(ModItems.SNORKEL, "enabled")), // TODO remove 1.20.2
-            STEADFAST_SPIKES_ENABLED = booleanValue(createName(ModItems.STEADFAST_SPIKES, "enabled")), // TODO remove 1.20.2
             UNIVERSAL_ATTRACTOR_ENABLED = booleanValue(createName(ModItems.UNIVERSAL_ATTRACTOR, "enabled")),
 
             BUNNY_HOPPERS_DO_CANCEL_FALL_DAMAGE = booleanValue(createName(ModItems.BUNNY_HOPPERS, "doCancelFallDamage")),
