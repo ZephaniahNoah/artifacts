@@ -1,4 +1,4 @@
-package artifacts.data.providers;
+package artifacts.forge.data;
 
 import artifacts.loot.ConfigValueChance;
 import artifacts.registry.ModItems;

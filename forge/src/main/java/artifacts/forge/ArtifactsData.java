@@ -1,7 +1,7 @@
-package artifacts.data;
+package artifacts.forge;
 
 import artifacts.Artifacts;
-import artifacts.data.providers.*;
+import artifacts.forge.data.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

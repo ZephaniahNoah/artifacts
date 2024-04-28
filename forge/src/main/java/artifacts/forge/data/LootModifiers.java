@@ -1,4 +1,4 @@
-package artifacts.data.providers;
+package artifacts.forge.data;
 
 import artifacts.Artifacts;
 import artifacts.forge.loot.RollLootTableModifier;
