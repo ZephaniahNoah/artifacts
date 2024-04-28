@@ -55,10 +55,10 @@ public class RunningShoesItem extends WearableArtifactItem {
             AttributeInstance movementSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
             AttributeModifier movementSpeedBonus = getSpeedBonus();
             if (movementSpeed != null && movementSpeed.hasModifier(movementSpeedBonus)) {
-                movementSpeed.removeModifier(movementSpeedBonus);
+                movementSpeed.removeModifier(movementSpeedBonus.getId());
             }
             if (stepHeight != null && stepHeight.hasModifier(STEP_HEIGHT_BONUS)) {
-                stepHeight.removeModifier(STEP_HEIGHT_BONUS);
+                stepHeight.removeModifier(STEP_HEIGHT_BONUS.getId());
             }
         }
     }
@@ -78,10 +78,10 @@ public class RunningShoesItem extends WearableArtifactItem {
             }
         } else {
             if (movementSpeed.hasModifier(speedBonus)) {
-                movementSpeed.removeModifier(speedBonus);
+                movementSpeed.removeModifier(speedBonus.getId());
             }
             if (stepHeight.hasModifier(STEP_HEIGHT_BONUS)) {
-                stepHeight.removeModifier(STEP_HEIGHT_BONUS);
+                stepHeight.removeModifier(STEP_HEIGHT_BONUS.getId());
             }
         }
     }

@@ -2,15 +2,18 @@ package artifacts.loot;
 
 import artifacts.Artifacts;
 import artifacts.registry.ModLootConditions;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import net.minecraft.util.GsonHelper;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public record ArtifactRarityAdjustedChance(float defaultProbability) implements LootItemCondition {
+
+    public static final Codec<ArtifactRarityAdjustedChance> CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(Codec.FLOAT.fieldOf("default_probability").forGetter(ArtifactRarityAdjustedChance::defaultProbability))
+                    .apply(instance, ArtifactRarityAdjustedChance::new)
+    );
 
     @Override
     public LootItemConditionType getType() {
@@ -30,18 +33,5 @@ public record ArtifactRarityAdjustedChance(float defaultProbability) implements 
 
     public static LootItemCondition.Builder adjustedChance(float probability) {
         return () -> new ArtifactRarityAdjustedChance(probability);
-    }
-
-    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<ArtifactRarityAdjustedChance> {
-
-        @Override
-        public void serialize(JsonObject object, ArtifactRarityAdjustedChance condition, JsonSerializationContext context) {
-            object.addProperty("default_probability", condition.defaultProbability);
-        }
-
-        @Override
-        public ArtifactRarityAdjustedChance deserialize(JsonObject object, JsonDeserializationContext context) {
-            return new ArtifactRarityAdjustedChance(GsonHelper.getAsFloat(object, "default_probability"));
-        }
     }
 }

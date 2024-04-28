@@ -2,18 +2,21 @@ package artifacts.loot;
 
 import artifacts.Artifacts;
 import artifacts.registry.ModLootConditions;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import net.minecraft.util.GsonHelper;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-import java.util.Locale;
 import java.util.function.Supplier;
 
 public class ConfigValueChance implements LootItemCondition {
+
+    public static final Codec<ConfigValueChance> CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(ChanceConfig.CODEC.fieldOf("config").forGetter(c -> c.chanceConfig))
+                    .apply(instance, ConfigValueChance::new)
+    );
 
     private final ChanceConfig chanceConfig;
 
@@ -43,24 +46,12 @@ public class ConfigValueChance implements LootItemCondition {
         return () -> new ConfigValueChance(ChanceConfig.EVERLASTING_BEEF);
     }
 
-    public static class Serializer implements net.minecraft.world.level.storage.loot.Serializer<ConfigValueChance> {
-
-        @Override
-        public void serialize(JsonObject object, ConfigValueChance condition, JsonSerializationContext context) {
-            object.addProperty("config", condition.chanceConfig.name);
-        }
-
-        @Override
-        public ConfigValueChance deserialize(JsonObject object, JsonDeserializationContext context) {
-            ChanceConfig config = ChanceConfig.byName(GsonHelper.getAsString(object, "config"));
-            return new ConfigValueChance(config);
-        }
-    }
-
-    private enum ChanceConfig {
+    private enum ChanceConfig implements StringRepresentable {
         ARCHAEOLOGY("archaeology", () -> Artifacts.CONFIG.common.archaeologyChance),
         ENTITY_EQUIPMENT("entity_equipment", () -> Artifacts.CONFIG.common.entityEquipmentChance),
         EVERLASTING_BEEF("everlasting_beef", () -> Artifacts.CONFIG.common.everlastingBeefChance);
+
+        private static final Codec<ChanceConfig> CODEC = StringRepresentable.fromEnum(ChanceConfig::values);
 
         final String name;
         final Supplier<Double> value;
@@ -70,8 +61,9 @@ public class ConfigValueChance implements LootItemCondition {
             this.value = value;
         }
 
-        static ChanceConfig byName(String name) {
-            return valueOf(name.toUpperCase(Locale.ROOT));
+        @Override
+        public String getSerializedName() {
+            return name;
         }
     }
 }

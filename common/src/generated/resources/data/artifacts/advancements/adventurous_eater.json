@@ -13,16 +13,13 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "artifacts.advancements.adventurous_eater.description"
     },
-    "frame": "task",
     "hidden": true,
     "icon": {
       "item": "artifacts:onion_ring"
     },
-    "show_toast": true,
     "title": {
       "translate": "artifacts.advancements.adventurous_eater.title"
     }

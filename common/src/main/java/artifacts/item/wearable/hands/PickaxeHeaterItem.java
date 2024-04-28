@@ -17,10 +17,7 @@ import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -90,11 +87,11 @@ public class PickaxeHeaterItem extends WearableArtifactItem {
         container.clearContent();
         container.setItem(0, item);
         RecipeManager recipeManager = level.getRecipeManager();
-        Optional<Pair<ResourceLocation, SmeltingRecipe>> optional = recipeManager.getRecipeFor(RecipeType.SMELTING, container, level, lastRecipe);
+        Optional<Pair<ResourceLocation, RecipeHolder<SmeltingRecipe>>> optional = recipeManager.getRecipeFor(RecipeType.SMELTING, container, level, lastRecipe);
         if (optional.isPresent()) {
-            Pair<ResourceLocation, SmeltingRecipe> pair = optional.get();
+            Pair<ResourceLocation, RecipeHolder<SmeltingRecipe>> pair = optional.get();
             lastRecipe = pair.getFirst();
-            return Optional.of(pair.getSecond());
+            return Optional.of(pair.getSecond().value());
         } else {
             return Optional.empty();
         }

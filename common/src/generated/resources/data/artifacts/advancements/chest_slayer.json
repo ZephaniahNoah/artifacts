@@ -17,16 +17,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "artifacts.advancements.chest_slayer.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "artifacts:mimic_spawn_egg"
     },
-    "show_toast": true,
     "title": {
       "translate": "artifacts.advancements.chest_slayer.title"
     }

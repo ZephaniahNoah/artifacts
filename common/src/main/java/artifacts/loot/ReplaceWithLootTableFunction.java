@@ -2,12 +2,10 @@ package artifacts.loot;
 
 import artifacts.Artifacts;
 import artifacts.registry.ModLootFunctions;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -15,11 +13,18 @@ import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunct
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
+import java.util.List;
+
 public class ReplaceWithLootTableFunction extends LootItemConditionalFunction {
+
+    public static final Codec<ReplaceWithLootTableFunction> CODEC = RecordCodecBuilder.create(instance ->
+            commonFields(instance).and(ResourceLocation.CODEC.fieldOf("loot_table").forGetter(f -> f.lootTable))
+                    .apply(instance, ReplaceWithLootTableFunction::new)
+    );
 
     private final ResourceLocation lootTable;
 
-    public ReplaceWithLootTableFunction(LootItemCondition[] conditions, ResourceLocation lootTable) {
+    public ReplaceWithLootTableFunction(List<LootItemCondition> conditions, ResourceLocation lootTable) {
         super(conditions);
         this.lootTable = lootTable;
     }
@@ -48,19 +53,5 @@ public class ReplaceWithLootTableFunction extends LootItemConditionalFunction {
 
     public static LootItemConditionalFunction.Builder<?> replaceWithLootTable(ResourceLocation lootTable) {
         return simpleBuilder((conditions) -> new ReplaceWithLootTableFunction(conditions, lootTable));
-    }
-
-    public static class Serializer extends LootItemConditionalFunction.Serializer<ReplaceWithLootTableFunction> {
-
-        @Override
-        public void serialize(JsonObject object, ReplaceWithLootTableFunction instance, JsonSerializationContext context) {
-            super.serialize(object, instance, context);
-            object.addProperty("loot_table", instance.lootTable.toString());
-        }
-
-        @Override
-        public ReplaceWithLootTableFunction deserialize(JsonObject object, JsonDeserializationContext context, LootItemCondition[] conditions) {
-            return new ReplaceWithLootTableFunction(conditions, new ResourceLocation(GsonHelper.getAsString(object, "loot_table")));
-        }
     }
 }
