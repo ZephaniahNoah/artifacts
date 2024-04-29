@@ -22,7 +22,7 @@ public class SmeltOresWithPickaxeHeaterModifier extends LootModifier {
             )
     );
 
-    protected SmeltOresWithPickaxeHeaterModifier(LootItemCondition[] conditionsIn) {
+    public SmeltOresWithPickaxeHeaterModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
     }
 

@@ -1,6 +1,5 @@
 {
   "entries": [
-    "artifacts:smelt_ores_with_pickaxe_heater",
     "artifacts:inject/chests/ruined_portal",
     "artifacts:inject/chests/village/village_weaponsmith",
     "artifacts:inject/chests/igloo_chest",
@@ -26,6 +25,7 @@
     "artifacts:inject/archaeology/desert_pyramid",
     "artifacts:inject/chests/buried_treasure",
     "artifacts:inject/entities/cow",
+    "artifacts:smelt_ores_with_pickaxe_heater",
     "artifacts:inject/chests/desert_pyramid",
     "artifacts:inject/chests/village/village_plains_house",
     "artifacts:inject/chests/village/village_taiga_house",
@@ -37,6 +37,15 @@
     "artifacts:inject/chests/village/village_butcher",
     "artifacts:inject/chests/bastion_hoglin_stable",
     "artifacts:inject/archaeology/ocean_ruin_warm"
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": []
+      }
+    }
   ],
   "replace": false
 }

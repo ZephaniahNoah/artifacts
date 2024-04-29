@@ -1,15 +1,13 @@
 package artifacts.neoforge.data;
 
 import artifacts.Artifacts;
-import artifacts.neoforge.loot.RollLootTableModifier;
 import artifacts.loot.ArtifactRarityAdjustedChance;
 import artifacts.loot.ConfigValueChance;
+import artifacts.neoforge.loot.RollLootTableModifier;
+import artifacts.neoforge.loot.SmeltOresWithPickaxeHeaterModifier;
 import artifacts.registry.ModItems;
 import com.google.common.collect.ImmutableList;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import com.mojang.serialization.JsonOps;
 import cpw.mods.modlauncher.api.LamdbaExceptionUtils;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -300,6 +298,7 @@ public class LootModifiers implements DataProvider {
     }
 
     protected void start() {
+        add("smelt_ores_with_pickaxe_heater", new SmeltOresWithPickaxeHeaterModifier(new LootItemCondition[0]));
         addLoot();
 
         for (Builder lootBuilder : lootBuilders) {
@@ -311,7 +310,7 @@ public class LootModifiers implements DataProvider {
     public CompletableFuture<?> run(CachedOutput cache) {
         start();
 
-        // Path forgePath = this.packOutput.getOutputFolder(PackOutput.Target.DATA_PACK).resolve("forge").resolve("loot_modifiers").resolve("global_loot_modifiers.json");
+        Path neoForgePath = this.packOutput.getOutputFolder(PackOutput.Target.DATA_PACK).resolve("neoforge").resolve("loot_modifiers").resolve("global_loot_modifiers.json");
         Path modifierFolderPath = this.packOutput.getOutputFolder(PackOutput.Target.DATA_PACK).resolve(Artifacts.MOD_ID).resolve("loot_modifiers");
         List<ResourceLocation> entries = new ArrayList<>();
 
@@ -327,7 +326,17 @@ public class LootModifiers implements DataProvider {
         forgeJson.addProperty("replace", false);
         forgeJson.add("entries", GSON.toJsonTree(entries.stream().map(ResourceLocation::toString).collect(Collectors.toList())));
 
-        // futuresBuilder.add(DataProvider.saveStable(cache, forgeJson, forgePath));
+        JsonArray conditions = new JsonArray();
+        JsonObject condition = new JsonObject();
+        JsonObject modsLoaded = new JsonObject();
+        conditions.add(condition);
+        condition.addProperty("condition", "fabric:not");
+        condition.add("value", modsLoaded);
+        modsLoaded.addProperty("condition", "fabric:all_mods_loaded");
+        modsLoaded.add("values", new JsonArray());
+        forgeJson.add("fabric:load_conditions", conditions);
+
+        futuresBuilder.add(DataProvider.saveStable(cache, forgeJson, neoForgePath));
 
         return CompletableFuture.allOf(futuresBuilder.build().toArray(CompletableFuture[]::new));
     }
