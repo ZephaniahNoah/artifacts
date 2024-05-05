@@ -9,12 +9,13 @@ import artifacts.registry.ModItems;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.*;
 import com.mojang.serialization.JsonOps;
-import cpw.mods.modlauncher.api.LamdbaExceptionUtils;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -49,18 +50,18 @@ public class LootModifiers implements DataProvider {
     }
 
     private void addLoot() {
-        for (ResourceLocation lootTable : List.of(EntityType.COW.getDefaultLootTable(), EntityType.MOOSHROOM.getDefaultLootTable())) {
+        for (ResourceKey<LootTable> lootTable : List.of(EntityType.COW.getDefaultLootTable(), EntityType.MOOSHROOM.getDefaultLootTable())) {
             lootBuilders.add(
                     new Builder(lootTable)
                             .lootPoolCondition(ConfigValueChance.everlastingBeefChance())
-                            .lootModifierCondition(LootTableIdCondition.builder(lootTable))
+                            .lootModifierCondition(LootTableIdCondition.builder(lootTable.location()))
                             .parameterSet(LootContextParamSets.ENTITY)
                             .lootPoolCondition(LootItemKilledByPlayerCondition.killedByPlayer())
                             .everlastingBeef()
             );
         }
 
-        for (ResourceLocation lootTable : Arrays.asList(
+        for (ResourceKey<LootTable> lootTable : Arrays.asList(
                 BuiltInLootTables.VILLAGE_DESERT_HOUSE,
                 BuiltInLootTables.VILLAGE_PLAINS_HOUSE,
                 BuiltInLootTables.VILLAGE_SAVANNA_HOUSE
@@ -68,7 +69,7 @@ public class LootModifiers implements DataProvider {
             builder(lootTable, 0.05F)
                     .item(ModItems.VILLAGER_HAT.get());
         }
-        for (ResourceLocation lootTable : Arrays.asList(
+        for (ResourceKey<LootTable> lootTable : Arrays.asList(
                 BuiltInLootTables.VILLAGE_SNOWY_HOUSE,
                 BuiltInLootTables.VILLAGE_TAIGA_HOUSE
         )) {
@@ -281,17 +282,17 @@ public class LootModifiers implements DataProvider {
                 .item(ModItems.THORN_PENDANT.get());
     }
 
-    protected Builder builder(ResourceLocation lootTable, float baseChance) {
+    protected Builder builder(ResourceKey<LootTable> lootTable, float baseChance) {
         Builder builder = new Builder(lootTable);
         builder.lootPoolCondition(ArtifactRarityAdjustedChance.adjustedChance(baseChance));
-        builder.lootModifierCondition(LootTableIdCondition.builder(lootTable));
+        builder.lootModifierCondition(LootTableIdCondition.builder(lootTable.location()));
         lootBuilders.add(builder);
         return builder;
     }
 
-    protected Builder archaeologyBuilder(ResourceLocation lootTable) {
+    protected Builder archaeologyBuilder(ResourceKey<LootTable> lootTable) {
         Builder builder = new Builder(lootTable).replace();
-        builder.lootModifierCondition(LootTableIdCondition.builder(lootTable));
+        builder.lootModifierCondition(LootTableIdCondition.builder(lootTable.location()));
         builder.lootModifierCondition(ConfigValueChance.archaeologyChance());
         lootBuilders.add(builder);
         return builder;
@@ -316,11 +317,11 @@ public class LootModifiers implements DataProvider {
 
         ImmutableList.Builder<CompletableFuture<?>> futuresBuilder = new ImmutableList.Builder<>();
 
-        toSerialize.forEach(LamdbaExceptionUtils.rethrowBiConsumer((name, json) -> {
+        toSerialize.forEach((name, json) -> {
             entries.add(new ResourceLocation(Artifacts.MOD_ID, name));
             Path modifierPath = modifierFolderPath.resolve(name + ".json");
             futuresBuilder.add(DataProvider.saveStable(cache, json, modifierPath));
-        }));
+        });
 
         JsonObject forgeJson = new JsonObject();
         forgeJson.addProperty("replace", false);
@@ -342,7 +343,7 @@ public class LootModifiers implements DataProvider {
     }
 
     public <T extends IGlobalLootModifier> void add(String modifier, T instance) {
-        JsonElement json = IGlobalLootModifier.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, instance).getOrThrow(false, s -> {});
+        JsonElement json = IGlobalLootModifier.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, instance).getOrThrow();
         this.toSerialize.put(modifier, json);
     }
 
@@ -354,22 +355,20 @@ public class LootModifiers implements DataProvider {
     @SuppressWarnings({"UnusedReturnValue", "SameParameterValue"})
     protected static class Builder {
 
-        private final ResourceLocation lootTable;
+        private final ResourceKey<LootTable> lootTable;
         private final LootPool.Builder lootPool = LootPool.lootPool();
         private final List<LootItemCondition> conditions;
         private boolean replace = false;
 
         private LootContextParamSet paramSet = LootContextParamSets.CHEST;
 
-        private Builder(ResourceLocation lootTable) {
+        private Builder(ResourceKey<LootTable> lootTable) {
             this.lootTable = lootTable;
             this.conditions = new ArrayList<>();
         }
 
         private RollLootTableModifier build() {
-            System.out.println(lootTable);
-            System.out.println(lootTable.getPath());
-            return new RollLootTableModifier(conditions.toArray(new LootItemCondition[]{}), Artifacts.id("inject/%s", lootTable.getPath()), replace);
+            return new RollLootTableModifier(conditions.toArray(new LootItemCondition[]{}), Artifacts.key(Registries.LOOT_TABLE, "inject/" + lootTable.location().getPath()), replace);
         }
 
         protected LootTable.Builder createLootTable() {
@@ -381,7 +380,7 @@ public class LootModifiers implements DataProvider {
         }
 
         protected String getName() {
-            return lootTable.getPath();
+            return lootTable.location().getPath();
         }
 
         private Builder parameterSet(LootContextParamSet paramSet) {
