@@ -16,41 +16,34 @@ import net.minecraft.core.registries.BuiltInRegistries;
 
 public class ArtifactsFabric implements ModInitializer {
 
-    @SuppressWarnings("ConstantConditions")
-    public static ClientConfigFabric getClientConfig() {
-        return (ClientConfigFabric) (Object) Artifacts.CONFIG.client;
-    }
+	@SuppressWarnings("ConstantConditions")
+	public static ClientConfigFabric getClientConfig() {
+		return (ClientConfigFabric) (Object) Artifacts.CONFIG.client;
+	}
 
-    @Override
-    public void onInitialize() {
-        Artifacts.init();
-        registerTrinkets();
+	@Override
+	public void onInitialize() {
+		Artifacts.init();
+		registerTrinkets();
 
-        SwimEventsFabric.register();
-        ModFeatures.register();
+		SwimEventsFabric.register();
+		ModFeatures.register();
 
-        LootTableEvents.MODIFY.register((rm, lt, id, supplier, s) ->
-                ModLootTablesFabric.onLootTableLoad(id, supplier));
+		LootTableEvents.MODIFY.register((key, tableBuilder, source) -> ModLootTablesFabric.onLootTableLoad(key.location(), tableBuilder));
 
-        runCompatibilityHandlers();
-    }
+		runCompatibilityHandlers();
+	}
 
-    private void registerTrinkets() {
-        BuiltInRegistries.ITEM.stream()
-                .filter(item -> item instanceof WearableArtifactItem)
-                .forEach(item -> TrinketsApi.registerTrinket(item, new WearableArtifactTrinket((WearableArtifactItem) item)));
-    }
+	private void registerTrinkets() {
+		BuiltInRegistries.ITEM.stream().filter(item -> item instanceof WearableArtifactItem).forEach(item -> TrinketsApi.registerTrinket(item, new WearableArtifactTrinket((WearableArtifactItem) item)));
+	}
 
-    private void runCompatibilityHandlers() {
-        FabricLoader.getInstance().getEntrypoints("artifacts:compat_handlers", CompatHandler.class).stream()
-                .filter(handler -> FabricLoader.getInstance().isModLoaded(handler.getModId()))
-                .forEach(handler -> {
-                    String modName = FabricLoader.getInstance().getModContainer(handler.getModId())
-                            .map(container -> container.getMetadata().getName())
-                            .orElse(handler.getModId());
-                    Artifacts.LOGGER.info("Running compat handler for " + modName);
+	private void runCompatibilityHandlers() {
+		FabricLoader.getInstance().getEntrypoints("artifacts:compat_handlers", CompatHandler.class).stream().filter(handler -> FabricLoader.getInstance().isModLoaded(handler.getModId())).forEach(handler -> {
+			String modName = FabricLoader.getInstance().getModContainer(handler.getModId()).map(container -> container.getMetadata().getName()).orElse(handler.getModId());
+			Artifacts.LOGGER.info("Running compat handler for " + modName);
 
-                    handler.run();
-                });
-    }
+			handler.run();
+		});
+	}
 }

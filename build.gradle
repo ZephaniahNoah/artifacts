@@ -1,6 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false
 }
 
 architectury {
@@ -86,14 +86,14 @@ allprojects {
                 includeGroupByRegex "dev.onyxstudios.*"
             }
         }
-        maven {
+        /*maven {
             name "NeoForge"
             url "https://maven.neoforged.net/releases/"
             content {
                 includeGroupByRegex "net.neoforged.*"
                 includeGroup "cpw.mods"
             }
-        }
+        }*/
     }
 
     tasks.withType(JavaCompile) {

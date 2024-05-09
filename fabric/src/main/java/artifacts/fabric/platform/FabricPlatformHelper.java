@@ -74,14 +74,14 @@ public class FabricPlatformHelper implements PlatformHelper {
 
     @Override
     public boolean isCorrectTierForDrops(Tier tier, BlockState state) {
-        int i = tier.getLevel();
-        if (state.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
-            return i >= 3;
-        } else if (state.is(BlockTags.NEEDS_IRON_TOOL)) {
-            return i >= 2;
-        } else if (state.is(BlockTags.NEEDS_STONE_TOOL)) {
-            return i >= 1;
-        }
+//        int i = tier.getLevel();
+//        if (state.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
+//            return i >= 3;
+//        } else if (state.is(BlockTags.NEEDS_IRON_TOOL)) {
+//            return i >= 2;
+//        } else if (state.is(BlockTags.NEEDS_STONE_TOOL)) {
+//            return i >= 1;
+//        }
         return true;
     }
 

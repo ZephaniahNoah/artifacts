@@ -1,8 +1,14 @@
 package artifacts.fabric.mixin.item.wearable.luckyscarf;
 
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+
 import artifacts.fabric.trinket.TrinketsHelper;
 import artifacts.item.wearable.WearableArtifactItem;
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,10 +18,6 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ApplyBonusCount.class)
 public class ApplyBonusCountMixin {
@@ -28,7 +30,7 @@ public class ApplyBonusCountMixin {
     private int addFortuneLevel(int level, ItemStack stack, LootContext lootContext) {
         Entity entity = lootContext.getParamOrNull(LootContextParams.THIS_ENTITY);
 
-        if (this.enchantment.value() == Enchantments.BLOCK_FORTUNE && entity instanceof LivingEntity livingEntity) {
+        if (this.enchantment.value() == Enchantments.FORTUNE && entity instanceof LivingEntity livingEntity) {
             level += TrinketsHelper.findAllEquippedBy(livingEntity)
                     .map(ItemStack::getItem)
                     .map(item -> (WearableArtifactItem) item)
