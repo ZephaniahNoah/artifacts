@@ -115,17 +115,17 @@ public class FabricPlatformHelper implements PlatformHelper {
 
     @Override
     public void addCosmeticToggleTooltip(List<MutableComponent> tooltip, ItemStack stack) {
-        if (CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
-            tooltip.add(
-                    Component.translatable("%s.tooltip.cosmetics_disabled".formatted(Artifacts.MOD_ID))
-                            .withStyle(ChatFormatting.ITALIC)
-            );
-        } else if (ArtifactsFabric.getClientConfig().alwaysShowCosmeticsToggleTooltip()) {
-            tooltip.add(
-                    Component.translatable("%s.tooltip.cosmetics_enabled".formatted(Artifacts.MOD_ID))
-                            .withStyle(ChatFormatting.ITALIC)
-            );
-        }
+//        if (CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
+//            tooltip.add(
+//                    Component.translatable("%s.tooltip.cosmetics_disabled".formatted(Artifacts.MOD_ID))
+//                            .withStyle(ChatFormatting.ITALIC)
+//            );
+//        } else if (ArtifactsFabric.getClientConfig().alwaysShowCosmeticsToggleTooltip()) {
+//            tooltip.add(
+//                    Component.translatable("%s.tooltip.cosmetics_enabled".formatted(Artifacts.MOD_ID))
+//                            .withStyle(ChatFormatting.ITALIC)
+//            );
+//        }
     }
 
     @Override
@@ -141,7 +141,7 @@ public class FabricPlatformHelper implements PlatformHelper {
                         hand == InteractionHand.MAIN_HAND ? "hand" : "offhand"
                 )).map(Tuple::getB)
                 .filter(stack -> stack.is(item))
-                .filter(stack -> !CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack))
+                //.filter(stack -> !CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack))
                 .anyMatch(tuple -> true);
     }
 
@@ -169,9 +169,9 @@ public class FabricPlatformHelper implements PlatformHelper {
 
         @Override
         public void render(ItemStack stack, SlotReference slotReference, EntityModel<? extends LivingEntity> entityModel, PoseStack poseStack, MultiBufferSource multiBufferSource, int light, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-            if (CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
-                return;
-            }
+//            if (CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
+//                return;
+//            }
             int index = slotReference.index() + (slotReference.inventory().getSlotType().getGroup().equals("hand") ? 0 : 1);
             renderer.render(stack, entity, index, poseStack, multiBufferSource, light, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
         }

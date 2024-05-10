@@ -44,7 +44,7 @@ public abstract class PlayerRendererMixin {
                 ItemStack stack = pair.getB();
                 if (pair.getA().inventory().getSlotType().getGroup().equals(groupId)
                         && stack.getItem() instanceof WearableArtifactItem // Not every trinket is an artifact
-                        && !CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)) {
+                        /*&& !CosmeticsHelper.areCosmeticsToggledOffByPlayer(stack)*/) {
                     GloveArtifactRenderer gloveRenderer = GloveArtifactRenderer.getGloveRenderer(stack);
                     if (gloveRenderer != null) {
                         gloveRenderer.renderFirstPersonArm(matrixStack, buffer, light, player, handSide, stack.hasFoil());

@@ -46,10 +46,10 @@ public abstract class WearableArtifactItemMixin extends Item {
 
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack slotStack, ItemStack holdingStack, Slot slot, ClickAction clickAction, Player player, SlotAccess slotAccess) {
-        if (!AbilityHelper.isCosmetic(slotStack) && clickAction == ClickAction.SECONDARY && holdingStack.isEmpty()) {
-            CosmeticsHelper.toggleCosmetics(slotStack);
-            return true;
-        }
+//        if (!AbilityHelper.isCosmetic(slotStack) && clickAction == ClickAction.SECONDARY && holdingStack.isEmpty()) {
+//            CosmeticsHelper.toggleCosmetics(slotStack);
+//            return true;
+//        }
 
         return super.overrideOtherStackedOnMe(slotStack, holdingStack, slot, clickAction, player, slotAccess);
     }
