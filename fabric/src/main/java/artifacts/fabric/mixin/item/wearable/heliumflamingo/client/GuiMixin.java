@@ -1,11 +1,13 @@
 package artifacts.fabric.mixin.item.wearable.heliumflamingo.client;
 
 import artifacts.client.HeliumFlamingoOverlay;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -16,11 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class GuiMixin {
 
+    @Final
     @Shadow
-    private int screenHeight;
-
-    @Shadow
-    private int screenWidth;
+    private Minecraft minecraft;
 
     @Shadow
     protected abstract int getVisibleVehicleHeartRows(int i);
@@ -41,7 +41,7 @@ public abstract class GuiMixin {
             return;
         }
 
-        HeliumFlamingoOverlay.renderOverlay(- getStatusBarHeightOffset(player), guiGraphics, screenWidth, screenHeight);
+        HeliumFlamingoOverlay.renderOverlay(- getStatusBarHeightOffset(player), guiGraphics, this.minecraft.getWindow().getScreenWidth(), this.minecraft.getWindow().getScreenHeight());
     }
 
     /**

@@ -5,6 +5,7 @@ import artifacts.ability.ArtifactAbility;
 import artifacts.ability.AttributeModifierAbility;
 import artifacts.ability.SimpleAbility;
 import artifacts.platform.PlatformServices;
+import artifacts.registry.ModAttributes;
 import artifacts.registry.ModDataComponents;
 import artifacts.registry.ModGameRules;
 import artifacts.registry.ModItems;
@@ -114,6 +115,9 @@ public class WearableArtifactItem extends Item {
         public WearableArtifactItem build() {
             //noinspection UnstableApiUsage
             properties.arch$tab(ModItems.CREATIVE_TAB.supplier());
+            // TODO: FIX
+            ModAttributes.register();
+            ModDataComponents.register();
             properties.component(ModDataComponents.ABILITIES.get(), abilities);
             properties.stacksTo(1).rarity(Rarity.RARE).fireResistant();
             return new WearableArtifactItem(properties, equipSound, equipSoundPitch);

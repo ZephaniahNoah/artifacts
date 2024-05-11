@@ -78,7 +78,7 @@ public interface ArtifactAbility {
         if (Minecraft.getInstance() != null) {
             player = ArtifactsClient.getLocalPlayer();
         }
-        if (key != null && (!key.isUnbound() || !AbilityHelper.isToggledOn(getType(), player))) {
+        if (key != null && (!key.isUnbound() || (player != null && !AbilityHelper.isToggledOn(getType(), player)))) {
             tooltip.add(Component.translatable("%s.tooltip.toggle_keymapping".formatted(Artifacts.MOD_ID), key.getTranslatedKeyMessage()));
         }
     }

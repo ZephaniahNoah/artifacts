@@ -14,8 +14,12 @@ public class LivingEntityMixin {
 
     @ModifyReturnValue(method = "createLivingAttributes", at = @At("RETURN"))
     private static AttributeSupplier.Builder createLivingAttributes(AttributeSupplier.Builder original) {
+        ModAttributes.register();
         for (RegistrySupplier<Attribute> attribute : ModAttributes.GENERIC_ATTRIBUTES) {
+            // TODO: FIX
             original.add(attribute);
+
+
         }
         return original;
     }

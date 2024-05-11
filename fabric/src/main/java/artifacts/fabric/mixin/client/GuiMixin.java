@@ -2,6 +2,7 @@ package artifacts.fabric.mixin.client;
 
 import artifacts.Artifacts;
 import artifacts.registry.ModDataComponents;
+import com.mojang.blaze3d.platform.Window;
 import dev.emi.trinkets.api.TrinketInventory;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.client.Minecraft;
@@ -21,12 +22,6 @@ import java.util.Map;
 @Mixin(Gui.class)
 public abstract class GuiMixin {
 
-    @Shadow
-    private int screenHeight;
-
-    @Shadow
-    private int screenWidth;
-
     @Final
     @Shadow
     private Minecraft minecraft;
@@ -34,22 +29,24 @@ public abstract class GuiMixin {
     @Shadow
     protected abstract Player getCameraPlayer();
 
-    @Inject(method = "renderHotbar", at = @At(value = "TAIL"))
-    private void renderFlamingoAir(float f, GuiGraphics guiGraphics, CallbackInfo ci) {
+    @Inject(method = "renderHotbarAndDecorations", at = @At(value = "TAIL"))
+    private void renderFlamingoAir(GuiGraphics guiGraphics, float f, CallbackInfo ci) {
         Player player = this.getCameraPlayer();
         if (!Artifacts.CONFIG.client.enableCooldownOverlay || player == null) {
             return;
         }
 
+        Window window = this.minecraft.getWindow();
+
         TrinketsApi.getTrinketComponent(player).ifPresent(component -> {
-            int y = screenHeight - 16 - 3;
+            int y = window.getScreenHeight() - 16 - 3;
             int cooldownOverlayOffset = Artifacts.CONFIG.client.cooldownOverlayOffset;
             int step = 20;
-            int start = screenWidth / 2 + 91 + cooldownOverlayOffset;
+            int start = window.getScreenWidth() / 2 + 91 + cooldownOverlayOffset;
 
             if (cooldownOverlayOffset < 0) {
                 step = -20;
-                start = screenWidth / 2 - 91 - 16 + cooldownOverlayOffset;
+                start = window.getScreenWidth() / 2 - 91 - 16 + cooldownOverlayOffset;
             }
 
             int k = 0;

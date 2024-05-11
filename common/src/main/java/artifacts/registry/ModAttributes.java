@@ -14,6 +14,7 @@ import java.util.List;
 public class ModAttributes {
 
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(Artifacts.MOD_ID, Registries.ATTRIBUTE);
+    private static boolean REGISTERED = false;
 
     public static final List<RegistrySupplier<Attribute>> PLAYER_ATTRIBUTES = new ArrayList<>();
     public static final List<RegistrySupplier<Attribute>> GENERIC_ATTRIBUTES = new ArrayList<>();
@@ -45,5 +46,12 @@ public class ModAttributes {
 
     public static RegistrySupplier<Attribute> register(String name, double d, double min, double max) {
         return RegistrySupplier.of(ATTRIBUTES.register(Artifacts.id(name), () -> new RangedAttribute(name, d, min, max).setSyncable(true)));
+    }
+
+    public static void register() {
+        if (!REGISTERED) {
+            ATTRIBUTES.register();
+            REGISTERED = true;
+        }
     }
 }

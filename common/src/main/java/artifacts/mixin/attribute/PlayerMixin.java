@@ -14,7 +14,9 @@ public class PlayerMixin {
 
     @ModifyReturnValue(method = "createAttributes", at = @At(value = "RETURN"))
     private static AttributeSupplier.Builder createAttributes(AttributeSupplier.Builder original) {
+        ModAttributes.register();
         for (RegistrySupplier<Attribute> attribute : ModAttributes.PLAYER_ATTRIBUTES) {
+            // TODO: FIX
             original.add(attribute);
         }
         return original;

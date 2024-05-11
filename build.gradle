@@ -36,6 +36,12 @@ allprojects {
     group = rootProject.maven_group
 
     repositories {
+        flatDir {
+            dirs 'lib'
+            content {
+                includeGroup "dev.emi"
+            }
+        }
         maven {
             url "https://jitpack.io"
             content {
@@ -75,16 +81,16 @@ allprojects {
         maven {
             url "https://maven.terraformersmc.com/"
             content {
-                includeGroup "dev.emi"
+                excludeGroup "dev.emi"
                 includeGroup "com.terraformersmc"
             }
         }
         maven {
             name "Cardinal Components"
             url "https://maven.ladysnake.org/releases"
-            content {
-                includeGroupByRegex "dev.onyxstudios.*"
-            }
+//            content {
+//                includeGroupByRegex "dev.onyxstudios.*"
+//            }
         }
         maven {
             name "NeoForge"

@@ -21,5 +21,13 @@ public class ModDataComponents {
                     .cacheEncoding()
                     .build()
     ));
+    private static boolean REGISTERED = false;
+
+    public static void register() {
+        if (!REGISTERED) {
+            DATA_COMPONENT_TYPES.register();
+            REGISTERED = true;
+        }
+    }
 
 }
