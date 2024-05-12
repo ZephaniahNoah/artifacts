@@ -115,8 +115,8 @@ public class WearableArtifactItem extends Item {
         public WearableArtifactItem build() {
             //noinspection UnstableApiUsage
             properties.arch$tab(ModItems.CREATIVE_TAB.supplier());
-            // TODO: FIX
-            ModAttributes.register();
+            // On Fabric 1.20.6 it appears that the init method is not called early enough.
+            // So we need to register the ModDataComponents here to ensure they are available.
             ModDataComponents.register();
             properties.component(ModDataComponents.ABILITIES.get(), abilities);
             properties.stacksTo(1).rarity(Rarity.RARE).fireResistant();

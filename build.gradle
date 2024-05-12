@@ -36,6 +36,7 @@ allprojects {
     group = rootProject.maven_group
 
     repositories {
+        // This is to allow loading the trinkets mod from the local filesystem since it's not updated yet.
         flatDir {
             dirs 'lib'
             content {

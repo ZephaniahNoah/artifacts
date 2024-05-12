@@ -23,6 +23,8 @@ public class ModDataComponents {
     ));
     private static boolean REGISTERED = false;
 
+    // On Fabric 1.20.6 it appears that the init method is not called early enough.
+    // This means we'll have to call this multiple times when needed. Kinda hacky but it works.
     public static void register() {
         if (!REGISTERED) {
             DATA_COMPONENT_TYPES.register();

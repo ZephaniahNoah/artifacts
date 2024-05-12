@@ -14,12 +14,10 @@ public class LivingEntityMixin {
 
     @ModifyReturnValue(method = "createLivingAttributes", at = @At("RETURN"))
     private static AttributeSupplier.Builder createLivingAttributes(AttributeSupplier.Builder original) {
+        // We need to register attributes here in case they aren't already registered. On Fabric 1.20.6 it appears that the init method is not called early enough.
         ModAttributes.register();
         for (RegistrySupplier<Attribute> attribute : ModAttributes.GENERIC_ATTRIBUTES) {
-            // TODO: FIX
             original.add(attribute);
-
-
         }
         return original;
     }

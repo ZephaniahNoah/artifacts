@@ -14,9 +14,9 @@ public class PlayerMixin {
 
     @ModifyReturnValue(method = "createAttributes", at = @At(value = "RETURN"))
     private static AttributeSupplier.Builder createAttributes(AttributeSupplier.Builder original) {
+        // We need to register attributes here in case they aren't already registered. On Fabric 1.20.6 it appears that the init method is not called early enough.
         ModAttributes.register();
         for (RegistrySupplier<Attribute> attribute : ModAttributes.PLAYER_ATTRIBUTES) {
-            // TODO: FIX
             original.add(attribute);
         }
         return original;
